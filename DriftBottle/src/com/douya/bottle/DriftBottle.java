@@ -14,7 +14,9 @@ public class DriftBottle extends Activity {
 	private TextView passwordTextview = null;
 	private CheckBox saveuserinfoCheckbox = null;
 	private ImageButton loginButton = null;
-    /** Called when the activity is first created. */
+    /**
+     * 
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
