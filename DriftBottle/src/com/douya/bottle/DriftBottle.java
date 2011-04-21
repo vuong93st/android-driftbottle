@@ -1,15 +1,15 @@
 package com.douya.bottle;
 
-import com.douya.bottle.R;
-import com.douya.bottle.R.id;
-import com.douya.bottle.R.layout;
-import com.douya.bottle.R.string;
-
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.douya.bottle.activity.RegsiterActivity;
 
 public class DriftBottle extends Activity {
 	private TextView titleTextView = null;
@@ -18,6 +18,7 @@ public class DriftBottle extends Activity {
 	private TextView emailTextview = null;
 	private TextView passwordTextview = null;
 	private CheckBox saveuserinfoCheckbox = null;
+	private ImageButton regsiterButton = null;
 	private ImageButton loginButton = null;
     /**
      * 
@@ -45,5 +46,19 @@ public class DriftBottle extends Activity {
         saveuserinfoCheckbox.setText(R.string.loginmain_save_password);
         
         loginButton = (ImageButton)findViewById(R.id.loginmain_loginButton);
+        regsiterButton = (ImageButton)findViewById(R.id.loginmain_registerButton);
+        Intent intent =getIntent();
+        regsiterButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent =getIntent();
+				intent.setClass(DriftBottle.this, RegsiterActivity.class);
+				DriftBottle.this.startActivity(intent);
+			}
+		});
+        
     }
+    
+    
 }
