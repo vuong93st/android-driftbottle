@@ -6,7 +6,7 @@
     <uses-sdk android:minSdkVersion="4" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name="activity.DriftBottle"
+        <activity android:name=".DriftBottle"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
             <intent-filter>

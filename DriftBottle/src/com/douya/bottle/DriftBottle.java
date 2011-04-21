@@ -1,4 +1,4 @@
-package com.douya.bottle.activity;
+package com.douya.bottle;
 
 import com.douya.bottle.R;
 import com.douya.bottle.R.id;
