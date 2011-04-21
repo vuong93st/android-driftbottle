@@ -10,10 +10,9 @@ public class RegsiterActivity extends Activity{
 
 	private TextView emailTextview = null;
 	private TextView passwordTextview = null;
-	
+	//private TextView confirmPasswordTextview = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register);
 		
@@ -22,6 +21,9 @@ public class RegsiterActivity extends Activity{
         
         passwordTextview = (TextView)findViewById(R.id.loginmain_password_textview);
         passwordTextview.setText(R.string.loginmain_password);
+        
+        /*confirmPasswordTextview = (TextView)findViewById(R.id.confirm_password_textview);
+        confirmPasswordTextview.setText(R.string.confirm_password);*/
 	}
 
 	
