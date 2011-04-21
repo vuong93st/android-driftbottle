@@ -1,4 +1,9 @@
-package com.douya.bottle;
+package com.douya.bottle.activity;
+
+import com.douya.bottle.R;
+import com.douya.bottle.R.id;
+import com.douya.bottle.R.layout;
+import com.douya.bottle.R.string;
 
 import android.app.Activity;
 import android.os.Bundle;

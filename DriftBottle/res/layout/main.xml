@@ -29,7 +29,7 @@
 			android:layout_below="@id/loginmain_content"
 			android:layout_centerHorizontal="true"/>
 		<ImageButton android:id="@+id/loginmain_registerButton"
-			android:layout_width="135px" android:layout_height="40px"
+			android:layout_width="184px" android:layout_height="44px"
 			android:layout_marginTop="20px"
 			android:src="@drawable/registerbutton_selector"  
 			android:layout_below="@id/loginmain_content_sub"
