@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="city1">
+    <string-array name="city">
         <item value="0">北京</item>
         <item value="2">上海</item>
         <item value="3">天津</item>
@@ -31,13 +31,65 @@
 		<item value="28">甘肃省</item>
 		<item value="29">青海省</item>
     </string-array>
-    <string-array name="city2">
-        <item value="0">北京</item>
-        <item value="2">上海</item>
-        <item value="3">天津</item>
-        <item value="4">重庆</item>
-        <item value="5">香港</item>
-        <item value="6">澳门</item>
-        <item value="7">台湾</item>
+    <string-array name="city0"><!-- 北京市  -->
+        <item value="0">东城区</item>
+        <item value="2">西城区</item>
+        <item value="3">崇文区</item>
+        <item value="4">宣武区</item>
+        <item value="5">朝阳区</item>
+        <item value="6">丰台区</item>
+        <item value="7">石景山区</item>
+        <item value="8">海淀区</item>
+		<item value="9">门头沟区</item>
+		<item value="10">房山区</item>
+		<item value="11">通州区</item>
+		<item value="12">顺义区</item>
+		<item value="13">昌平区</item>
+		<item value="14">大兴区</item>
+		<item value="15">怀柔区</item>
+		<item value="16">平谷区</item>
+		<item value="17">密云县</item>
+		<item value="18">延庆县</item> 
+    </string-array>
+    <string-array name="city1"><!-- 上海市  -->
+        <item value="0">黄浦区</item>
+        <item value="2">卢湾区</item>
+        <item value="3">徐汇区</item>
+        <item value="4">长宁区</item>
+        <item value="5">静安区</item>
+        <item value="6">普陀区</item>
+        <item value="7">闸北区</item>
+        <item value="8">虹口区</item>
+		<item value="9">杨浦区</item>
+		<item value="10">闵行区</item>
+		<item value="11">宝山区</item>
+		<item value="12">嘉定区</item>
+		<item value="13">浦东新区</item>
+		<item value="14">金山区</item>
+		<item value="15">松江区</item>
+		<item value="16">青浦区</item>
+		<item value="17">南汇区</item>
+		<item value="18">奉贤区</item> 
+		<item value="19">崇明县</item> 
+    </string-array>
+    <string-array name="city2"><!-- 天津市  -->
+        <item value="0">和平区</item>
+        <item value="2">河东区</item>
+        <item value="3">河西区</item>
+        <item value="4">南开区</item>
+        <item value="5">河北区</item>
+        <item value="6">红桥区</item>
+        <item value="7">塘沽区</item>
+        <item value="8">汉沽区</item>
+		<item value="9">大港区</item>
+		<item value="10">东丽区</item>
+		<item value="11">西青区</item>
+		<item value="12">津南区</item>
+		<item value="13">北辰区</item>
+		<item value="14">武清区</item>
+		<item value="15">宝坻区</item>
+		<item value="16">宁河县</item>
+		<item value="17">静海县</item>
+		<item value="18">蓟县</item> 
     </string-array>
 </resources>

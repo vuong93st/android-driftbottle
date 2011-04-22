@@ -1,5 +1,7 @@
 package com.douya.bottle.activity;
 
+import java.lang.reflect.Field;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -58,52 +60,74 @@ public class RegsiterActivity extends Activity{
         
         sp = (Spinner) findViewById(R.id.province);
         ArrayAdapter adapter = ArrayAdapter.createFromResource(
-                this, R.array.city1, android.R.layout.simple_spinner_item);
+                this, R.array.city, android.R.layout.simple_spinner_item);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
-        
-        sp2 = (Spinner) findViewById(R.id.city);
-        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
-                this, R.array.city2, android.R.layout.simple_spinner_item);
-
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        sp2.setAdapter(adapter);
-        
-        /*adapter2 = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, city); 
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-        sp2 = (Spinner) findViewById(R.id.city);
-        sp2.setAdapter(adapter2);*/
 
         sp.setOnItemSelectedListener(new OnItemSelectedListener() {
 
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				/*int pos = sp.getSelectedItemPosition();
-                adapter2 = new ArrayAdapter<String>(context,android.R.layout.simple_spinner_item, pandc[pos]);
-                sp2.setAdapter(adapter2);	*/			
+				int pos = sp.getSelectedItemPosition();
+				int variable = Integer.parseInt(getClassVariableByName("city"+pos).toString());
+				sp2 = (Spinner) findViewById(R.id.city);
+				if(variable!=0){
+			        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
+			        		RegsiterActivity.this, variable, android.R.layout.simple_spinner_item);
+	
+			        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+			        sp2.setAdapter(adapter2);
+			        sp2.setVisibility(View.VISIBLE);
+				}else{
+					sp2.setVisibility(View.GONE);
+				}
 			}
 
 			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
 				
 			}
         	
 		});
-
 	}
-
-	
+	/**
+	 * 根据变量名称，得到R.array类中的变量
+	 * @param varName
+	 * @return
+	 */
+	public String getClassVariableByName(String varName){
+    	// 获取f对象对应类中的所有属性域
+		Field[] fields = R.array.class.getDeclaredFields();
+		for(int i = 0 , len = fields.length; i < len; i++) {
+			// 对于每个属性，获取属性名
+			try {
+				if(varName.equalsIgnoreCase(fields[i].getName())){
+					// 获取原来的访问控制权限
+					boolean accessFlag = fields[i].isAccessible();
+					// 修改访问控制权限
+					fields[i].setAccessible(true);
+					// 获取在对象中属性fields[i]对应的对象中的变量
+					Object o = fields[i].get(R.array.class);
+					// 恢复访问控制权限
+					fields[i].setAccessible(accessFlag);
+					return o.toString();
+				}
+			} catch (IllegalArgumentException ex) {
+				ex.printStackTrace();
+			} catch (IllegalAccessException ex) {
+				ex.printStackTrace();
+			}
+		}
+		return "0";
+    }
 	
 	/**
-	 * ��ʾ��ʾ��Ϣ
+	 * 弹出提示消息
 	 * @param str
 	 */
 	public void DisplayToast(String str)   
 	{   
         Toast toast = Toast.makeText(this, str, Toast.LENGTH_LONG);   
-        //����toast��ʾ��λ��   
         toast.setGravity(Gravity.TOP, 0, 220);   
-        //��ʾ��Toast   
         toast.show();   
     }   
 
