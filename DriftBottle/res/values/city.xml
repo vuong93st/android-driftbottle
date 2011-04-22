@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="city1">
+        <item value="0">北京</item>
+        <item value="2">上海</item>
+        <item value="3">天津</item>
+        <item value="4">重庆</item>
+        <item value="5">香港</item>
+        <item value="6">澳门</item>
+        <item value="7">台湾</item>
+        <item value="8">河北省</item>
+		<item value="9">山西省</item>
+		<item value="10">辽宁省</item>
+		<item value="11">吉林省</item>
+		<item value="12">黑龙江省</item>
+		<item value="13">江苏省</item>
+		<item value="14">浙江省</item>
+		<item value="15">安徽省</item>
+		<item value="16">福建省</item>
+		<item value="17">江西省</item>
+		<item value="18">山东省</item>
+		<item value="19">河南省</item>
+		<item value="20">湖北省</item>
+		<item value="21">湖南省</item>
+		<item value="22">广东省</item>
+		<item value="23">海南省</item>
+		<item value="24">四川省</item>
+		<item value="25">贵州省</item>
+		<item value="26">云南省</item>
+		<item value="27">陕西省</item>
+		<item value="28">甘肃省</item>
+		<item value="29">青海省</item>
+    </string-array>
+    <string-array name="city2">
+        <item value="0">北京</item>
+        <item value="2">上海</item>
+        <item value="3">天津</item>
+        <item value="4">重庆</item>
+        <item value="5">香港</item>
+        <item value="6">澳门</item>
+        <item value="7">台湾</item>
+    </string-array>
+</resources>
