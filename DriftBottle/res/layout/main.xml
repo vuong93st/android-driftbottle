@@ -4,7 +4,7 @@
 	android:layout_height="fill_parent" android:background="@drawable/loginmain_bg">
 	<AnalogClock android:id="@+id/aclock"
 			android:layout_width="wrap_content" android:layout_height="60px"
-			/>
+		/>
 		<DigitalClock android:id="@+id/dclock"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:paddingTop="15px"
