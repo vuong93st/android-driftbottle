@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -20,6 +21,7 @@ public class DriftBottle extends Activity {
 	private CheckBox saveuserinfoCheckbox = null;
 	private ImageButton regsiterButton = null;
 	private ImageButton loginButton = null;
+	private EditText emailEditText = null;
     /**
      * 
      */
@@ -47,11 +49,12 @@ public class DriftBottle extends Activity {
         
         loginButton = (ImageButton)findViewById(R.id.loginmain_loginButton);
         regsiterButton = (ImageButton)findViewById(R.id.loginmain_registerButton);
-        Intent intent =getIntent();
+        
+        emailEditText = (EditText)findViewById(R.id.loginmain_email_edittext);
+
         regsiterButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				Intent intent =getIntent();
 				intent.setClass(DriftBottle.this, RegsiterActivity.class);
 				DriftBottle.this.startActivity(intent);
