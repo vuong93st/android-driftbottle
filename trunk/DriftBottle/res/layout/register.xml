@@ -79,17 +79,17 @@
 			android:layout_alignRight="@id/gender_textview"
 			/>
 		<Spinner android:id="@+id/province" 
-        	android:layout_width="100px"
+        	android:layout_width="wrap_content"
 	        android:layout_height="40px"
          	android:drawSelectorOnTop="true"
 	        android:layout_alignBottom="@id/city_textview"
 			android:layout_toRightOf="@id/city_textview"
     	/>
        <Spinner android:id="@+id/city" 
-        	android:layout_width="100px" 
+        	android:layout_width="wrap_content" 
           	android:layout_height="40px" 
          	android:drawSelectorOnTop="true"
-         	android:layout_alignBottom="@id/province"
-			android:layout_toRightOf="@id/province"
+         	android:layout_below="@id/province"
+			android:layout_toRightOf="@id/city_textview"
         />
 </RelativeLayout>
