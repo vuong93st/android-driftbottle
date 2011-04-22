@@ -95,11 +95,11 @@ public class RegsiterActivity extends Activity{
 	 * @return
 	 */
 	public String getClassVariableByName(String varName){
-    	// 获取f对象对应类中的所有属性域
+    	// 获取对象对应类中的所有属性域
 		Field[] fields = R.array.class.getDeclaredFields();
 		for(int i = 0 , len = fields.length; i < len; i++) {
-			// 对于每个属性，获取属性名
 			try {
+				// 比较获取的属性名是否也传入的一致
 				if(varName.equalsIgnoreCase(fields[i].getName())){
 					// 获取原来的访问控制权限
 					boolean accessFlag = fields[i].isAccessible();
