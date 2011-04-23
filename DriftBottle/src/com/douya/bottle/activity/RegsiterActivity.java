@@ -69,7 +69,6 @@ public class RegsiterActivity extends Activity{
 
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				int pos = sp.getSelectedItemPosition();
-				//DisplayToast("city:"+sp.getSelectedItem().toString());
 				int variable = Integer.parseInt(getClassVariableByName("city"+pos).toString());
 				sp2 = (Spinner) findViewById(R.id.city);
 				if(variable!=0){
@@ -125,7 +124,7 @@ public class RegsiterActivity extends Activity{
 	 * 弹出提示消息
 	 * @param str
 	 */
-	public void DisplayToast(String str)   
+	public void displayToast(String str)   
 	{   
         Toast toast = Toast.makeText(this, str, Toast.LENGTH_LONG);   
         toast.setGravity(Gravity.TOP, 0, 220);   
