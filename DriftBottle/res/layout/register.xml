@@ -5,7 +5,7 @@
 	
 	<TextView android:id="@+id/loginmain_email_textview"
 		android:layout_width="wrap_content" android:layout_height="35px"
-		android:textSize="12sp" android:layout_marginTop="65px" android:textColor="#ffffff"
+		android:textSize="12sp" android:layout_marginTop="80px" android:textColor="#ffffff"
 		android:layout_marginLeft="40px"  android:paddingTop="5px"
 		android:layout_below="@id/loginmain_registerButton"
 	/>
@@ -81,6 +81,7 @@
 	<Spinner android:id="@+id/province" 
        	android:layout_width="wrap_content"
         android:layout_height="40px"
+        android:textSize="10sp"
         android:drawSelectorOnTop="true"
         android:layout_alignBottom="@id/city_textview"
 		android:layout_toRightOf="@id/city_textview"
@@ -88,6 +89,7 @@
     <Spinner android:id="@+id/city" 
      	android:layout_width="wrap_content" 
        	android:layout_height="40px" 
+       	android:textSize="10sp"
       	android:drawSelectorOnTop="true"
       	android:layout_below="@id/province"
 		android:layout_toRightOf="@id/city_textview"

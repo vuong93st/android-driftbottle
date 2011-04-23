@@ -69,6 +69,7 @@ public class RegsiterActivity extends Activity{
 
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				int pos = sp.getSelectedItemPosition();
+				//DisplayToast("city:"+sp.getSelectedItem().toString());
 				int variable = Integer.parseInt(getClassVariableByName("city"+pos).toString());
 				sp2 = (Spinner) findViewById(R.id.city);
 				if(variable!=0){
