@@ -1,4 +1,4 @@
-package com.douya.utils.download;
+package com.douya.utils;
 
 import java.io.BufferedReader;
 import java.io.File;
