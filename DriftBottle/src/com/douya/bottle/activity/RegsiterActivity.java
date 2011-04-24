@@ -30,9 +30,7 @@ public class RegsiterActivity extends Activity{
 	private Context context = null;
 	private Spinner sp = null;
     private Spinner sp2 =null;
-    ArrayAdapter<String> adapter ;
-    ArrayAdapter<String> adapter2; 
-
+    private Spinner sp3 =null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -77,6 +75,31 @@ public class RegsiterActivity extends Activity{
 	
 			        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 			        sp2.setAdapter(adapter2);
+			        sp2.setOnItemSelectedListener(new OnItemSelectedListener() {
+			        	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			        		int pos = sp.getSelectedItemPosition();
+			        		int pos_sub = sp2.getSelectedItemPosition();
+			        		//displayToast("city"+pos+"_"+pos_sub);
+			        		int variable_sub = Integer.parseInt(getClassVariableByName("city"+pos+"_"+pos_sub).toString());
+							sp3 = (Spinner) findViewById(R.id.city_sub);
+							if(variable_sub!=0){
+						        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
+						        		RegsiterActivity.this, variable_sub, android.R.layout.simple_spinner_item);
+				
+						        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+						        sp3.setAdapter(adapter3);
+						        sp3.setVisibility(View.VISIBLE);
+							}else{
+								sp3.setVisibility(View.GONE);
+							}
+			        	}
+
+						public void onNothingSelected(AdapterView<?> arg0) {
+							// TODO Auto-generated method stub
+							
+						}
+			        	
+					});
 			        sp2.setVisibility(View.VISIBLE);
 				}else{
 					sp2.setVisibility(View.GONE);

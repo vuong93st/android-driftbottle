@@ -94,11 +94,20 @@
       	android:layout_below="@id/province"
 		android:layout_toRightOf="@id/city_textview"
      />
+     
+     <Spinner android:id="@+id/city_sub" 
+     	android:layout_width="wrap_content" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+      	android:drawSelectorOnTop="true"
+      	android:layout_below="@id/city"
+		android:layout_toRightOf="@id/city_textview"
+     />
      <ImageButton android:id="@+id/registerButton"
 		android:layout_width="200px" android:layout_height="30px"
-		android:layout_marginTop="20px"
+		android:layout_marginTop="5px"
 		android:src="@drawable/registerok_selector"  
-		android:layout_below="@id/city"
+		android:layout_below="@id/city_sub"
 		android:layout_centerHorizontal="true"
 		android:focusable="true" android:clickable="true" 
 	/>
