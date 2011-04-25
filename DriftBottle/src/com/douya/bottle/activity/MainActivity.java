@@ -59,7 +59,7 @@ public class MainActivity extends TabActivity{
 		
 		//这是对Tab标签本身的设置   
         int width =45;   
-        int height =48;   
+        int height =50;   
         for(int i = 0; i < tabWidget.getChildCount(); i++)   
         {   
            //设置高度、宽度，不过宽度由于设置为fill_parent，在此对它没效果   
@@ -67,15 +67,12 @@ public class MainActivity extends TabActivity{
             tabWidget.getChildAt(i).getLayoutParams().width = width;   
              /**   
              * 下面是设置Tab的背景，可以是颜色，背景图片等   
-              */   
-             View v = tabWidget.getChildAt(i);   
-            if (tabHost.getCurrentTab() == i) {   
-                //v.setBackgroundColor(Color.GREEN);   
-                //在这里最好自己设置一个图片作为背景更好   
+             */   
+            View v = tabWidget.getChildAt(i);   
+            if (tabHost.getCurrentTab() == i) {
                 v.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_icons));   
-            } else {   
-                //v.setBackgroundColor(Color.GRAY);   
-                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_bg));  
+            } else {     
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab));  
             }   
         }
 		 //设置Tab变换时的监听事件   
@@ -88,9 +85,7 @@ public class MainActivity extends TabActivity{
 					if (tabHost.getCurrentTab() == i) {
 						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_icons)); 
 					} else {
-						// 这里最后需要和上面的设置保持一致,也可以用图片作为背景最好
-						//v.setBackgroundColor(Color.GRAY);
-						 v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_bg)); 
+						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab)); 
 					}
 				}
 			}
