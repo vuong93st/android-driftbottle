@@ -18,13 +18,23 @@ public class DriftBottle extends Activity {
 	private TextView contentSubTextView = null;
 	private TextView emailTextview = null;
 	private TextView passwordTextview = null;
-	private CheckBox saveuserinfoCheckbox = null;
-	private ImageButton regsiterButton = null;
-	private ImageButton loginButton = null;
+	/**
+	 * 邮箱编辑框
+	 */
 	private EditText emailEditText = null;
-    /**
-     * 
-     */
+	/**
+	 * 保存密码CheckBox
+	 */
+	private CheckBox saveuserinfoCheckbox = null;
+	/**
+	 * 立即注册按钮
+	 */
+	private ImageButton regsiterButton = null;
+	/**
+	 * 登录按钮
+	 */
+	private ImageButton loginButton = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

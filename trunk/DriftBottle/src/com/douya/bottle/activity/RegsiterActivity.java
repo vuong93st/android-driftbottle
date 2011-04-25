@@ -4,33 +4,55 @@ import java.lang.reflect.Field;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.douya.bottle.DriftBottle;
 import com.douya.bottle.R;
 
 public class RegsiterActivity extends Activity{
 
-	private TextView emailTextview = null;
-	private TextView passwordTextview = null;
-	private TextView confirmPasswordTextview = null;
-	private TextView genderTextView = null;
-	private RadioButton genderBoyButton = null;
-	private RadioButton genderGirlButton = null;
-	private TextView cityTextView = null;
-	
+	private TextView emailTextview = null;//邮箱
+	private TextView passwordTextview = null;//密码
+	private TextView confirmPasswordTextview = null;//确认密码
+	private TextView genderTextView = null;//性别
+	private TextView cityTextView = null;//城市
 	private Context context = null;
-	private Spinner provinceSpinner = null;//省、直辖市下拉列表
-    private Spinner prefecturalCitySpinner =null;//地区下拉列表
-    private Spinner countyCitySpinner =null;//县级市下拉列表
+	/**
+	 * 性别单选按钮：男
+	 */
+	private RadioButton genderBoyButton = null;
+	/**
+	 * 性别单选按钮：女
+	 */
+	private RadioButton genderGirlButton = null;
+	/**
+	 * 省、直辖市下拉列表
+	 */
+	private Spinner provinceSpinner = null;
+	/**
+	 * 地区下拉列表
+	 */
+    private Spinner prefecturalCitySpinner =null;
+    /**
+     * 县级市下拉列表
+     */
+    private Spinner countyCitySpinner =null;
+	/**
+	 * 注册完成按钮
+	 */
+	private ImageButton registerButton = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -64,6 +86,16 @@ public class RegsiterActivity extends Activity{
         provinceSpinner.setAdapter(adapter);
 
         provinceSpinner.setOnItemSelectedListener(new provinceSelectedListener());
+        
+        registerButton = (ImageButton)findViewById(R.id.registerButton);
+        registerButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent intent =getIntent();
+				intent.setClass(RegsiterActivity.this, HomeActivity.class);
+				RegsiterActivity.this.startActivity(intent);
+			}
+		});
 	}
 	//选择省、直辖市，列出地级市
 	class provinceSelectedListener implements OnItemSelectedListener{
