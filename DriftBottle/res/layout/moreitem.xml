@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="horizontal"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:padding="10dip">
+    <TextView android:id="@+id/moreLogo" 
+	android:layout_width="90dip" android:layout_height="30dip" android:textSize="12sp"
+	android:gravity="center_vertical"></TextView>
+	<TextView android:id="@+id/moreTitle"
+		android:textSize="16sp"
+		android:gravity="center_vertical" android:layout_width="120dip" android:layout_height="30dip" ></TextView>
+	<TextView  android:id="@+id/moreMore"
+		android:textSize="16sp"
+		android:gravity="right" android:layout_width="90dip" android:layout_height="30dip" ></TextView>
+  
+</LinearLayout>

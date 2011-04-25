@@ -7,4 +7,6 @@
 			android:textSize="20sp" android:textColor="#ffffff"
 			android:paddingTop="15px"
 			android:layout_centerHorizontal="true"/>
+	<ListView android:id="@+id/android:list"
+	android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
 </RelativeLayout>
