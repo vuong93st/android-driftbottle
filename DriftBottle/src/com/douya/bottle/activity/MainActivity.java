@@ -32,28 +32,28 @@ public class MainActivity extends TabActivity{
 		Intent homeIntent = new Intent();
 		homeIntent.setClass(this, HomeActivity.class);
 		TabHost.TabSpec spec = tabHost.newTabSpec("home");
-		spec.setIndicator(composeLayout("首页",R.drawable.bottle_home));
+		spec.setIndicator(composeLayout(getResources().getString(R.string.home),R.drawable.bottle_home));
 		spec.setContent(homeIntent);
 		tabHost.addTab(spec);
 		
 		Intent nearbyIntent = new Intent();
 		nearbyIntent.setClass(this, NearbyActivity.class);
 		TabHost.TabSpec nearbySpec = tabHost.newTabSpec("nearby");
-		nearbySpec.setIndicator(composeLayout("附近",R.drawable.bottle_nearby));
+		nearbySpec.setIndicator(composeLayout(getResources().getString(R.string.nearby),R.drawable.bottle_nearby));
 		nearbySpec.setContent(nearbyIntent);
 		tabHost.addTab(nearbySpec);
 		
 		Intent squareIntent = new Intent();
 		squareIntent.setClass(this, SquareActivity.class);
 		TabHost.TabSpec squareSpec = tabHost.newTabSpec("square");
-		squareSpec.setIndicator(composeLayout("广场",R.drawable.bottle_square));
+		squareSpec.setIndicator(composeLayout(getResources().getString(R.string.square),R.drawable.bottle_square));
 		squareSpec.setContent(squareIntent);
 		tabHost.addTab(squareSpec);
 		
 		Intent moreIntent = new Intent();
 		moreIntent.setClass(this, MoreActivity.class);
 		TabHost.TabSpec moreSpec = tabHost.newTabSpec("more");
-		moreSpec.setIndicator(composeLayout("更多",R.drawable.bottle_more));
+		moreSpec.setIndicator(composeLayout(getResources().getString(R.string.more),R.drawable.bottle_more));
 		moreSpec.setContent(moreIntent);
 		tabHost.addTab(moreSpec);
 		
@@ -74,7 +74,8 @@ public class MainActivity extends TabActivity{
                 //在这里最好自己设置一个图片作为背景更好   
                 v.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_icons));   
             } else {   
-                v.setBackgroundColor(Color.GRAY);   
+                //v.setBackgroundColor(Color.GRAY);   
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_bg));  
             }   
         }
 		 //设置Tab变换时的监听事件   
@@ -88,7 +89,8 @@ public class MainActivity extends TabActivity{
 						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.bg_icons)); 
 					} else {
 						// 这里最后需要和上面的设置保持一致,也可以用图片作为背景最好
-						v.setBackgroundColor(Color.GRAY);
+						//v.setBackgroundColor(Color.GRAY);
+						 v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab_bg)); 
 					}
 				}
 			}
@@ -99,7 +101,7 @@ public class MainActivity extends TabActivity{
      * 这个设置Tab标签本身的布局，需要TextView和ImageView不能重合   
      * s:是文本显示的内容   
      * i:是ImageView的图片位置   
-     * 将它设置到setIndicator(composeLayout("开心", R.drawable.coke))中   
+     * 将它设置到setIndicator(composeLayout("首页", R.drawable.coke))中   
      */   
     public View composeLayout(String s, int i){   
         Log.e("Error", "composeLayout");   
@@ -110,7 +112,7 @@ public class MainActivity extends TabActivity{
         tv.setGravity(Gravity.CENTER);   
         tv.setSingleLine(true);   
         tv.setText(s);   
-        tv.setTextColor(Color.RED);   
+        tv.setTextColor(Color.WHITE);   
        layout.addView(tv,    
                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));   
            
