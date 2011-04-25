@@ -38,7 +38,7 @@ public class DriftBottle extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        setContentView(R.layout.login);
         titleTextView = (TextView)findViewById(R.id.loginmain_title);
         titleTextView.setText(R.string.loginmain_title);
         
