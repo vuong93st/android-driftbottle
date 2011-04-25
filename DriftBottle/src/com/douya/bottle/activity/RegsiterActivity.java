@@ -63,54 +63,59 @@ public class RegsiterActivity extends Activity{
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         sp.setAdapter(adapter);
 
-        sp.setOnItemSelectedListener(new OnItemSelectedListener() {
+        sp.setOnItemSelectedListener(new provinceSelectedListener());
+	}
+	//选择省、直辖市，列出地级市
+	class provinceSelectedListener implements OnItemSelectedListener{
 
-			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-				int pos = sp.getSelectedItemPosition();
-				int variable = Integer.parseInt(getVariableByName("city"+pos).toString());
-				sp2 = (Spinner) findViewById(R.id.city);
-				if(variable!=0){
-			        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
-			        		RegsiterActivity.this, variable, android.R.layout.simple_spinner_item);
-	
-			        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-			        sp2.setAdapter(adapter2);
-			        sp2.setOnItemSelectedListener(new OnItemSelectedListener() {
-			        	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
-			        		int pos = sp.getSelectedItemPosition();
-			        		int pos_sub = sp2.getSelectedItemPosition();
-			        		
-			        		int variable_sub = Integer.parseInt(getVariableByName("city"+pos+"_"+pos_sub).toString());
-							sp3 = (Spinner) findViewById(R.id.city_sub);
-							if(variable_sub!=0){
-						        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
-						        		RegsiterActivity.this, variable_sub, android.R.layout.simple_spinner_item);
-				
-						        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-						        sp3.setAdapter(adapter3);
-						        sp3.setVisibility(View.VISIBLE);
-							}else{
-								sp3.setVisibility(View.GONE);
-							}
-			        	}
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			int pos = sp.getSelectedItemPosition();
+			int variable = Integer.parseInt(getVariableByName("city"+pos).toString());
+			sp2 = (Spinner) findViewById(R.id.city);
+			if(variable!=0){
+		        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
+		        		RegsiterActivity.this, variable, android.R.layout.simple_spinner_item);
 
-						public void onNothingSelected(AdapterView<?> arg0) {
-							// TODO Auto-generated method stub
-							
-						}
-			        	
-					});
-			        sp2.setVisibility(View.VISIBLE);
-				}else{
-					sp2.setVisibility(View.GONE);
-				}
+		        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		        sp2.setAdapter(adapter2);
+		        sp2.setOnItemSelectedListener(new citySelectedListener());
+		        sp2.setVisibility(View.VISIBLE);
+			}else{
+				sp2.setVisibility(View.GONE);
 			}
+		}
 
-			public void onNothingSelected(AdapterView<?> arg0) {
-				
+		public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	//选择地区，列出县级市
+	class citySelectedListener implements OnItemSelectedListener{
+
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			int pos = sp.getSelectedItemPosition();
+    		int pos_sub = sp2.getSelectedItemPosition();
+    		int variable_sub = Integer.parseInt(getVariableByName("city"+pos+"_"+pos_sub).toString());
+			sp3 = (Spinner) findViewById(R.id.city_sub);
+			if(variable_sub!=0){
+		        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
+		        		RegsiterActivity.this, variable_sub, android.R.layout.simple_spinner_item);
+
+		        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		        sp3.setAdapter(adapter3);
+		        sp3.setVisibility(View.VISIBLE);
+			}else{
+				sp3.setVisibility(View.GONE);
 			}
-        	
-		});
+		}
+
+		public void onNothingSelected(AdapterView<?> arg0) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 	}
 	/**
 	 * 根据变量名称，得到R.array类中的变量
