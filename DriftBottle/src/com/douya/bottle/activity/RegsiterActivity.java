@@ -67,7 +67,7 @@ public class RegsiterActivity extends Activity{
 
 			public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
 				int pos = sp.getSelectedItemPosition();
-				int variable = Integer.parseInt(getClassVariableByName("city"+pos).toString());
+				int variable = Integer.parseInt(getVariableByName("city"+pos).toString());
 				sp2 = (Spinner) findViewById(R.id.city);
 				if(variable!=0){
 			        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
@@ -80,7 +80,7 @@ public class RegsiterActivity extends Activity{
 			        		int pos = sp.getSelectedItemPosition();
 			        		int pos_sub = sp2.getSelectedItemPosition();
 			        		//displayToast("city"+pos+"_"+pos_sub);
-			        		int variable_sub = Integer.parseInt(getClassVariableByName("city"+pos+"_"+pos_sub).toString());
+			        		int variable_sub = Integer.parseInt(getVariableByName("city"+pos+"_"+pos_sub).toString());
 							sp3 = (Spinner) findViewById(R.id.city_sub);
 							if(variable_sub!=0){
 						        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
@@ -117,7 +117,7 @@ public class RegsiterActivity extends Activity{
 	 * @param varName
 	 * @return
 	 */
-	public String getClassVariableByName(String varName){
+	public String getVariableByName(String varName){
     	// 获取对象对应类中的所有属性域
 		Field[] fields = R.array.class.getDeclaredFields();
 		for(int i = 0 , len = fields.length; i < len; i++) {
