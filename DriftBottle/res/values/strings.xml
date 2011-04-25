@@ -13,4 +13,8 @@
     <string name="gender_girl">女</string>
     <string name="city">城市：</string>
     
+    <string name="home">首页</string>
+    <string name="nearby">附近</string>
+    <string name="square">广场</string>
+    <string name="more">更多</string>
 </resources>

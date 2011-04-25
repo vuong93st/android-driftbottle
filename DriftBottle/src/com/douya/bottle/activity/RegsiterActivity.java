@@ -2,6 +2,7 @@ package com.douya.bottle.activity;
 
 import java.lang.reflect.Field;
 
+import com.douya.bottle.R;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -17,9 +18,6 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.douya.bottle.DriftBottle;
-import com.douya.bottle.R;
 
 public class RegsiterActivity extends Activity{
 
@@ -92,7 +90,7 @@ public class RegsiterActivity extends Activity{
 			
 			public void onClick(View v) {
 				Intent intent =getIntent();
-				intent.setClass(RegsiterActivity.this, HomeActivity.class);
+				intent.setClass(RegsiterActivity.this, MainActivity.class);
 				RegsiterActivity.this.startActivity(intent);
 			}
 		});

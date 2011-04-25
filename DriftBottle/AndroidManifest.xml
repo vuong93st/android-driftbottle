@@ -19,11 +19,24 @@
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".activity.MainActivity"
+                  android:label="@string/app_name">
+        </activity>
+        
         <activity android:name=".activity.HomeActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".activity.MainActivity"
+        
+        <activity android:name=".activity.NearbyActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.SquareActivity"
+                  android:label="@string/app_name"
+                  android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".activity.MoreActivity"
                   android:label="@string/app_name"
                   android:screenOrientation="portrait">
         </activity>
