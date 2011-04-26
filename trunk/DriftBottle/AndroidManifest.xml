@@ -20,25 +20,30 @@
                   android:screenOrientation="portrait">
         </activity>
         <activity android:name=".activity.MainActivity"
-                  android:label="@string/app_name">
+                  android:label="@string/app_name"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         
         <activity android:name=".activity.HomeActivity"
                   android:label="@string/app_name"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         
         <activity android:name=".activity.NearbyActivity"
                   android:label="@string/app_name"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".activity.SquareActivity"
                   android:label="@string/app_name"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
         <activity android:name=".activity.MoreActivity"
                   android:label="@string/app_name"
-                  android:screenOrientation="portrait">
+                  android:screenOrientation="portrait"
+                  android:theme="@android:style/Theme.NoTitleBar">
         </activity>
     </application>
     <!-- 访问互联网权限 -->

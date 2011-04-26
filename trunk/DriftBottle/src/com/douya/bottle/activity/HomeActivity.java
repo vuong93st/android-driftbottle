@@ -12,8 +12,5 @@ public class HomeActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-	}
-
- 
-
+	}  
 }
