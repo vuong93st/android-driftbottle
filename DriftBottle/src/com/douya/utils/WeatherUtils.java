@@ -1,4 +1,4 @@
-package com.douya.bottle.service;
+package com.douya.utils;
 
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
@@ -14,7 +14,7 @@ import com.douya.bottle.R;
 /**
  * 天气预报Service
  */
-public class WeatherActivity extends Activity{
+public class WeatherUtils {
 
 	private static String LOG_TAG = "Weather";
 	private static boolean DEBUG = false;
@@ -35,13 +35,6 @@ public class WeatherActivity extends Activity{
 	private int iconAfterday[] = new int[2];
 	
 	private SoapObject detail;
-	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.titlebar);
-	}
 
 	private void showWeather(String city) {   
         if (city.length() == 0) city = "北京";   

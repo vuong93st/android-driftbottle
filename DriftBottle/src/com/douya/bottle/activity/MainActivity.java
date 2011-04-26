@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.method.SingleLineTransformationMethod;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -16,9 +17,11 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.douya.bottle.R;
+import com.douya.utils.AlwaysMarqueeTextView;
+import com.douya.utils.WeatherUtils;
 
 public class MainActivity extends TabActivity{
-
+	private AlwaysMarqueeTextView weatherTextView = null;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -89,7 +92,18 @@ public class MainActivity extends TabActivity{
 					}
 				}
 			}
-		});  
+		}); 
+		//获取天气预报
+		weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
+		WeatherUtils weatherUtils = new WeatherUtils();
+		weatherUtils.getWeather("济南");
+		weatherTextView.setText(weatherUtils.getWeatherCurrent());
+		weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
+		weatherTextView.setFocusable(true);
+		//启动线程，获取天气预报
+		/*WeatherThread weatherThread = new WeatherThread();
+		Thread thread = new Thread(weatherThread);
+		thread.start();*/
 	}
 
 	/**   
@@ -98,8 +112,7 @@ public class MainActivity extends TabActivity{
      * i:是ImageView的图片位置   
      * 将它设置到setIndicator(composeLayout("首页", R.drawable.coke))中   
      */   
-    public View composeLayout(String s, int i){   
-        Log.e("Error", "composeLayout");   
+    public View composeLayout(String s, int i){  
         LinearLayout layout = new LinearLayout(this);   
         layout.setOrientation(LinearLayout.VERTICAL);   
 
@@ -117,5 +130,23 @@ public class MainActivity extends TabActivity{
                 new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));   
         return layout;   
     }  
+    //天气预报线程
+    class WeatherThread implements Runnable{
 
+		public void run() {
+			try{
+				//获取天气预报
+				weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
+				WeatherUtils weatherUtils = new WeatherUtils();
+				weatherUtils.getWeather("济南");
+				weatherTextView.setText(weatherUtils.getWeatherCurrent());
+				weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
+				weatherTextView.setFocusable(true);
+				Thread.sleep((long)5*1000*60);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+    	
+    }
 }
