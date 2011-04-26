@@ -2,7 +2,8 @@
 <RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" 
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:background="@drawable/loginmain_bg">
-	<AnalogClock android:id="@+id/aclock"
+
+	<!-- <AnalogClock android:id="@+id/aclock"
 			android:layout_width="wrap_content" android:layout_height="60px"
 		/>
 		<DigitalClock android:id="@+id/dclock"
@@ -10,13 +11,12 @@
 			android:paddingTop="15px"
 			android:textColor="#ffcccc"
 			android:layout_toRightOf="@id/aclock"
-		/>
+		/> -->
 
 		<TextView android:id="@+id/loginmain_title"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="20sp" android:textColor="#ffffff"
-			android:paddingTop="15px"
-			android:layout_below="@id/aclock"
+			android:paddingTop="75px"
 			android:layout_centerHorizontal="true"/>
 		<TextView android:id="@+id/loginmain_content"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
