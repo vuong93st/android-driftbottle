@@ -2,11 +2,10 @@ package com.douya.bottle.activity;
 
 import android.app.TabActivity;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.SingleLineTransformationMethod;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -22,43 +21,26 @@ import com.douya.utils.WeatherUtils;
 
 public class MainActivity extends TabActivity{
 	private AlwaysMarqueeTextView weatherTextView = null;
+	String weatherCurrent="";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
+		handler.post(updateThread);
+		
 		final TabHost tabHost = this.getTabHost();   
         final TabWidget tabWidget = tabHost.getTabWidget(); 
-		Resources res = getResources();
 		
-		Intent homeIntent = new Intent();
-		homeIntent.setClass(this, HomeActivity.class);
-		TabHost.TabSpec spec = tabHost.newTabSpec("home");
-		spec.setIndicator(composeLayout(getResources().getString(R.string.home),R.drawable.bottle_home));
-		spec.setContent(homeIntent);
-		tabHost.addTab(spec);
-		
+        Intent homeIntent = new Intent();
+		createTabs(tabHost,homeIntent,HomeActivity.class,"home",composeLayout(getResources().getString(R.string.home),R.drawable.bottle_home));
 		Intent nearbyIntent = new Intent();
-		nearbyIntent.setClass(this, NearbyActivity.class);
-		TabHost.TabSpec nearbySpec = tabHost.newTabSpec("nearby");
-		nearbySpec.setIndicator(composeLayout(getResources().getString(R.string.nearby),R.drawable.bottle_nearby));
-		nearbySpec.setContent(nearbyIntent);
-		tabHost.addTab(nearbySpec);
-		
+		createTabs(tabHost,nearbyIntent,NearbyActivity.class,"nearby",composeLayout(getResources().getString(R.string.nearby),R.drawable.bottle_nearby));
 		Intent squareIntent = new Intent();
-		squareIntent.setClass(this, SquareActivity.class);
-		TabHost.TabSpec squareSpec = tabHost.newTabSpec("square");
-		squareSpec.setIndicator(composeLayout(getResources().getString(R.string.square),R.drawable.bottle_square));
-		squareSpec.setContent(squareIntent);
-		tabHost.addTab(squareSpec);
-		
+		createTabs(tabHost,squareIntent,SquareActivity.class,"square",composeLayout(getResources().getString(R.string.square),R.drawable.bottle_square));
 		Intent moreIntent = new Intent();
-		moreIntent.setClass(this, MoreActivity.class);
-		TabHost.TabSpec moreSpec = tabHost.newTabSpec("more");
-		moreSpec.setIndicator(composeLayout(getResources().getString(R.string.more),R.drawable.bottle_more));
-		moreSpec.setContent(moreIntent);
-		tabHost.addTab(moreSpec);
+		createTabs(tabHost,moreIntent,MoreActivity.class,"more",composeLayout(getResources().getString(R.string.more),R.drawable.bottle_more));
 		
 		//这是对Tab标签本身的设置   
         int width =45;   
@@ -90,20 +72,11 @@ public class MainActivity extends TabActivity{
 					} else {
 						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab)); 
 					}
+					handler.post(updateUIThread);
 				}
 			}
 		}); 
-		//获取天气预报
-		weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
-		WeatherUtils weatherUtils = new WeatherUtils();
-		weatherUtils.getWeather("济南");
-		weatherTextView.setText(weatherUtils.getWeatherCurrent());
-		weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
-		weatherTextView.setFocusable(true);
-		//启动线程，获取天气预报
-		/*WeatherThread weatherThread = new WeatherThread();
-		Thread thread = new Thread(weatherThread);
-		thread.start();*/
+		
 	}
 
 	/**   
@@ -129,24 +102,48 @@ public class MainActivity extends TabActivity{
         layout.addView(iv,    
                 new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));   
         return layout;   
-    }  
-    //天气预报线程
-    class WeatherThread implements Runnable{
-
-		public void run() {
-			try{
-				//获取天气预报
-				weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
-				WeatherUtils weatherUtils = new WeatherUtils();
-				weatherUtils.getWeather("济南");
-				weatherTextView.setText(weatherUtils.getWeatherCurrent());
-				weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
-				weatherTextView.setFocusable(true);
-				Thread.sleep((long)5*1000*60);
-			}catch(Exception e){
-				e.printStackTrace();
-			}
-		}
-    	
     }
+
+    /**
+     * 创建Tab页
+     * @param tabHost
+     * @param intent
+     * @param cls
+     * @param name
+     * @param view
+     */
+    public void createTabs(TabHost tabHost,Intent intent,Class<?> cls,String name,View view){
+    	intent.setClass(this, cls);
+		TabHost.TabSpec squareSpec = tabHost.newTabSpec(name);
+		squareSpec.setIndicator(view);
+		squareSpec.setContent(intent);
+		tabHost.addTab(squareSpec);
+    }
+    
+   Handler handler = new Handler();
+   Runnable updateThread = new Runnable(){
+	
+		public void run() {
+			//获取天气预报
+			WeatherUtils weatherUtils = new WeatherUtils();
+			weatherUtils.getWeather("济南");
+			weatherCurrent = weatherUtils.getWeatherCurrent()+"      " 
+							+ weatherUtils.getWeatherTomorrow()+"    "
+							+ weatherUtils.getWeatherAfterday();
+			handler.post(updateUIThread);
+			handler.postDelayed(updateThread, 1000*60*60);
+		}
+	};
+
+	Runnable updateUIThread = new Runnable(){
+		
+		public void run() {
+			//获取天气预报
+			weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
+			weatherTextView.setText(weatherCurrent);
+			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
+			weatherTextView.setFocusable(true);
+			handler.postDelayed(updateThread, 1000*60*5);
+		}
+	};
 }

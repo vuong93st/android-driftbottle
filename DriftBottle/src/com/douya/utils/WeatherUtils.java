@@ -5,8 +5,6 @@ import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.AndroidHttpTransport;
 
-import android.app.Activity;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.douya.bottle.R;
@@ -34,26 +32,7 @@ public class WeatherUtils {
 	private int iconTomorrow[] = new int[2];
 	private int iconAfterday[] = new int[2];
 	
-	private SoapObject detail;
-
-	private void showWeather(String city) {   
-        if (city.length() == 0) city = "北京";   
-        getWeather(city);   
-           
-        weatherToday=getWeatherToday();   
-        //imageView1.setImageResource(getIconToday(0));   
-        //imageView2.setImageResource(getIconToday(1));   
-           
-        weatherTomorrow=getWeatherTomorrow();         
-        //imageView3.setImageResource(getIconTomorrow(0));   
-        //imageView4.setImageResource(getIconTomorrow(1));   
-           
-        weatherAfterday=getWeatherAfterday();         
-        //imageView5.setImageResource(getIconAfterday(0));   
-        //imageView6.setImageResource(getIconAfterday(1));   
-           
-        weatherCurrent=getWeatherCurrent();   
-    }   
+	private SoapObject detail;  
        
     public void getWeather(String cityName) {   
         try {   
@@ -187,5 +166,4 @@ public class WeatherUtils {
     private static void debug(String tag, String msg) {   
         if (DEBUG) Log.d(tag, msg);   
     }
-
 }
