@@ -4,17 +4,60 @@
 	android:layout_height="fill_parent" android:background="@drawable/regsiter_bg">
 	<!-- 扔瓶子按钮 -->
 	<ImageButton android:id="@+id/home_throwing_button"
-			android:layout_width="77px" android:layout_height="28px"
-			android:layout_marginTop="10px"
-			android:layout_marginLeft="150px"
-			android:src="@drawable/throwing_bottle_selector" 
-			android:focusable="true" android:clickable="true"/>
+		android:layout_width="77px" android:layout_height="28px"
+		android:layout_marginTop="10px"
+		android:layout_marginLeft="150px"
+		android:src="@drawable/throwing_bottle_selector" 
+		android:focusable="true" android:clickable="true"/>
 	<!-- 捡瓶子按钮 -->
 	<ImageButton android:id="@+id/home_pickup_button"
-			android:layout_width="77px" android:layout_height="28px"
-			android:layout_marginLeft="10px"
-			android:src="@drawable/pickup_bottle_selector" 
-			android:layout_alignBottom="@id/home_throwing_button"
-			android:layout_toRightOf="@id/home_throwing_button"
-			android:focusable="true" android:clickable="true"/>		
+		android:layout_width="77px" android:layout_height="28px"
+		android:layout_marginLeft="10px"
+		android:src="@drawable/pickup_bottle_selector" 
+		android:layout_alignBottom="@id/home_throwing_button"
+		android:layout_toRightOf="@id/home_throwing_button"
+		android:focusable="true" android:clickable="true"/>
+	<!-- 个人头像 -->
+	<ImageView android:id="@+id/user_pic"
+		android:layout_width="60px"
+		android:layout_height="60px"
+		android:src="@drawable/face1"
+		android:layout_below="@id/home_throwing_button"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		/>
+	<!-- 收到瓶子数按钮 -->
+	<ImageView android:id="@+id/bottle_number"
+		android:layout_width="60px"
+		android:layout_height="60px"
+		android:src="@drawable/face2"
+		android:layout_alignBottom="@id/user_pic"
+		android:layout_toRightOf="@id/user_pic"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		/>
+	<!-- 密友数按钮 -->
+	<ImageView android:id="@+id/friend_number"
+		android:layout_width="60px"
+		android:layout_height="60px"
+		android:src="@drawable/face3"
+		android:layout_alignBottom="@id/bottle_number"
+		android:layout_toRightOf="@id/bottle_number"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		/>
+	<!-- 积分按钮 -->
+	<ImageView android:id="@+id/cumulative_scoring"
+		android:layout_width="60px"
+		android:layout_height="60px"
+		android:src="@drawable/face4"
+		android:layout_alignBottom="@id/friend_number"
+		android:layout_toRightOf="@id/friend_number"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		/>
 </RelativeLayout>
