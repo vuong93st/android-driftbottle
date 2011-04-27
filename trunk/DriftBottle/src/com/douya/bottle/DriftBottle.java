@@ -65,7 +65,7 @@ public class DriftBottle extends Activity {
         regsiterButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent intent =getIntent();
+				Intent intent =new Intent();
 				intent.setClass(DriftBottle.this, RegsiterActivity.class);
 				DriftBottle.this.startActivity(intent);
 			}
