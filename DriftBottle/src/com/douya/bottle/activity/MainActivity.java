@@ -20,15 +20,12 @@ import com.douya.utils.AlwaysMarqueeTextView;
 import com.douya.utils.WeatherUtils;
 
 public class MainActivity extends TabActivity{
-	private AlwaysMarqueeTextView weatherTextView = null;
-	String weatherCurrent="";
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		
-		handler.post(updateThread);
 		
 		final TabHost tabHost = this.getTabHost();   
         final TabWidget tabWidget = tabHost.getTabWidget(); 
@@ -72,11 +69,9 @@ public class MainActivity extends TabActivity{
 					} else {
 						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.tab)); 
 					}
-					handler.post(updateUIThread);
 				}
 			}
 		}); 
-		
 	}
 
 	/**   
@@ -114,36 +109,11 @@ public class MainActivity extends TabActivity{
      */
     public void createTabs(TabHost tabHost,Intent intent,Class<?> cls,String name,View view){
     	intent.setClass(this, cls);
-		TabHost.TabSpec squareSpec = tabHost.newTabSpec(name);
-		squareSpec.setIndicator(view);
-		squareSpec.setContent(intent);
-		tabHost.addTab(squareSpec);
+		TabHost.TabSpec spec = tabHost.newTabSpec(name);
+		spec.setIndicator(view);
+		spec.setContent(intent);
+		tabHost.addTab(spec);
     }
     
-   Handler handler = new Handler();
-   Runnable updateThread = new Runnable(){
-	
-		public void run() {
-			//获取天气预报
-			WeatherUtils weatherUtils = new WeatherUtils();
-			weatherUtils.getWeather("济南");
-			weatherCurrent+=weatherUtils.getWeatherCurrent()!=null?weatherUtils.getWeatherCurrent()+"      " :"无法连接到天气预报服务器，暂时无法获取天气预报！" ;
-			weatherCurrent+=weatherUtils.getWeatherTomorrow()!=null?weatherUtils.getWeatherTomorrow()+"      " :"" ;
-			weatherCurrent+=weatherUtils.getWeatherAfterday()!=null?weatherUtils.getWeatherAfterday()+"      " :"" ;
-			handler.post(updateUIThread);
-			handler.postDelayed(updateThread, 1000*60*60);
-		}
-	};
 
-	Runnable updateUIThread = new Runnable(){
-		
-		public void run() {
-			//获取天气预报
-			weatherTextView = (AlwaysMarqueeTextView)findViewById(R.id.app_weather_content);
-			weatherTextView.setText(weatherCurrent);
-			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
-			weatherTextView.setFocusable(true);
-			handler.postDelayed(updateThread, 1000*60*5);
-		}
-	};
 }
