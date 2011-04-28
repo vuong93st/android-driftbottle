@@ -2,7 +2,8 @@ package com.douya.bottle.activity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import android.view.View;
+import android.widget.ListView;
 import android.app.Activity;
 import android.app.ListActivity;
 import android.os.Bundle;
@@ -22,38 +23,36 @@ public class MoreActivity extends ListActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.more);
-		
 		handler.post(updateThread);
-		
-		ArrayList<HashMap<String, String>> list = new ArrayList<HashMap<String, String>>();
-		HashMap<String, String> map1 = new HashMap<String, String>();
-		HashMap<String, String> map2 = new HashMap<String, String>();
-		HashMap<String, String> map3 = new HashMap<String, String>();
-		HashMap<String, String> map4 = new HashMap<String, String>();
-		HashMap<String, String> map5 = new HashMap<String, String>();
-		HashMap<String, String> map6 = new HashMap<String, String>();
-		HashMap<String, String> map7 = new HashMap<String, String>();
-		map1.put("moreLogo", "1");
+		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
+		HashMap<String, Object> map1 = new HashMap<String, Object>();
+		HashMap<String, Object> map2 = new HashMap<String, Object>();
+		HashMap<String, Object> map3 = new HashMap<String, Object>();
+		HashMap<String, Object> map4 = new HashMap<String, Object>();
+		HashMap<String, Object> map5 = new HashMap<String, Object>();
+		HashMap<String, Object> map6 = new HashMap<String, Object>();
+		HashMap<String, Object> map7 = new HashMap<String, Object>();
+		map1.put("moreLogo", R.drawable.face);
 		map1.put("moreTitle", getString(R.string.moreitem1));
-		map1.put("moreMore", "2");
-		map2.put("moreLogo", "1");
+		map1.put("moreMore", R.drawable.bottle_arrow);
+		map2.put("moreLogo", R.drawable.face1);
 		map2.put("moreTitle", getString(R.string.moreitem2));
-		map2.put("moreMore", "2");
-		map3.put("moreLogo", "1");
+		map2.put("moreMore", R.drawable.bottle_arrow);
+		map3.put("moreLogo", R.drawable.face2);
 		map3.put("moreTitle", getString(R.string.moreitem3));
-		map3.put("moreMore", "2");
-		map4.put("moreLogo", "1");
+		map3.put("moreMore", R.drawable.bottle_arrow);
+		map4.put("moreLogo", R.drawable.face3);
 		map4.put("moreTitle", getString(R.string.moreitem4));
-		map4.put("moreMore", "2");
-		map5.put("moreLogo", "1");
+		map4.put("moreMore", R.drawable.bottle_arrow);
+		map5.put("moreLogo", R.drawable.face4);
 		map5.put("moreTitle", getString(R.string.moreitem5));
-		map5.put("moreMore", "2");
-		map6.put("moreLogo", "1");
+		map5.put("moreMore", R.drawable.bottle_arrow);
+		map6.put("moreLogo", R.drawable.face);
 		map6.put("moreTitle", getString(R.string.moreitem6));
-		map6.put("moreMore", "2");
-		map7.put("moreLogo", "1");
+		map6.put("moreMore", R.drawable.bottle_arrow);
+		map7.put("moreLogo", R.drawable.face1);
 		map7.put("moreTitle", getString(R.string.moreitem7));
-		map7.put("moreMore", "2");
+		map7.put("moreMore", R.drawable.bottle_arrow);
 		list.add(map1);
 		list.add(map2);
 		list.add(map3);
@@ -66,7 +65,14 @@ public class MoreActivity extends ListActivity{
 						R.id.moreLogo, R.id.moreTitle, R.id.moreMore });
 		setListAdapter(sap);
 	}
- 
+	/**
+	 * ListView单击事件方法
+	 */
+	@Override
+	protected void onListItemClick(ListView l, View v, int position, long id) {
+		// TODO Auto-generated method stub
+		super.onListItemClick(l, v, position, id);
+	}
 	Handler handler = new Handler();
 	/**
 	 * 获取天气信息
@@ -99,5 +105,4 @@ public class MoreActivity extends ListActivity{
 			handler.postDelayed(updateThread, 1000 * 60 * 5);
 		}
 	};
-
 }
