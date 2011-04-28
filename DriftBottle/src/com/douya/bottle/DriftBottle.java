@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.douya.bottle.activity.MainActivity;
 import com.douya.bottle.activity.RegsiterActivity;
 
 public class DriftBottle extends Activity {
@@ -67,6 +68,16 @@ public class DriftBottle extends Activity {
 			public void onClick(View v) {
 				Intent intent =new Intent();
 				intent.setClass(DriftBottle.this, RegsiterActivity.class);
+				DriftBottle.this.startActivity(intent);
+			}
+		});
+        loginButton.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent intent =new Intent();
+				intent.setClass(DriftBottle.this, MainActivity.class);
 				DriftBottle.this.startActivity(intent);
 			}
 		});
