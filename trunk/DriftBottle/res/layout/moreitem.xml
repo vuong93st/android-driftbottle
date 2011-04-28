@@ -5,14 +5,13 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:padding="10dip">
-    <TextView android:id="@+id/moreLogo" 
-	android:layout_width="90dip" android:layout_height="30dip" android:textSize="12sp"
-	android:gravity="center_vertical"></TextView>
+    <ImageView android:id="@+id/moreLogo" android:layout_width="wrap_content" 
+	android:layout_height="30dip" 
+	android:gravity="center_vertical"/>
 	<TextView android:id="@+id/moreTitle"
 		android:textSize="16sp"
-		android:gravity="center_vertical" android:layout_width="120dip" android:layout_height="30dip" ></TextView>
-	<TextView  android:id="@+id/moreMore"
-		android:textSize="16sp"
-		android:gravity="right" android:layout_width="90dip" android:layout_height="30dip" ></TextView>
-  
+		android:gravity="center_vertical" android:layout_width="240dip" android:layout_height="30dip" ></TextView>
+	<ImageView android:id="@+id/moreMore" android:layout_width="wrap_content" 
+	android:layout_height="30dip" 
+	android:gravity="center_vertical"/>
 </LinearLayout>
