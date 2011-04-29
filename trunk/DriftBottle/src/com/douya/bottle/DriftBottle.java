@@ -5,13 +5,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
-import com.douya.bottle.activity.MainActivity;
 import com.douya.bottle.activity.RegsiterActivity;
+import com.douya.bottle.service.WeatherService;
 
 public class DriftBottle extends Activity {
 	private TextView titleTextView = null;
@@ -40,6 +42,10 @@ public class DriftBottle extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        Intent intent = new Intent();
+        intent.setClass(DriftBottle.this, WeatherService.class);
+        System.out.println("onCreate=========启动天气Service");
+        startService(intent);
         titleTextView = (TextView)findViewById(R.id.loginmain_title);
         titleTextView.setText(R.string.loginmain_title);
         
@@ -71,18 +77,16 @@ public class DriftBottle extends Activity {
 				DriftBottle.this.startActivity(intent);
 			}
 		});
-        loginButton.setOnClickListener(new OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				Intent intent =new Intent();
-				intent.setClass(DriftBottle.this, MainActivity.class);
-				DriftBottle.this.startActivity(intent);
-			}
-		});
         
     }
     
-    
+    @Override
+	public void finish() {
+		// TODO Auto-generated method stub
+		System.out.println("finish=========停止天气Service");
+		Intent intent = new Intent();
+		intent.setClass(DriftBottle.this, WeatherService.class);
+		stopService(intent);
+		super.finish();
+	}
 }
