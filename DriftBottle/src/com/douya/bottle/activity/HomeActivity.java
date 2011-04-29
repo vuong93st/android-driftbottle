@@ -2,6 +2,8 @@ package com.douya.bottle.activity;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,27 +13,34 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
+import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import android.widget.TabHost.OnTabChangeListener;
 
 import com.douya.bottle.R;
+import com.douya.bottle.service.WeatherService;
 import com.douya.utils.AlwaysMarqueeTextView;
+import com.douya.utils.DatabaseHelper;
 import com.douya.utils.WeatherUtils;
 
 public class HomeActivity extends TabActivity {
 	private AlwaysMarqueeTextView weatherTextView = null;
 	String weatherCurrent = "";
-
+	DatabaseHelper dbHelper; 
+	SQLiteDatabase sqliteDatabase;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
+		dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
+		sqliteDatabase = dbHelper.getReadableDatabase(); 
+		
 		final TabHost tabHost = this.getTabHost();
 		final TabWidget tabWidget = tabHost.getTabWidget();
 		Intent intent = new Intent();
-		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLayout("豆芽", R.drawable.face2));
+		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLinearLayout("豆芽", R.drawable.face2));
 		intent = new Intent();
 		createTabs(tabHost, intent, HomeBottleActivity.class, "bottle_number", composeLayout(getResources().getString(R.string.bottle_number), R.drawable.face_bg));
 		intent = new Intent();
@@ -56,26 +65,10 @@ public class HomeActivity extends TabActivity {
 				handler.post(updateUIThread);
 			}
 		});
-		handler.post(updateThread);
+		handler.post(updateUIThread);
 	}
 
 	Handler handler = new Handler();
-	/**
-	 * 获取天气信息
-	 */
-	Runnable updateThread = new Runnable() {
-
-		public void run() {
-			// 获取天气预报
-			WeatherUtils weatherUtils = new WeatherUtils();
-			weatherUtils.getWeather("济南");
-			weatherCurrent += weatherUtils.getWeatherCurrent() != null ? weatherUtils.getWeatherCurrent() + "      " : "无法连接到天气预报服务器，暂时无法获取天气预报！";
-			weatherCurrent += weatherUtils.getWeatherTomorrow() != null ? weatherUtils.getWeatherTomorrow() + "      " : "";
-			weatherCurrent += weatherUtils.getWeatherAfterday() != null ? weatherUtils.getWeatherAfterday() + "      " : "";
-			handler.post(updateUIThread);
-			handler.postDelayed(updateThread, 1000 * 60 * 60);
-		}
-	};
 
 	/**
 	 * 更新天气界面UI
@@ -83,12 +76,21 @@ public class HomeActivity extends TabActivity {
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
+			weatherCurrent="";
 			// 获取天气预报
+			if(sqliteDatabase==null)return;
+			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
+			if (cursor.moveToNext()) {
+				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));   
+				weatherCurrent += cursor.getString(cursor.getColumnIndex("today")); 
+				weatherCurrent += cursor.getString(cursor.getColumnIndex("tomorrow")); 
+				weatherCurrent += cursor.getString(cursor.getColumnIndex("afterday")); 
+            }   
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
-			handler.postDelayed(updateThread, 1000 * 60 * 5);
+			handler.postDelayed(updateUIThread, 1000 * 60 * 5);
 		}
 	};
 
@@ -100,19 +102,34 @@ public class HomeActivity extends TabActivity {
 	public View composeLayout(String s, int i) {
 		LinearLayout layout = new LinearLayout(this);
 		layout.setOrientation(LinearLayout.VERTICAL);
-		ImageView iv = new ImageView(this);
-		iv.setImageResource(i);
-		layout.addView(iv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-		TextView tv = new TextView(this);
-		tv.setGravity(Gravity.CENTER);
-		tv.setSingleLine(true);
-		tv.setText(s);
-		tv.setTextColor(Color.WHITE);
-		layout.addView(tv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+		layout.setBackgroundResource(R.drawable.home_tab_null_bg);
+		TextView iv = new TextView(this);
+		iv.setBackgroundResource(i);
+		iv.setText(s);
+		iv.setTextColor(Color.WHITE);
+		iv.setGravity(Gravity.CENTER);
+		layout.addView(iv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
 
 		return layout;
 	}
 
+	public View composeLinearLayout(String s, int i){  
+        LinearLayout layout = new LinearLayout(this);   
+        layout.setOrientation(LinearLayout.VERTICAL);   
+        ImageView iv = new ImageView(this);   
+        iv.setImageResource(i);   
+        layout.addView(iv,    
+                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT)); 
+        TextView tv = new TextView(this);   
+        tv.setGravity(Gravity.CENTER);   
+        tv.setSingleLine(true);   
+        tv.setText(s);   
+        tv.setTextColor(Color.WHITE);   
+       layout.addView(tv,    
+               new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));   
+             
+        return layout;   
+    }
 	/**
 	 * 创建Tab页
 	 * 
