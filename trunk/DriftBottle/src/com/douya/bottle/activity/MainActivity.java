@@ -4,10 +4,10 @@ import android.app.TabActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.text.method.SingleLineTransformationMethod;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
@@ -16,20 +16,23 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.douya.bottle.R;
-import com.douya.utils.AlwaysMarqueeTextView;
-import com.douya.utils.WeatherUtils;
+import com.douya.bottle.service.WeatherService;
 
 public class MainActivity extends TabActivity{
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+	      //全屏设置
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
+		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
 		setContentView(R.layout.main);
 		
 		final TabHost tabHost = this.getTabHost();   
         final TabWidget tabWidget = tabHost.getTabWidget(); 
-		
+        
         Intent homeIntent = new Intent();
 		createTabs(tabHost,homeIntent,HomeActivity.class,"home",composeLayout(getResources().getString(R.string.home),R.drawable.bottle_home));
 		Intent nearbyIntent = new Intent();
