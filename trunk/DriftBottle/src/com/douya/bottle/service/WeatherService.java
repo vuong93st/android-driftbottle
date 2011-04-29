@@ -67,10 +67,24 @@ public class WeatherService extends Service{
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		System.out.println("onStartCommand============");
-		getWeather("济南");
+		Thread thread = new Thread(update);// getWeather("济南");	
+		thread.start();
 		return super.onStartCommand(intent, flags, startId);
 	}
 
+	Runnable update = new Runnable() {
+
+		public void run() {
+			try{
+				getWeather("济南");
+				Thread.sleep(1000*60*30);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+		
+	};
+	
 	public void getWeather(String cityName) {   
         try {   
             SoapObject rpc = new SoapObject(NAMESPACE, METHOD_NAME);   
