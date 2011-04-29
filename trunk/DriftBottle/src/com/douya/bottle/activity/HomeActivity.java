@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.text.method.SingleLineTransformationMethod;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnFocusChangeListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
@@ -18,10 +19,8 @@ import android.widget.TabWidget;
 import android.widget.TextView;
 
 import com.douya.bottle.R;
-import com.douya.bottle.service.WeatherService;
 import com.douya.utils.AlwaysMarqueeTextView;
 import com.douya.utils.DatabaseHelper;
-import com.douya.utils.WeatherUtils;
 
 public class HomeActivity extends TabActivity {
 	private AlwaysMarqueeTextView weatherTextView = null;
@@ -47,26 +46,36 @@ public class HomeActivity extends TabActivity {
 		createTabs(tabHost, intent, HomeFriendActivity.class, "friend_number", composeLayout(getResources().getString(R.string.friend_number), R.drawable.face_bg));
 		intent = new Intent();
 		createTabs(tabHost, intent, HomeCumulativeScoringActivity.class, "cumulative_scoring", composeLayout(getResources().getString(R.string.cumulative_scoring), R.drawable.face_bg));
+
+		tabHost.setCurrentTab(1);
+        for(int i = 1; i < tabWidget.getChildCount(); i++)   
+        {
+            View v = tabWidget.getChildAt(i);   
+            if (tabHost.getCurrentTab() == i) {
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));   
+            } else {     
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));  
+            }   
+        }
 		// 设置Tab变换时的监听事件
 		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
 
 			public void onTabChanged(String tabId) {
 				// 当点击tab选项卡的时候，更改当前的背景
-				for (int i = 1; i < tabWidget.getChildCount(); i++) {
+				for (int i = 0; i < tabWidget.getChildCount(); i++) {
 					View v = tabWidget.getChildAt(i);
-					if (tabHost.getCurrentTab() == 0){
-						handler.post(updateUIThread);
-						return;
-					}
-					if (tabHost.getCurrentTab() == i) {
-						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
-					} else {
-						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
+					if (tabHost.getCurrentTab() != 0){
+						if (tabHost.getCurrentTab() == i) {
+							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
+						} else {
+							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
+						}
 					}
 				}
 				handler.post(updateUIThread);
 			}
 		});
+
 		handler.post(updateUIThread);
 	}
 
