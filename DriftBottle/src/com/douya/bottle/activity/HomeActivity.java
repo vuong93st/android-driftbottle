@@ -40,7 +40,7 @@ public class HomeActivity extends TabActivity {
 		final TabHost tabHost = this.getTabHost();
 		final TabWidget tabWidget = tabHost.getTabWidget();
 		Intent intent = new Intent();
-		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLinearLayout("豆芽", R.drawable.face2));
+		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLinearLayout("eyas", R.drawable.face2));
 		intent = new Intent();
 		createTabs(tabHost, intent, HomeBottleActivity.class, "bottle_number", composeLayout(getResources().getString(R.string.bottle_number), R.drawable.face_bg));
 		intent = new Intent();
@@ -54,8 +54,10 @@ public class HomeActivity extends TabActivity {
 				// 当点击tab选项卡的时候，更改当前的背景
 				for (int i = 1; i < tabWidget.getChildCount(); i++) {
 					View v = tabWidget.getChildAt(i);
-					if (tabHost.getCurrentTab() == 0)
+					if (tabHost.getCurrentTab() == 0){
+						handler.post(updateUIThread);
 						return;
+					}
 					if (tabHost.getCurrentTab() == i) {
 						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
 					} else {
