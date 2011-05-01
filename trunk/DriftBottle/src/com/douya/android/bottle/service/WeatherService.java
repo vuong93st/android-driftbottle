@@ -110,6 +110,9 @@ public class WeatherService extends Service{
                
             parseWeather(detail);
             System.out.println(weatherCurrent);
+            if(weatherCurrent==null||"".equalsIgnoreCase(weatherCurrent)){
+            	weatherCurrent="无法连接到天气预报服务器，暂时无法提供天气信息。";
+            }
             ContentValues values = new ContentValues(); 
             values.put(Bottle.Bottles.TODAY, weatherToday);
             values.put(Bottle.Bottles.TOMORROW, weatherTomorrow);
