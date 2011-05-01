@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="com.douya.bottle" android:versionCode="1" android:versionName="1.0">
+	package="com.douya.android" android:versionCode="1" android:versionName="1.0">
 	<uses-sdk android:minSdkVersion="4" />
 
 	<application android:icon="@drawable/icon" android:label="@string/app_name">
-		<activity android:name=".DriftBottle" android:label="@string/app_name"
+		<activity android:name=".bottle.DriftBottle" android:label="@string/app_name"
 			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -12,47 +12,58 @@
 			</intent-filter>
 		</activity>
 
-		<activity android:name=".activity.RegsiterActivity"
+		<activity android:name=".bottle.activity.RegsiterActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".activity.MainActivity"
+		<activity android:name=".bottle.activity.MainActivity"
 			android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<!-- 四个功能模块Tab页Activity -->
-		<activity android:name=".activity.HomeActivity"
+		<activity android:name=".bottle.activity.HomeActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 
-		<activity android:name=".activity.NearbyActivity"
+		<activity android:name=".bottle.activity.NearbyActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
-		<activity android:name=".activity.SquareActivity"
+		<activity android:name=".bottle.activity.SquareActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
-		<activity android:name=".activity.MoreActivity"
+		<activity android:name=".bottle.activity.MoreActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<!-- 首页模块Tab页 -->
-		<activity android:name=".activity.HomeUserInfoActivity"
+		<activity android:name=".bottle.activity.HomeUserInfoActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".activity.HomeBottleActivity"
+		<activity android:name=".bottle.activity.HomeBottleActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".activity.HomeFriendActivity"
+		<activity android:name=".bottle.activity.HomeFriendActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".activity.HomeCumulativeScoringActivity"
+		<activity android:name=".bottle.activity.HomeCumulativeScoringActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
 		<!-- 天气预报Service -->
-		<service android:name=".service.WeatherService"></service>
-
-		<!-- eoe市场 -->
+		<service android:name=".bottle.service.WeatherService"></service>
+		<!-- AppWidget -->
+		<receiver android:name=".bottle.activity.widget.BottleAppWidgetProvider">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.douya.android.bottle.UPDATE_APP_WIDGET"/>
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/appwidget_info" />
+		</receiver>
+		
+		<!-- eoe市场开始 -->
 		<receiver android:name="com.eoemobile.api.stat.EoeReceiver">
 			<intent-filter>
 				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
@@ -63,7 +74,17 @@
 		<meta-data android:value="ZM9J1VPQA9OZ6A0FGAYZJW" android:name="EOE_APP_KEY" />
 		
 		<meta-data android:value="AO87BDA4C9DZPS4XIK0Z8HV1LDJRJMEDBXLFHNA5BDQ" android:name="EOE_APP_SECRET" />
-
+		<!-- eoe市场结束 -->
+		<receiver android:name=".widget.BottleAppWidgetProvider">
+			<intent-filter>
+				<action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+			</intent-filter>
+			<intent-filter>
+				<action android:name="com.douya.android.bottle.UPDATE_APP_WIDGET"/>
+			</intent-filter>
+			<meta-data android:name="android.appwidget.provider"
+				android:resource="@xml/appwidget_info" />
+		</receiver>
 	</application>
 	<!-- 访问互联网权限 -->
 	<uses-permission android:name="android.permission.INTERNET" />
