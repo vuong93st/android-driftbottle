@@ -5,9 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.douya.android.R;
@@ -75,6 +78,9 @@ public class DriftBottle extends Activity {
         regsiterButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
+				RelativeLayout layout = (RelativeLayout)findViewById(R.id.login_layout);
+				Animation animation = AnimationUtils.loadAnimation(DriftBottle.this, R.anim.rotate);
+				layout.startAnimation(animation);
 				Intent intent =new Intent();
 				intent.setClass(DriftBottle.this, RegsiterActivity.class);
 				DriftBottle.this.startActivity(intent);
