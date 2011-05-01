@@ -42,6 +42,7 @@ public class DriftBottle extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
+        
         Intent intent = new Intent();
         intent.setClass(DriftBottle.this, WeatherService.class);
         System.out.println("onCreate=========启动天气Service");
