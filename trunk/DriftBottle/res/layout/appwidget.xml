@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout  xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical" android:layout_width="wrap_content"
+	android:layout_height="wrap_content">
+	<!-- 个人头像 -->
+	<ImageView android:id="@+id/user_pic"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/face1"
+		android:layout_marginLeft="20px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		/>
+	<!-- 收到瓶子数按钮 -->
+	<Button android:id="@+id/bottle_number"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/face_bg"
+		android:layout_alignBottom="@id/user_pic"
+		android:layout_toRightOf="@id/user_pic"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		android:text="0\n瓶子"
+		android:textColor="#ffffff"
+		/>
+	<!-- 蜜友数按钮 -->
+	<Button android:id="@+id/friend_number"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/face_bg"
+		android:layout_alignBottom="@id/bottle_number"
+		android:layout_toRightOf="@id/bottle_number"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		android:text="0\n蜜友"
+		android:textColor="#ffffff"
+		/>
+	<!-- 积分按钮 -->
+	<Button android:id="@+id/cumulative_scoring"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:background="@drawable/face_bg"
+		android:layout_alignBottom="@id/friend_number"
+		android:layout_toRightOf="@id/friend_number"
+		android:layout_marginLeft="15px"
+		android:layout_marginTop="5px"
+		android:paddingTop="10px"
+		android:text="0\n积分"
+		android:textColor="#ffffff"
+		/>
+</RelativeLayout>
