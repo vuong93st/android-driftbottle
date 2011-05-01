@@ -39,8 +39,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {   
         // TODO Auto-generated method stub   
         System.out.println("create a database");   
-        //execSQL用于执行SQL语句   
-        db.execSQL("create table weather(current_date varchar(20),today varchar(500),tomorrow varchar(500),afterday varchar(500),current varchar(500))");   
+        //创建天气表 
+        db.execSQL("create table weather(current_date varchar(20),today varchar(500),tomorrow varchar(500),afterday varchar(500),current varchar(500))");
+        db.execSQL("create table gps_info(latitude varchar(20),Longitude varchar(500))");
+        
     }   
   
     @Override  
