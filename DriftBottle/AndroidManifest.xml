@@ -1,72 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="com.douya.bottle"
-      android:versionCode="1"
-      android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="4" />
+	package="com.douya.bottle" android:versionCode="1" android:versionName="1.0">
+	<uses-sdk android:minSdkVersion="4" />
 
-    <application android:icon="@drawable/icon" android:label="@string/app_name">
-        <activity android:name=".DriftBottle"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+	<application android:icon="@drawable/icon" android:label="@string/app_name">
+		<activity android:name=".DriftBottle" android:label="@string/app_name"
+			android:screenOrientation="portrait">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
 
 		<activity android:name=".activity.RegsiterActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.MainActivity"
-                  android:label="@string/app_name"
-                  android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <!-- 四个功能模块Tab页Activity -->
-        <activity android:name=".activity.HomeActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        
-        <activity android:name=".activity.NearbyActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <activity android:name=".activity.SquareActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <activity android:name=".activity.MoreActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait"
-                  android:theme="@android:style/Theme.NoTitleBar">
-        </activity>
-        <!-- 首页模块Tab页 -->
-        <activity android:name=".activity.HomeUserInfoActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.HomeBottleActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.HomeFriendActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".activity.HomeCumulativeScoringActivity"
-                  android:label="@string/app_name"
-                  android:screenOrientation="portrait">
-        </activity>
-        <!-- 天气预报Service -->
-        <service android:name=".service.WeatherService"></service>
-    </application>
-    <!-- 访问互联网权限 -->
-     <uses-permission android:name="android.permission.INTERNET"/>
-     <!-- 文件存储权限  -->
-     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+			android:label="@string/app_name" android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".activity.MainActivity"
+			android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<!-- 四个功能模块Tab页Activity -->
+		<activity android:name=".activity.HomeActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+
+		<activity android:name=".activity.NearbyActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".activity.SquareActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".activity.MoreActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<!-- 首页模块Tab页 -->
+		<activity android:name=".activity.HomeUserInfoActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".activity.HomeBottleActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".activity.HomeFriendActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait">
+		</activity>
+		<activity android:name=".activity.HomeCumulativeScoringActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait">
+		</activity>
+		<!-- 天气预报Service -->
+		<service android:name=".service.WeatherService"></service>
+
+		<!-- eoe市场 -->
+		<receiver android:name="com.eoemobile.api.stat.EoeReceiver">
+			<intent-filter>
+				<action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+			</intent-filter>
+		</receiver>
+		<service android:name="com.eoemobile.api.stat.EoeService" />
+
+		<meta-data android:value="ZM9J1VPQA9OZ6A0FGAYZJW" android:name="EOE_APP_KEY" />
+		
+		<meta-data android:value="AO87BDA4C9DZPS4XIK0Z8HV1LDJRJMEDBXLFHNA5BDQ" android:name="EOE_APP_SECRET" />
+
+	</application>
+	<!-- 访问互联网权限 -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<!-- 文件存储权限 -->
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+	
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+	
+	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+	
 </manifest>
