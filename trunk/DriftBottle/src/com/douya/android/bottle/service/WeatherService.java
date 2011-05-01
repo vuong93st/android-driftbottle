@@ -1,20 +1,37 @@
 package com.douya.android.bottle.service;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.AndroidHttpTransport;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import android.app.Service;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.os.IBinder;
 import android.util.Log;
 
 import com.douya.android.R;
+import com.douya.android.bottle.XmlHandler;
+import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.bottle.model.Bottle;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 /**
  * 天气预报Service
@@ -33,7 +50,6 @@ public class WeatherService extends Service{
 	private String weatherTomorrow;//明日天气
 	private String weatherAfterday;//后天天气
 	private String weatherCurrent;//当前天气
-	
 	
 	private int iconToday[] = new int[2];
 	private int iconTomorrow[] = new int[2];
@@ -76,15 +92,94 @@ public class WeatherService extends Service{
 
 		public void run() {
 			try{
-				getWeather("济南");
+				//getWeather("济南");
+				String latitude="";
+				String longitude="";
+				Cursor cursor = sqliteDatabase.query("gps_info", null, null, null, null, null, null); 
+		        if(cursor.moveToNext()){
+		        	latitude = cursor.getString(cursor.getColumnIndex("latitude"));
+		        	longitude = cursor.getString(cursor.getColumnIndex("longitude"));
+		        }
+				searchWeather(latitude,longitude);
 				Thread.sleep(1000*60*30);
 			}catch(Exception e){
 				e.printStackTrace();
+				System.out.println("查询天气Runnable执行失败:"+e.getMessage());
 			}
 		}
 		
 	};
+	//////////////Google天气预报////////////////////
+	public void searchWeather(String latitude,String longitude) {
+
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		try {
+			SAXParser sp = spf.newSAXParser();
+			XMLReader reader = sp.getXMLReader();
+
+			XmlHandler handler = new XmlHandler();
+			reader.setContentHandler(handler);
+			System.out.println("天气预报URL："+"http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
+					+ latitude+","+longitude);
+			URL url = new URL("http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
+					+ latitude+","+longitude);
+			InputStream is = url.openStream();
+			InputStreamReader isr = new InputStreamReader(is, "GBK");
+			InputSource source = new InputSource(isr);
+			
+			reader.parse(source);
+			List<Weather> weatherList = handler.getWeatherList();
+
+			for (Weather weather : weatherList) {
+				
+				/*ImageView img = new ImageView(this);
+				img.setImageDrawable(loadImage(weather.getImageUrl()));
+				img.setMinimumHeight(80);*/
+
+				//row.addView(img);
+
+				weatherCurrent+=weather.getDay()+"     ";
+				weatherCurrent+=weather.getLowTemp() + "℃ - "
+				+ weather.getHighTemp() + "℃          ";
+				weatherCurrent+=weather.getCondition()+"     ";
+			}
+			System.out.println(weatherCurrent);
+            if(weatherCurrent==null||"".equalsIgnoreCase(weatherCurrent)){
+            	weatherCurrent="无法连接到天气预报服务器，暂时无法提供天气信息。";
+            }
+			//table.setText(currentWeather);
+		} catch (Exception e) {
+			weatherCurrent="无法连接到天气预报服务器，暂时无法提供天气信息。";
+
+			System.out.println(weatherCurrent+e.getMessage());
+		}
+		ContentValues values = new ContentValues(); 
+        values.put(Bottle.Bottles.CURRENT, weatherCurrent);
+        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
+        if(cursor.moveToNext()){
+        	System.out.println("更新数据");
+        	sqliteDatabase.update("weather", values, null, null);
+        }else{
+        	System.out.println("插入数据");
+        	sqliteDatabase.insert("weather", null, values);   
+        }
+	}
+
+	private Drawable loadImage(String url) {
+		try {
+			return Drawable.createFromStream((InputStream) new URL(
+					"http://www.google.com/" + url).getContent(), "test");
+
+		} catch (MalformedURLException e) {
+
+		} catch (IOException e) {
+
+		}
+
+		return null;
+	}
 	
+	////////////////////其它天气预报////////////////////////
 	public void getWeather(String cityName) {   
         try {   
             SoapObject rpc = new SoapObject(NAMESPACE, METHOD_NAME);   

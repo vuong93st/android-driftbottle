@@ -1,7 +1,7 @@
 package com.douya.android.bottle;
 
-import android.app.Activity;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,10 +15,14 @@ import android.widget.TextView;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.RegsiterActivity;
-import com.douya.android.bottle.service.WeatherService;
+import com.douya.android.core.activity.LocationActivity;
+import com.douya.android.core.dao.DatabaseHelper;
 import com.eoemobile.api.EnhancedAgent;
 
-public class DriftBottle extends Activity {
+public class DriftBottle extends LocationActivity {
+	DatabaseHelper dbHelper; 
+	SQLiteDatabase sqliteDatabase;
+	
 	private TextView titleTextView = null;
 	private TextView contentTextView = null;
 	private TextView contentSubTextView = null;
@@ -45,13 +49,14 @@ public class DriftBottle extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        EnhancedAgent.init(this);
 
+		dbHelper = new DatabaseHelper(DriftBottle.this, "bottle_db"); 
+		sqliteDatabase = dbHelper.getReadableDatabase(); 
+        EnhancedAgent.init(this);//市场服务
+        initLocation();//初始化位置服务
+        
 
-        Intent intent = new Intent();
-        intent.setClass(DriftBottle.this, WeatherService.class);
-        System.out.println("onCreate=========启动天气Service");
-        startService(intent);
+		
         titleTextView = (TextView)findViewById(R.id.loginmain_title);
         titleTextView.setText(R.string.loginmain_title);
         
@@ -87,6 +92,12 @@ public class DriftBottle extends Activity {
 			}
 		});
         
+        loginButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				
+			}
+		});
     }
     
     @Override
@@ -103,13 +114,4 @@ public class DriftBottle extends Activity {
 		EnhancedAgent.onResume(this);
 	}
 
-	@Override
-	public void finish() {
-		// TODO Auto-generated method stub
-		System.out.println("finish=========停止天气Service");
-		Intent intent = new Intent();
-		intent.setClass(DriftBottle.this, WeatherService.class);
-		stopService(intent);
-		super.finish();
-	}
 }
