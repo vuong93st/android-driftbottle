@@ -22,11 +22,11 @@ public class MainActivity extends TabActivity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		super.onCreate(savedInstanceState);
 	      //全屏设置
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
 		final TabHost tabHost = this.getTabHost();   
