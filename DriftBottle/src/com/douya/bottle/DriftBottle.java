@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -14,6 +12,7 @@ import android.widget.TextView;
 
 import com.douya.bottle.activity.RegsiterActivity;
 import com.douya.bottle.service.WeatherService;
+import com.eoemobile.api.EnhancedAgent;
 
 public class DriftBottle extends Activity {
 	private TextView titleTextView = null;
@@ -42,7 +41,9 @@ public class DriftBottle extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        
+        EnhancedAgent.init(this);
+
+
         Intent intent = new Intent();
         intent.setClass(DriftBottle.this, WeatherService.class);
         System.out.println("onCreate=========启动天气Service");
@@ -82,6 +83,20 @@ public class DriftBottle extends Activity {
     }
     
     @Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		EnhancedAgent.onPause(this);
+	}
+
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		EnhancedAgent.onResume(this);
+	}
+
+	@Override
 	public void finish() {
 		// TODO Auto-generated method stub
 		System.out.println("finish=========停止天气Service");
