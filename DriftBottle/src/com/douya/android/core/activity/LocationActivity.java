@@ -30,6 +30,7 @@ import android.widget.Toast;
 
 import com.douya.android.bottle.XmlHandler;
 import com.douya.android.bottle.model.Bottle;
+import com.douya.android.bottle.model.CurrentWeather;
 import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
@@ -183,13 +184,21 @@ public class LocationActivity extends Activity {
 			InputSource source = new InputSource(isr);
 			
 			reader.parse(source);
-			List<Weather> weatherList = handler.getWeatherList();
+			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
+			for(CurrentWeather currentWeather : currentWeatherList){
+				weatherStr+="当前天气状况："+currentWeather.getCondition();
+				weatherStr+=" 温度：华氏 "+currentWeather.getTemp_f();
+				weatherStr+=" 摄氏："+currentWeather.getTemp_c();
+				weatherStr+=" 温度："+currentWeather.getHumidity();
+				weatherStr+=" 风力："+currentWeather.getWind_condition();
+			}
+			List<Weather> weatherList = handler.getForecastWeatherList();
 
 			for (Weather weather : weatherList) {
-				weatherStr+=weather.getDay()+":";
-				weatherStr+=weather.getLowTemp() + "℃ - "
-				+ weather.getHighTemp() + "℃，";
-				weatherStr+=weather.getCondition()+"； ";
+				weatherStr+=weather.getDay();
+				weatherStr+="天气："+weather.getCondition()+"； ";
+				weatherStr+=" 最低气温："+weather.getLowTemp() + "℃ ";
+				weatherStr+=" 最高气温："+weather.getHighTemp() + "℃";
 			}
 			System.out.println(weatherStr);
             if(weatherStr==null||"".equalsIgnoreCase(weatherStr)){
