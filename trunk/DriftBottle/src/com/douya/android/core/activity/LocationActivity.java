@@ -1,5 +1,6 @@
 package com.douya.android.core.activity;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -37,8 +38,8 @@ import com.douya.android.core.dao.DatabaseHelper;
 public class LocationActivity extends Activity {
 	private DatabaseHelper dbHelper; 
 	private SQLiteDatabase sqliteDatabase;
-	private String weatherStr="";//滚动天气内容
-	
+	private StringBuffer weatherStr = new StringBuffer();   //滚动天气内容
+
 	private LocationManager locationManager;
 	private String provider;
 	private Location location;
@@ -73,7 +74,7 @@ public class LocationActivity extends Activity {
 		updateWithNewLocation(location);
 		// 注册监听器 locationListener ，第 2 、 3 个参数可以控制接收 gps 消息的频度以节省电力。第 2 个参数为毫秒，
 		// 表示调用 listener 的周期，第 3 个参数为米 , 表示位置移动指定距离后就调用 listener
-		locationManager.requestLocationUpdates(provider, 2000, 10,locationListener);
+		locationManager.requestLocationUpdates(provider, 1000*60*5, 10,locationListener);
 	}
 
 	// 判断是否开启 GPS ，若未开启，打开 GPS 设置界面
@@ -139,8 +140,6 @@ public class LocationActivity extends Activity {
 		if (location != null) {
 			int lat = (int)(location.getLatitude()*1000000);
 			int lng = (int)(location.getLongitude()*1000000);
-
-			weatherStr = "您当前所处位置： 纬度=" + location.getLatitude() + " 经度=" + location.getLongitude()+"，天气状况：";
 			searchWeather(lat,lng);
 		}
 	}
@@ -152,15 +151,18 @@ public class LocationActivity extends Activity {
 		List<Address> result = null;
 		// 先将 Location 转换为 GeoPoint
 		// GeoPoint gp =getGeoByLocation(location);
+		
+
 		try {
 			if (location != null) {
 				// 获取 Geocoder ，通过 Geocoder 就可以拿到地址信息
 				Geocoder gc = new Geocoder(this, Locale.getDefault());
 				result = gc.getFromLocation(location.getLatitude(),
-						location.getLongitude(), 1);
+						location.getLongitude(), 10);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("转换地址出错："+e.getMessage());
 		}
 		return result;
 	}
@@ -184,34 +186,38 @@ public class LocationActivity extends Activity {
 			InputSource source = new InputSource(isr);
 			
 			reader.parse(source);
+			if(location!=null){
+				weatherStr.delete(0, weatherStr.length());
+				weatherStr.append("您当前所处位置： 纬度=" + location.getLatitude() + " 经度=" + location.getLongitude()+"；");
+			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
 			for(CurrentWeather currentWeather : currentWeatherList){
-				weatherStr+="当前天气状况："+currentWeather.getCondition();
-				weatherStr+=" 温度：华氏 "+currentWeather.getTemp_f();
-				weatherStr+=" 摄氏："+currentWeather.getTemp_c();
-				weatherStr+=" 温度："+currentWeather.getHumidity();
-				weatherStr+=" 风力："+currentWeather.getWind_condition();
+				if(currentWeather.getCondition()!=null)weatherStr.append("当前天气状况："+currentWeather.getCondition());
+				if(currentWeather.getTemp_f()!=null)weatherStr.append(" 温度：华氏 "+currentWeather.getTemp_f());
+				if(currentWeather.getTemp_c()!=null)weatherStr.append(" 摄氏："+currentWeather.getTemp_c());
+				if(currentWeather.getHumidity()!=null)weatherStr.append(" 温度："+currentWeather.getHumidity());
+				if(currentWeather.getWind_condition()!=null)weatherStr.append(" 风力："+currentWeather.getWind_condition()+"；");
 			}
 			List<Weather> weatherList = handler.getForecastWeatherList();
 
 			for (Weather weather : weatherList) {
-				weatherStr+=weather.getDay();
-				weatherStr+="天气："+weather.getCondition()+"； ";
-				weatherStr+=" 最低气温："+weather.getLowTemp() + "℃ ";
-				weatherStr+=" 最高气温："+weather.getHighTemp() + "℃";
+				weatherStr.append(weather.getDay());
+				weatherStr.append("天气："+weather.getCondition()+"； ");
+				weatherStr.append(" 最低气温："+weather.getLowTemp() + "℃ ");
+				weatherStr.append(" 最高气温："+weather.getHighTemp() + "℃");
 			}
 			System.out.println(weatherStr);
-            if(weatherStr==null||"".equalsIgnoreCase(weatherStr)){
-            	weatherStr="无法连接到天气预报服务器，暂时无法提供天气信息。";
+            if(weatherStr==null||"".equalsIgnoreCase(weatherStr.toString())){
+            	weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
             }
 			//table.setText(currentWeather);
 		} catch (Exception e) {
-			weatherStr="无法连接到天气预报服务器，暂时无法提供天气信息。";
+			weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
 
 			System.out.println(weatherStr+e.getMessage());
 		}
 		ContentValues values = new ContentValues(); 
-        values.put(Bottle.Bottles.CURRENT, weatherStr);
+        values.put(Bottle.Bottles.CURRENT, weatherStr.toString());
         Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
         if(cursor.moveToNext()){
         	System.out.println("更新数据");
