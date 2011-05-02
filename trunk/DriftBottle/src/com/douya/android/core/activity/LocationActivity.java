@@ -1,7 +1,16 @@
 package com.douya.android.core.activity;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.List;
 import java.util.Locale;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import android.app.Activity;
 import android.content.ContentValues;
@@ -19,12 +28,15 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
 
-import com.douya.android.bottle.service.WeatherService;
+import com.douya.android.bottle.XmlHandler;
+import com.douya.android.bottle.model.Bottle;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class LocationActivity extends Activity {
-	DatabaseHelper dbHelper; 
-	SQLiteDatabase sqliteDatabase;
+	private DatabaseHelper dbHelper; 
+	private SQLiteDatabase sqliteDatabase;
+	private String weatherStr="";//滚动天气内容
 	
 	private LocationManager locationManager;
 	private String provider;
@@ -39,6 +51,8 @@ public class LocationActivity extends Activity {
 	}
 
 	public void initLocation() {
+		dbHelper = new DatabaseHelper(LocationActivity.this, "bottle_db"); 
+		sqliteDatabase = dbHelper.getReadableDatabase(); 
 		// 获取 LocationManager 服务
 		locationManager = (LocationManager) this
 				.getSystemService(Context.LOCATION_SERVICE);
@@ -49,19 +63,16 @@ public class LocationActivity extends Activity {
 		openGPS();
 		// 获取位置
 		location = locationManager.getLastKnownLocation(provider);
-		if(location!=null){
-			saveLocation(location.getLatitude(),location.getLongitude());
+		if (location != null) {
+			int lat = (int)(location.getLatitude()*1000000);
+			int lng = (int)(location.getLongitude()*1000000);
+			searchWeather(lat,lng);
 		}
 		// 显示位置信息到文字标签
 		updateWithNewLocation(location);
 		// 注册监听器 locationListener ，第 2 、 3 个参数可以控制接收 gps 消息的频度以节省电力。第 2 个参数为毫秒，
 		// 表示调用 listener 的周期，第 3 个参数为米 , 表示位置移动指定距离后就调用 listener
 		locationManager.requestLocationUpdates(provider, 2000, 10,locationListener);
-		
-		Intent intent = new Intent();
-        intent.setClass(LocationActivity.this, WeatherService.class);
-        System.out.println("onCreate=========启动天气Service");
-        startService(intent);
 	}
 
 	// 判断是否开启 GPS ，若未开启，打开 GPS 设置界面
@@ -124,16 +135,13 @@ public class LocationActivity extends Activity {
 
 	// Gps 监听器调用，处理位置信息
 	private void updateWithNewLocation(Location location) {
-		String latLongString;
 		if (location != null) {
-			double lat = location.getLatitude();
-			double lng = location.getLongitude();
-			saveLocation(lat,lng);
-			latLongString = " 纬度 :" + lat + "\n 经度 :" + lng;
-		} else {
-			latLongString = " 无法获取地理信息 ";
+			int lat = (int)(location.getLatitude()*1000000);
+			int lng = (int)(location.getLongitude()*1000000);
+
+			weatherStr = "您当前所处位置： 纬度=" + location.getLatitude() + " 经度=" + location.getLongitude()+"，天气状况：";
+			searchWeather(lat,lng);
 		}
-		System.out.println(latLongString);
 	}
 
 	// 获取地址信息
@@ -156,26 +164,58 @@ public class LocationActivity extends Activity {
 		return result;
 	}
 
-	private void saveLocation(double lat,double lng){
+	//////////////Google天气预报////////////////////
+	public void searchWeather(int latitude,int longitude) {
+
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		try {
+			SAXParser sp = spf.newSAXParser();
+			XMLReader reader = sp.getXMLReader();
+
+			XmlHandler handler = new XmlHandler();
+			reader.setContentHandler(handler);
+			System.out.println("天气预报URL："+"http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
+					+ latitude+","+longitude);
+			URL url = new URL("http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
+					+ latitude+","+longitude);
+			InputStream is = url.openStream();
+			InputStreamReader isr = new InputStreamReader(is, "GBK");
+			InputSource source = new InputSource(isr);
+			
+			reader.parse(source);
+			List<Weather> weatherList = handler.getWeatherList();
+
+			for (Weather weather : weatherList) {
+				weatherStr+=weather.getDay()+":";
+				weatherStr+=weather.getLowTemp() + "℃ - "
+				+ weather.getHighTemp() + "℃，";
+				weatherStr+=weather.getCondition()+"； ";
+			}
+			System.out.println(weatherStr);
+            if(weatherStr==null||"".equalsIgnoreCase(weatherStr)){
+            	weatherStr="无法连接到天气预报服务器，暂时无法提供天气信息。";
+            }
+			//table.setText(currentWeather);
+		} catch (Exception e) {
+			weatherStr="无法连接到天气预报服务器，暂时无法提供天气信息。";
+
+			System.out.println(weatherStr+e.getMessage());
+		}
 		ContentValues values = new ContentValues(); 
-        values.put("latitude", (int)(lat*1000000));
-        values.put("longitude", (int)(lng*1000000));
-        Cursor cursor = sqliteDatabase.query("gps_info", null, null, null, null, null, null); 
+        values.put(Bottle.Bottles.CURRENT, weatherStr);
+        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
         if(cursor.moveToNext()){
-        	System.out.println("更新位置数据");
-        	sqliteDatabase.update("gps_info", values, null, null);
+        	System.out.println("更新数据");
+        	sqliteDatabase.update("weather", values, null, null);
         }else{
-        	System.out.println("插入位置数据");
-        	sqliteDatabase.insert("gps_info", null, values);   
+        	System.out.println("插入数据");
+        	sqliteDatabase.insert("weather", null, values);   
         }
 	}
+	
 	@Override
 	public void finish() {
 		// TODO Auto-generated method stub
-		System.out.println("finish=========停止天气Service");
-		Intent intent = new Intent();
-		intent.setClass(LocationActivity.this, WeatherService.class);
-		stopService(intent);
 		super.finish();
 	}
 }

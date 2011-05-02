@@ -20,9 +20,6 @@ import com.douya.android.core.dao.DatabaseHelper;
 import com.eoemobile.api.EnhancedAgent;
 
 public class DriftBottle extends LocationActivity {
-	DatabaseHelper dbHelper; 
-	SQLiteDatabase sqliteDatabase;
-	
 	private TextView titleTextView = null;
 	private TextView contentTextView = null;
 	private TextView contentSubTextView = null;
@@ -49,9 +46,6 @@ public class DriftBottle extends LocationActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-
-		dbHelper = new DatabaseHelper(DriftBottle.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
         EnhancedAgent.init(this);//市场服务
         initLocation();//初始化位置服务
         
@@ -92,12 +86,8 @@ public class DriftBottle extends LocationActivity {
 			}
 		});
         
-        loginButton.setOnClickListener(new OnClickListener() {
-			
-			public void onClick(View v) {
-				
-			}
-		});
+        /*Thread thread = new Thread(update);// getWeather("济南");	
+		thread.start();*/
     }
     
     @Override
