@@ -40,16 +40,13 @@ public class NearbyActivity extends Activity{
 			if(sqliteDatabase==null)return;
 			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
 			if (cursor.moveToNext()) {
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));   
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("today")); 
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("tomorrow")); 
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("afterday")); 
-            }   
+				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
+            }
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
-			handler.postDelayed(updateUIThread, 1000 * 60 * 5);
+			handler.postDelayed(updateUIThread, 1000*60*5);
 		}
 	};
 }
