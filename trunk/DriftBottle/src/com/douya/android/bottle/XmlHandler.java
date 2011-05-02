@@ -7,30 +7,43 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.douya.android.bottle.model.CurrentWeather;
 import com.douya.android.bottle.model.Weather;
 
 public class XmlHandler extends DefaultHandler {
+    private List<Weather> forecastWeatherList;//天气预报
+    private List<CurrentWeather> currentWeatherList;//实时天气
 
+    private final String FORECAST_CONDITIONS="forecast_conditions";//预报天气
+    private final String CURRENT_CONDITIONS="current_conditions";//实时天气
+    private boolean isForcast=false;
+    private boolean isCurrent=false;
     
-    private List<Weather> weatherList;
+    private Weather forecastWeather;
+    private CurrentWeather currentWeather;
     
-    private boolean inForcast;
-    
-    private Weather currentWeather;
-    
-    public List<Weather> getWeatherList() {
-        return weatherList;
+    public List<Weather> getForecastWeatherList() {
+        return forecastWeatherList;
     }
 
-    public void setWeatherList(List<Weather> weatherList) {
-        this.weatherList = weatherList;
+    public void setForecastWeatherList(List<Weather> forecastWeatherList) {
+        this.forecastWeatherList = forecastWeatherList;
     }
 
-    public XmlHandler() {
+    public List<CurrentWeather> getCurrentWeatherList() {
+		return currentWeatherList;
+	}
+
+	public void setCurrentWeatherList(List<CurrentWeather> currentWeatherList) {
+		this.currentWeatherList = currentWeatherList;
+	}
+
+	public XmlHandler() {
         
-        weatherList = new ArrayList<Weather>();
-        inForcast = false;
-        
+		forecastWeatherList = new ArrayList<Weather>();
+        currentWeatherList = new  ArrayList<CurrentWeather>();
+        isForcast = false;
+        isCurrent = false;
     }
     
     @Override
@@ -40,25 +53,40 @@ public class XmlHandler extends DefaultHandler {
         String tagName = localName.length() != 0 ? localName : qName;
         tagName = tagName.toLowerCase();
         
-        if(tagName.equals("forecast_conditions")) {
-            
-            inForcast = true;
-            currentWeather = new Weather();
-            
+        if(tagName.equals(FORECAST_CONDITIONS)) {
+        	isForcast = true;
+        	forecastWeather = new Weather();
         }
-        
-        if(inForcast) {
-            
+        if(tagName.equals(CURRENT_CONDITIONS)) {
+        	isCurrent = true;
+            currentWeather = new CurrentWeather();
+        }
+        if(isForcast) {
             if(tagName.equals("day_of_week")) {                
-                currentWeather.setDay(attributes.getValue("data"));
+            	forecastWeather.setDay(attributes.getValue("data"));
             }else if(tagName.equals("low")) {
-                currentWeather.setLowTemp(attributes.getValue("data"));
+            	forecastWeather.setLowTemp(attributes.getValue("data"));
             }else if(tagName.equals("high")) {
-                currentWeather.setHighTemp(attributes.getValue("data"));
+            	forecastWeather.setHighTemp(attributes.getValue("data"));
             }else if(tagName.equals("icon")) {
-                currentWeather.setImageUrl(attributes.getValue("data"));
+            	forecastWeather.setImageUrl(attributes.getValue("data"));
             }else if(tagName.equals("condition")) {
-                currentWeather.setCondition(attributes.getValue("data"));
+            	forecastWeather.setCondition(attributes.getValue("data"));
+            }
+        }
+        if(isCurrent){
+        	if(tagName.equals("condition")) {                
+            	currentWeather.setCondition(attributes.getValue("data"));
+            }else if(tagName.equals("temp_f")) {//华氏
+            	currentWeather.setCondition(attributes.getValue("data"));
+            }else if(tagName.equals("temp_c")) {//摄氏
+            	currentWeather.setCondition(attributes.getValue("data"));
+            }else if(tagName.equals("humidity")) {                
+            	currentWeather.setCondition(attributes.getValue("data"));
+            }else  if(tagName.equals("icon")) {                
+            	currentWeather.setCondition(attributes.getValue("data"));
+            }else  if(tagName.equals("wind_condition")) {                
+            	currentWeather.setCondition(attributes.getValue("data"));
             }
         }
         
@@ -71,9 +99,14 @@ public class XmlHandler extends DefaultHandler {
         String tagName = localName.length() != 0 ? localName : qName;
         tagName = tagName.toLowerCase();
         
-        if(tagName.equals("forecast_conditions")) {
-            inForcast = false;
-            weatherList.add(currentWeather);
+        if(tagName.equals(FORECAST_CONDITIONS)) {
+        	isForcast = false;
+        	forecastWeatherList.add(forecastWeather);
+        }
+        
+        if(tagName.equals(CURRENT_CONDITIONS)) {
+        	isCurrent = false;
+        	currentWeatherList.add(currentWeather);
         }
     }
 
