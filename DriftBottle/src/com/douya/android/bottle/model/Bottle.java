@@ -32,24 +32,7 @@ public final class Bottle {
          */
         public static final String CONTENT_ITEM_TYPE = "vnd.android.cursor.item/vnd.douya.bottle.bottle";
 
-        /**
-         * 今日天气
-         * <P>Type: TEXT</P>
-         */
-        public static final String TODAY = "today";
-
-        /**
-         * 明日天气
-         * <P>Type: TEXT</P>
-         */
-        public static final String TOMORROW = "tomorrow";
-
-        /**
-         * 后天天气
-         * <P>Type: TEXT</P>
-         */
-        public static final String AFTERDAY = "afterday";
-
+ 
         /**
          * 当前天气
          * <P>Type: TEXT</P>
