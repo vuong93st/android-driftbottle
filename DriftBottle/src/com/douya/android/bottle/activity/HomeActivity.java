@@ -97,7 +97,7 @@ public class HomeActivity extends TabActivity {
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
-			handler.postDelayed(updateUIThread, 10000);
+			handler.postDelayed(updateUIThread, 1000*60*5);
 		}
 	};
 
