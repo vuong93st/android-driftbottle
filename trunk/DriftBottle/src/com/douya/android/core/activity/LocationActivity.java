@@ -188,7 +188,7 @@ public class LocationActivity extends Activity {
 			reader.parse(source);
 			if(location!=null){
 				weatherStr.delete(0, weatherStr.length());
-				weatherStr.append("您当前所处位置： 纬度=" + location.getLatitude() + " 经度=" + location.getLongitude()+"；");
+				weatherStr.append("您当前所处位置： 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
 			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
 			for(CurrentWeather currentWeather : currentWeatherList){
