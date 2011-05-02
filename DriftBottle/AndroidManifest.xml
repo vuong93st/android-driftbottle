@@ -50,7 +50,7 @@
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
 		<!-- 天气预报Service -->
-		<service android:name=".bottle.service.WeatherService"></service>
+		<!-- <service android:name=".bottle.service.WeatherService"></service> -->
 		<!-- AppWidget -->
 		<receiver android:name=".bottle.activity.widget.BottleAppWidgetProvider">
 			<intent-filter>
