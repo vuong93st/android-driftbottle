@@ -5,32 +5,39 @@
 		>
 	<RelativeLayout android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:background="@drawable/home_title">
-		<TextView android:id="@+id/home_bottle_tip"
+		<TextView android:id="@+id/home_bottle_tip_tv"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="12sp" android:textColor="#6e6e6e"
 			android:background="#33c7dc"
 			android:text="@string/home_bottle_tip"/>
-		<TextView android:id="@+id/home_bottle_tip_content"
+		<TextView android:id="@+id/home_bottle_tip_content_tv"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="12sp" android:textColor="#6e6e6e"
 			android:paddingLeft="5px"
-			android:layout_alignBottom="@id/home_bottle_tip"
-			android:layout_toRightOf="@id/home_bottle_tip"
+			android:layout_alignBottom="@id/home_bottle_tip_tv"
+			android:layout_toRightOf="@id/home_bottle_tip_tv"
 			android:text="@string/home_bottle_tip_content"/>
 	</RelativeLayout>
 	<RelativeLayout android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:background="#f0f0f0"
-		android:layout_centerHorizontal="true"
 		android:padding="5dp">
-		<TextView android:id="@+id/home_bottle_content"
+		<TextView android:id="@+id/home_bottle_content_tv"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:textSize="12sp" android:textColor="#6e6e6e"
+			android:layout_centerHorizontal="true"
 			android:text="@string/home_bottle_content"/>
-		<ImageButton android:id="@+id/start_new_bottle"
+		<ImageButton android:id="@+id/start_new_bottle_btn"
 		android:src="@drawable/new_bottle"
 		android:background="@drawable/new_bottle_bg"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:layout_below="@id/home_bottle_content"
+		android:layout_centerHorizontal="true"
+		android:layout_below="@id/home_bottle_content_tv"
 		/>
+		<TextView android:id="@+id/home_bottle_bottom_tv"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
+			android:textSize="12sp" android:textColor="#6e6e6e"
+			android:layout_below="@id/start_new_bottle_btn"
+			android:layout_centerHorizontal="true"
+			android:text="@string/home_bottle_bottom"/>
 	</RelativeLayout>
 </LinearLayout>
