@@ -1,22 +1,17 @@
 package com.douya.android.bottle.activity;
 
-import android.content.Intent;
+import android.app.Activity;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.SingleLineTransformationMethod;
-import android.view.View;
-import android.widget.LinearLayout;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.core.dao.DatabaseHelper;
-import com.google.android.maps.MapActivity;
-import com.google.android.maps.MapView;
 
-public class NearbyActivity extends MapActivity{
+public class NearbyActivity extends Activity{
 	private AlwaysMarqueeTextView weatherTextView = null;
 	String weatherCurrent = "";
 	DatabaseHelper dbHelper; 
@@ -31,7 +26,7 @@ public class NearbyActivity extends MapActivity{
 		
 		handler.post(updateUIThread);
 		
-		Uri uri = Uri.parse("geo:38.899533,-77.036476"); 
+		/*Uri uri = Uri.parse("geo:38.899533,-77.036476"); 
 		Intent intent = new Intent(Intent.ACTION_VIEW,uri); 
 		startActivity(intent);
 		
@@ -39,15 +34,8 @@ public class NearbyActivity extends MapActivity{
         LinearLayout zoomLayout=(LinearLayout)this.findViewById(R.id.zoom);
         View zoomView=mapView.getZoomControls();
         zoomLayout.addView(zoomView);
-        mapView.displayZoomControls(true);
+        mapView.displayZoomControls(true);*/
 
-	}
-
- 
-	@Override
-	protected boolean isRouteDisplayed() {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 
