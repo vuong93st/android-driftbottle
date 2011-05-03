@@ -1,6 +1,5 @@
 package com.douya.android.core.activity;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -201,10 +200,10 @@ public class LocationActivity extends Activity {
 			List<Weather> weatherList = handler.getForecastWeatherList();
 
 			for (Weather weather : weatherList) {
-				weatherStr.append(weather.getDay());
-				weatherStr.append("天气："+weather.getCondition()+"； ");
-				weatherStr.append(" 最低气温："+weather.getLowTemp() + "℃ ");
-				weatherStr.append(" 最高气温："+weather.getHighTemp() + "℃");
+				if(weather.getDay()!=null)weatherStr.append(weather.getDay());
+				if(weather.getCondition()!=null)weatherStr.append("天气："+weather.getCondition()+"； ");
+				if(weather.getLowTemp()!=null)weatherStr.append(" 最低气温："+weather.getLowTemp() + "℃ ");
+				if(weather.getHighTemp()!=null)weatherStr.append(" 最高气温："+weather.getHighTemp() + "℃");
 			}
 			System.out.println(weatherStr);
             if(weatherStr==null||"".equalsIgnoreCase(weatherStr.toString())){
@@ -218,6 +217,10 @@ public class LocationActivity extends Activity {
 		}
 		ContentValues values = new ContentValues(); 
         values.put(Bottle.Bottles.CURRENT, weatherStr.toString());
+        if(sqliteDatabase.isOpen()){
+        	sqliteDatabase.close();
+		}
+        try{
         Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
         if(cursor.moveToNext()){
         	System.out.println("更新数据");
@@ -225,6 +228,10 @@ public class LocationActivity extends Activity {
         }else{
         	System.out.println("插入数据");
         	sqliteDatabase.insert("weather", null, values);   
+        }
+        }catch(Exception e){
+        	e.printStackTrace();
+        	System.out.println(e.getMessage());
         }
 	}
 	
