@@ -19,9 +19,23 @@
 			android:background="@drawable/weather_bg" android:layout_alignBottom="@id/app_weather_title"
 			android:layout_toRightOf="@id/app_weather_title" />
 	</RelativeLayout>
+	<LinearLayout 
+             android:id="@+id/zoom"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+               android:layout_alignParentBottom="true"
+             android:layout_centerHorizontal="true"
+       />
 	<LinearLayout
 		android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:background="@drawable/regsiter_bg" android:layout_gravity="center_horizontal">
+		<com.google.android.maps.MapView
+			android:id="@+id/mapView"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:apiKey="0eOtLsDaBmHJ7xbFl5LaCiplSXdHC7bB7Dasjlw"
+        />
+
 	</LinearLayout>
 </LinearLayout>

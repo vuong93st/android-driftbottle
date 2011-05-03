@@ -14,9 +14,11 @@ public class HomeBottleActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bottle);
-		TextView tv = (TextView)findViewById(R.id.home_bottle_content_tv);
-		/*Typeface face = Typeface.createFromAsset (getAssets() , "fonts/msyh.ttf");
+		/*TextView tv = (TextView)findViewById(R.id.home_bottle_content);
+		Typeface face = Typeface.createFromAsset (getAssets() , "fonts/msyh.ttf");
 		tv.setTypeface (face);*/
+		
+
 	}
 
 }
