@@ -18,9 +18,13 @@
     <string name="square">广场</string>
     <string name="more">更多</string>
     <string name="user_info">头像</string>
-    <string name="bottle_number">瓶子</string>
-    <string name="friend_number">蜜友</string>
-    <string name="cumulative_scoring">积分</string>
+    <string name="bottle_number">0\n瓶子</string>
+    <string name="friend_number">0\n蜜友</string>
+    <string name="cumulative_scoring">0\n积分</string>
+    
+    <string name="home_bottle_tip">提示</string>
+    <string name="home_bottle_tip_content">留言、评论别人的瓶子可以获得积分</string>
+    <string name="home_bottle_content">欢迎来到漂流瓶世界！\n这里有新奇有趣，功能各异的瓶子，\n每个瓶子都有自己的故事，\n放下一个瓶子经历一段全新的旅行。</string>
     
     <string name="moreitem1">我赞的瓶子</string>
     <string name="moreitem2">我的评论</string>
