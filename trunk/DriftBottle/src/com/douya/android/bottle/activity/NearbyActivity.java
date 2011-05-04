@@ -114,7 +114,7 @@ public class NearbyActivity extends LocationActivity{
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			weatherCurrent="当前位置："+address+" ";
+			weatherCurrent="当前位置：";//+address+" ";
 			// 获取天气预报
 			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
 			sqliteDatabase = dbHelper.getReadableDatabase(); 
