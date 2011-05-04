@@ -68,7 +68,7 @@ public class LocationActivity extends MapActivity {
 		// 获取位置
 		location = locationManager.getLastKnownLocation(provider);
 		// 显示位置信息到文字标签
-		updateWithNewLocation(location);
+		//updateWithNewLocation(location);
 		// 注册监听器 locationListener ，第 2 、 3 个参数可以控制接收 gps 消息的频度以节省电力。第 2 个参数为毫秒，
 		// 表示调用 listener 的周期，第 3 个参数为米 , 表示位置移动指定距离后就调用 listener
 		locationManager.requestLocationUpdates(provider, 1000*60*5, 10,locationListener);
@@ -151,8 +151,6 @@ public class LocationActivity extends MapActivity {
 
 			XmlHandler handler = new XmlHandler();
 			reader.setContentHandler(handler);
-			System.out.println("天气预报URL："+"http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
-					+ lat+","+lng);
 			URL url = new URL("http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
 					+ lat+","+lng);
 			InputStream is = url.openStream();
@@ -162,7 +160,7 @@ public class LocationActivity extends MapActivity {
 			reader.parse(source);
 			if(location!=null){
 				weatherStr.delete(0, weatherStr.length());
-				weatherStr.append(" 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
+				//weatherStr.append(" 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
 			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
 			for(CurrentWeather currentWeather : currentWeatherList){
