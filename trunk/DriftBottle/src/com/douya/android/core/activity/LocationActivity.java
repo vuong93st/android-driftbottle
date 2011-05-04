@@ -31,7 +31,7 @@ import android.widget.Toast;
 import com.douya.android.bottle.XmlHandler;
 import com.douya.android.bottle.model.Bottle;
 import com.douya.android.bottle.model.CurrentWeather;
-import com.douya.android.bottle.model.Weather;
+import com.douya.android.bottle.model.ForecastWeather;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class LocationActivity extends Activity {
@@ -197,9 +197,9 @@ public class LocationActivity extends Activity {
 				if(currentWeather.getHumidity()!=null)weatherStr.append(" 温度："+currentWeather.getHumidity());
 				if(currentWeather.getWind_condition()!=null)weatherStr.append(" 风力："+currentWeather.getWind_condition()+"；");
 			}
-			List<Weather> weatherList = handler.getForecastWeatherList();
+			List<ForecastWeather> weatherList = handler.getForecastWeatherList();
 
-			for (Weather weather : weatherList) {
+			for (ForecastWeather weather : weatherList) {
 				if(weather.getDay()!=null)weatherStr.append(weather.getDay());
 				if(weather.getCondition()!=null)weatherStr.append("天气："+weather.getCondition()+"； ");
 				if(weather.getLowTemp()!=null)weatherStr.append(" 最低气温："+weather.getLowTemp() + "℃ ");
