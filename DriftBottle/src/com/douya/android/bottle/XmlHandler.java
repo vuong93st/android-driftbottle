@@ -8,10 +8,10 @@ import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
 import com.douya.android.bottle.model.CurrentWeather;
-import com.douya.android.bottle.model.Weather;
+import com.douya.android.bottle.model.ForecastWeather;
 
 public class XmlHandler extends DefaultHandler {
-    private List<Weather> forecastWeatherList;//天气预报
+    private List<ForecastWeather> forecastWeatherList;//天气预报
     private List<CurrentWeather> currentWeatherList;//实时天气
 
     private final String FORECAST_CONDITIONS="forecast_conditions";//预报天气
@@ -19,14 +19,14 @@ public class XmlHandler extends DefaultHandler {
     private boolean isForcast=false;
     private boolean isCurrent=false;
     
-    private Weather forecastWeather;
+    private ForecastWeather forecastWeather;
     private CurrentWeather currentWeather;
     
-    public List<Weather> getForecastWeatherList() {
+    public List<ForecastWeather> getForecastWeatherList() {
         return forecastWeatherList;
     }
 
-    public void setForecastWeatherList(List<Weather> forecastWeatherList) {
+    public void setForecastWeatherList(List<ForecastWeather> forecastWeatherList) {
         this.forecastWeatherList = forecastWeatherList;
     }
 
@@ -40,7 +40,7 @@ public class XmlHandler extends DefaultHandler {
 
 	public XmlHandler() {
         
-		forecastWeatherList = new ArrayList<Weather>();
+		forecastWeatherList = new ArrayList<ForecastWeather>();
         currentWeatherList = new  ArrayList<CurrentWeather>();
         isForcast = false;
         isCurrent = false;
@@ -55,7 +55,7 @@ public class XmlHandler extends DefaultHandler {
         
         if(tagName.equals(FORECAST_CONDITIONS)) {
         	isForcast = true;
-        	forecastWeather = new Weather();
+        	forecastWeather = new ForecastWeather();
         }
         if(tagName.equals(CURRENT_CONDITIONS)) {
         	isCurrent = true;

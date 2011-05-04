@@ -12,7 +12,11 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
  */  
 public class DatabaseHelper extends SQLiteOpenHelper {   
     private static final int VERSION = 1;   
-  
+    /**
+     * 天气预报表
+     */
+    private static final String WEATHER_TABLE = "weather";
+    
     /**  
      * 在SQLiteOpenHelper的子类当中，必须有该构造函数  
      * @param context   上下文对象  
@@ -40,8 +44,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub   
         System.out.println("create a database");   
         //创建天气表 
-        db.execSQL("create table weather(current_date varchar(20),today varchar(500),tomorrow varchar(500),afterday varchar(500),current varchar(500))");
-        db.execSQL("create table gps_info(latitude varchar(20),Longitude varchar(500))");
+        db.execSQL("create table "+WEATHER_TABLE+" (current varchar(500))");
         
     }   
   
@@ -49,6 +52,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase arg0, int arg1, int arg2) {   
         // TODO Auto-generated method stub   
         System.out.println("upgrade a database");   
-    }   
+    }
 } 
 
