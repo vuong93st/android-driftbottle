@@ -49,6 +49,7 @@ public class NearbyActivity extends LocationActivity{
 
 	/**
 	 * Gps 监听器调用，处理位置信息
+	 * 重写位置改变方法，定位当前位置为地图中心
 	 */
 	@Override
 	public void updateWithNewLocation(Location location) {
@@ -71,9 +72,10 @@ public class NearbyActivity extends LocationActivity{
 					double y1 = ((double) y) / 1000000;
 					//得到逆理编码，参数分别为：纬度，经度，最大结果集
 					List<Address> lstAddress = mGeocoder01
-							.getFromRawGpsLocation(x1, y1, 3);
+							.getFromRawGpsLocation(x1, y1, 1);
 						if (lstAddress.size()!=0) {
 						//Toast输出geo编码得到的地名
+						address="";
 						for (int i = 0; i < lstAddress.size(); ++i) {
 							Address adsLocation = lstAddress.get(i);
 							if(i==0)address+=adsLocation.getFeatureName().toString();
@@ -85,6 +87,7 @@ public class NearbyActivity extends LocationActivity{
 					} else {
 						Log.i(TAG, "Address GeoPoint NOT Found.");
 					}
+					handler.post(updateUIThread);//当位置改变后，立即更新天气预报中的位置信息
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -103,7 +106,7 @@ public class NearbyActivity extends LocationActivity{
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			weatherCurrent=address+" ";
+			weatherCurrent="当前位置："+address+" ";
 			// 获取天气预报
 			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
 			sqliteDatabase = dbHelper.getReadableDatabase(); 
