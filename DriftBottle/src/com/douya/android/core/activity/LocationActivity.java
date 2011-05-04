@@ -52,8 +52,6 @@ public class LocationActivity extends Activity {
 	}
 
 	public void initLocation() {
-		dbHelper = new DatabaseHelper(LocationActivity.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
 		// 获取 LocationManager 服务
 		locationManager = (LocationManager) this
 				.getSystemService(Context.LOCATION_SERVICE);
@@ -67,7 +65,6 @@ public class LocationActivity extends Activity {
 		if (location != null) {
 			int lat = (int)(location.getLatitude()*1000000);
 			int lng = (int)(location.getLongitude()*1000000);
-			searchWeather(lat,lng);
 		}
 		// 显示位置信息到文字标签
 		updateWithNewLocation(location);
@@ -215,20 +212,22 @@ public class LocationActivity extends Activity {
 
 			System.out.println(weatherStr+e.getMessage());
 		}
-		ContentValues values = new ContentValues(); 
-        values.put(Bottle.Bottles.CURRENT, weatherStr.toString());
-        if(sqliteDatabase.isOpen()){
-        	sqliteDatabase.close();
-		}
-        try{
-        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
-        if(cursor.moveToNext()){
-        	System.out.println("更新数据");
-        	sqliteDatabase.update("weather", values, null, null);
-        }else{
-        	System.out.println("插入数据");
-        	sqliteDatabase.insert("weather", null, values);   
-        }
+		try{
+			dbHelper = new DatabaseHelper(LocationActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getWritableDatabase(); 
+			ContentValues values = new ContentValues(); 
+	        values.put(Bottle.Bottles.CURRENT, weatherStr.toString());
+	        
+	        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
+	        if(cursor.moveToNext()){
+	        	System.out.println("更新数据");
+	        	sqliteDatabase.update("weather", values, null, null);
+	        }else{
+	        	System.out.println("插入数据");
+	        	sqliteDatabase.insert("weather", null, values);   
+	        }
+	        cursor.close();
+	        sqliteDatabase.close();
         }catch(Exception e){
         	e.printStackTrace();
         	System.out.println(e.getMessage());
