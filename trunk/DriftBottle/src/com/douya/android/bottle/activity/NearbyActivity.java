@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.SingleLineTransformationMethod;
@@ -44,7 +43,6 @@ public class NearbyActivity extends LocationActivity{
 		mMapView.setBuiltInZoomControls(true); // 设置启用内置的缩放控件
 		mMapController = mMapView.getController();  // 得到 mMapView 的控制权,可以用它控制和驱动平移和缩放
 		initLocation();
-
 	}
 
 	/**
@@ -65,13 +63,23 @@ public class NearbyActivity extends LocationActivity{
 					//设置地图中心点
 					mMapController.setCenter(geo);
 					mMapController.setZoom(12);//地图缩放级别
-					Geocoder mGeocoder01 = new Geocoder(NearbyActivity.this);
+					
+					/*Drawable marker = getResources().getDrawable(R.drawable.map_bottle);  //得到需要标在地图上的资源 
+				    marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker 
+				        .getIntrinsicHeight());   //为maker定义位置和边界 
+				    PoiItem overlayItem = new PoiItem("aaa",geo, "P1", "point1");
+				    List<PoiItem> poiList = new ArrayList<PoiItem>();
+				    poiList.add(overlayItem);
+				    PoiOverlay poiOverlay = new PoiOverlay(null,poiList,"");
+				    mMapView.getOverlays().add(poiOverlay);  // 添加ItemizedOverlay实例到mMapView
+*/				    
+					Geocoder mGeocoder = new Geocoder(NearbyActivity.this);
 					int x = geo.getLatitudeE6(); // 得到geo纬度，单位微度 (度 * 1E6)
 					double x1 = ((double) x) / 1000000;
 					int y = geo.getLongitudeE6(); // 得到geo经度，单位微度 (度 * 1E6)
 					double y1 = ((double) y) / 1000000;
 					//得到逆理编码，参数分别为：纬度，经度，最大结果集
-					List<Address> lstAddress = mGeocoder01
+					List<Address> lstAddress = mGeocoder
 							.getFromRawGpsLocation(x1, y1, 1);
 						if (lstAddress.size()!=0) {
 						//Toast输出geo编码得到的地名
