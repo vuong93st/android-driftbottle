@@ -184,11 +184,11 @@ public class LocationActivity extends Activity {
 			reader.parse(source);
 			if(location!=null){
 				weatherStr.delete(0, weatherStr.length());
-				weatherStr.append("您当前所处位置： 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
+				weatherStr.append("当前位置： 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
 			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
 			for(CurrentWeather currentWeather : currentWeatherList){
-				if(currentWeather.getCondition()!=null)weatherStr.append("当前天气状况："+currentWeather.getCondition());
+				if(currentWeather.getCondition()!=null)weatherStr.append("天气实况："+currentWeather.getCondition());
 				if(currentWeather.getTemp_f()!=null)weatherStr.append(" 温度：华氏 "+currentWeather.getTemp_f());
 				if(currentWeather.getTemp_c()!=null)weatherStr.append(" 摄氏："+currentWeather.getTemp_c());
 				if(currentWeather.getHumidity()!=null)weatherStr.append(" 温度："+currentWeather.getHumidity());
@@ -206,7 +206,6 @@ public class LocationActivity extends Activity {
             if(weatherStr==null||"".equalsIgnoreCase(weatherStr.toString())){
             	weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
             }
-			//table.setText(currentWeather);
 		} catch (Exception e) {
 			weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
 
