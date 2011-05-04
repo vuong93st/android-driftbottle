@@ -62,7 +62,7 @@ public class NearbyActivity extends LocationActivity{
 				if (geo.toString() != "") {
 					//设置地图中心点
 					mMapController.setCenter(geo);
-					mMapController.setZoom(12);//地图缩放级别
+					mMapController.setZoom(16);//地图缩放级别
 					
 					/*Drawable marker = getResources().getDrawable(R.drawable.map_bottle);  //得到需要标在地图上的资源 
 				    marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker 
