@@ -27,8 +27,6 @@ public class MoreActivity extends ListActivity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.more);
-		dbHelper = new DatabaseHelper(MoreActivity.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
 		
 		handler.post(updateUIThread);
 		ArrayList<HashMap<String, Object>> list = new ArrayList<HashMap<String, Object>>();
@@ -89,11 +87,14 @@ public class MoreActivity extends ListActivity{
 		public void run() {
 			weatherCurrent="";
 			// 获取天气预报
-			if(sqliteDatabase==null)return;
+			dbHelper = new DatabaseHelper(MoreActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getReadableDatabase(); 
 			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
 			if (cursor.moveToNext()) {
 				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
             }
+			cursor.close();
+			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());

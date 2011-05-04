@@ -20,9 +20,7 @@ public class SquareActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.nearby);
-		dbHelper = new DatabaseHelper(SquareActivity.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
+		setContentView(R.layout.nearby); 
 		
 		handler.post(updateUIThread);
 	}
@@ -37,11 +35,14 @@ public class SquareActivity extends Activity{
 		public void run() {
 			weatherCurrent="";
 			// 获取天气预报
-			if(sqliteDatabase==null)return;
+			dbHelper = new DatabaseHelper(SquareActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getReadableDatabase();
 			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
 			if (cursor.moveToNext()) {
 				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
             }
+			cursor.close();
+			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
