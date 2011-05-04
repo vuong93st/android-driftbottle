@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.List;
-import java.util.Locale;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -12,7 +11,6 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
@@ -20,25 +18,21 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Criteria;
-
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.util.Log;
 import android.widget.Toast;
-
-import com.douya.android.bottle.XmlHandler;
-import com.douya.android.bottle.activity.NearbyActivity;
-import com.douya.android.bottle.model.Bottle;
-import com.douya.android.bottle.model.CurrentWeather;
-import com.douya.android.bottle.model.ForecastWeather;
-import com.douya.android.core.dao.DatabaseHelper;
 
 import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.Geocoder;
 import com.autonavi.mapapi.MapActivity;
+import com.douya.android.bottle.XmlHandler;
+import com.douya.android.bottle.model.Bottle;
+import com.douya.android.bottle.model.CurrentWeather;
+import com.douya.android.bottle.model.ForecastWeather;
+import com.douya.android.core.dao.DatabaseHelper;
 
 public class LocationActivity extends MapActivity {
 	private DatabaseHelper dbHelper; 
@@ -57,10 +51,15 @@ public class LocationActivity extends MapActivity {
 		return address;
 	}
 
+	@Override
+	protected void onCreate(Bundle arg0) {
+		// TODO Auto-generated method stub
+		super.onCreate(arg0);
+		initLocation();
+	}
 	public void initLocation() {
 		// 获取 LocationManager 服务
-		locationManager = (LocationManager) this
-				.getSystemService(Context.LOCATION_SERVICE);
+		locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
 		// 获取 Location Provider
 		getProvider();
@@ -68,10 +67,6 @@ public class LocationActivity extends MapActivity {
 		openGPS();
 		// 获取位置
 		location = locationManager.getLastKnownLocation(provider);
-		if (location != null) {
-			int lat = (int)(location.getLatitude()*1000000);
-			int lng = (int)(location.getLongitude()*1000000);
-		}
 		// 显示位置信息到文字标签
 		updateWithNewLocation(location);
 		// 注册监听器 locationListener ，第 2 、 3 个参数可以控制接收 gps 消息的频度以节省电力。第 2 个参数为毫秒，
@@ -131,53 +126,23 @@ public class LocationActivity extends MapActivity {
 		}
 
 		// provider 状态变化时调用
-		public void onStatusChanged(String provider, int status,
-		Bundle extras) {
+		public void onStatusChanged(String provider, int status,Bundle extras) {
 		}
 
 	};
 
 	// Gps 监听器调用，处理位置信息
-	private void updateWithNewLocation(Location location) {
-		if (location != null) {
-			int lat = (int)(location.getLatitude()*1000000);
-			int lng = (int)(location.getLongitude()*1000000);
-			searchWeather(lat,lng);
-		}
-	}
-
-	// 获取地址信息
-
-	private List<Address> getAddressbyGeoPoint(Location location) {
-
-		List<Address> result = null;
-		// 先将 Location 转换为 GeoPoint
-		double mLat = location.getLatitude();
-		double mLon = location.getLongitude();
-		// 用给定的经纬度构造一个GeoPoint，单位是微度 (度 * 1E6)
-		GeoPoint geo = new GeoPoint((int) (mLat * 1E6),
-				(int) (mLon * 1E6));
-		
-		Geocoder mGeocoder = new Geocoder(LocationActivity.this);
-
-		try {
-			if (location != null) {
-				int x = geo.getLatitudeE6(); // 得到geo纬度，单位微度 (度 * 1E6)
-				double x1 = ((double) x) / 1000000;
-				int y = geo.getLongitudeE6(); // 得到geo经度，单位微度 (度 * 1E6)
-				double y1 = ((double) y) / 1000000;
-				return mGeocoder.getFromRawGpsLocation(x1, y1, 3);
-				
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("转换地址出错："+e.getMessage());
-		}
-		return result;
+	public void updateWithNewLocation(Location location) {
+		searchWeather(location);//调用天气预报
 	}
 
 	//////////////Google天气预报////////////////////
-	public void searchWeather(int latitude,int longitude) {
+	public void searchWeather(Location location) {
+		int lat = 0;
+		int lng = 0;
+		if (location == null) return;
+		lat = (int)(location.getLatitude()*1000000);
+		lng = (int)(location.getLongitude()*1000000);
 
 		SAXParserFactory spf = SAXParserFactory.newInstance();
 		try {
@@ -187,9 +152,9 @@ public class LocationActivity extends MapActivity {
 			XmlHandler handler = new XmlHandler();
 			reader.setContentHandler(handler);
 			System.out.println("天气预报URL："+"http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
-					+ latitude+","+longitude);
+					+ lat+","+lng);
 			URL url = new URL("http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
-					+ latitude+","+longitude);
+					+ lat+","+lng);
 			InputStream is = url.openStream();
 			InputStreamReader isr = new InputStreamReader(is, "GBK");
 			InputSource source = new InputSource(isr);
@@ -197,12 +162,6 @@ public class LocationActivity extends MapActivity {
 			reader.parse(source);
 			if(location!=null){
 				weatherStr.delete(0, weatherStr.length());
-				weatherStr.append("当前位置:");
-				/*List<Address> address = getAddressbyGeoPoint(location);
-				for (int i = 0; i < address.size(); ++i) {
-					Address adsLocation = address.get(i);
-					weatherStr.append(adsLocation.getFeatureName().toString());
-				}*/
 				weatherStr.append(" 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
 			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
@@ -238,10 +197,8 @@ public class LocationActivity extends MapActivity {
 	        
 	        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
 	        if(cursor.moveToNext()){
-	        	System.out.println("更新数据");
 	        	sqliteDatabase.update("weather", values, null, null);
 	        }else{
-	        	System.out.println("插入数据");
 	        	sqliteDatabase.insert("weather", null, values);   
 	        }
 	        cursor.close();

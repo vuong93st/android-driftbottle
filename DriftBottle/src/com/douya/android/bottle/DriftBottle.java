@@ -85,9 +85,6 @@ public class DriftBottle extends LocationActivity {
 				DriftBottle.this.startActivity(intent);
 			}
 		});
-        
-        /*Thread thread = new Thread(update);// getWeather("济南");	
-		thread.start();*/
     }
     
     @Override
