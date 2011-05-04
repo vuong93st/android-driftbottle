@@ -32,8 +32,6 @@ public class HomeActivity extends TabActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
 		
 		final TabHost tabHost = this.getTabHost();
 		final TabWidget tabWidget = tabHost.getTabWidget();
@@ -88,14 +86,13 @@ public class HomeActivity extends TabActivity {
 		public void run() {
 			weatherCurrent="";
 			// 获取天气预报
-			if(!sqliteDatabase.isOpen()){
-				dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
-				sqliteDatabase = dbHelper.getReadableDatabase(); 
-			}
+			dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getReadableDatabase(); 
 			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
 			if (cursor.moveToNext()) {
 				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
             }
+			cursor.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());

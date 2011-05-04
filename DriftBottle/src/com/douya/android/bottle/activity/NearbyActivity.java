@@ -21,8 +21,6 @@ public class NearbyActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nearby);
-		dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
-		sqliteDatabase = dbHelper.getReadableDatabase(); 
 		
 		handler.post(updateUIThread);
 		
@@ -48,11 +46,14 @@ public class NearbyActivity extends Activity{
 		public void run() {
 			weatherCurrent="";
 			// 获取天气预报
-			if(sqliteDatabase==null)return;
+			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getReadableDatabase(); 
 			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
 			if (cursor.moveToNext()) {
 				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
             }
+			cursor.close();
+			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
