@@ -20,21 +20,27 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Criteria;
-import android.location.Geocoder;
+
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.douya.android.bottle.XmlHandler;
+import com.douya.android.bottle.activity.NearbyActivity;
 import com.douya.android.bottle.model.Bottle;
 import com.douya.android.bottle.model.CurrentWeather;
 import com.douya.android.bottle.model.ForecastWeather;
 import com.douya.android.core.dao.DatabaseHelper;
 
-public class LocationActivity extends Activity {
+import com.autonavi.mapapi.GeoPoint;
+import com.autonavi.mapapi.Geocoder;
+import com.autonavi.mapapi.MapActivity;
+
+public class LocationActivity extends MapActivity {
 	private DatabaseHelper dbHelper; 
 	private SQLiteDatabase sqliteDatabase;
 	private StringBuffer weatherStr = new StringBuffer();   //滚动天气内容
@@ -146,15 +152,22 @@ public class LocationActivity extends Activity {
 
 		List<Address> result = null;
 		// 先将 Location 转换为 GeoPoint
-		// GeoPoint gp =getGeoByLocation(location);
+		double mLat = location.getLatitude();
+		double mLon = location.getLongitude();
+		// 用给定的经纬度构造一个GeoPoint，单位是微度 (度 * 1E6)
+		GeoPoint geo = new GeoPoint((int) (mLat * 1E6),
+				(int) (mLon * 1E6));
 		
+		Geocoder mGeocoder = new Geocoder(LocationActivity.this);
 
 		try {
 			if (location != null) {
-				// 获取 Geocoder ，通过 Geocoder 就可以拿到地址信息
-				Geocoder gc = new Geocoder(this, Locale.getDefault());
-				result = gc.getFromLocation(location.getLatitude(),
-						location.getLongitude(), 10);
+				int x = geo.getLatitudeE6(); // 得到geo纬度，单位微度 (度 * 1E6)
+				double x1 = ((double) x) / 1000000;
+				int y = geo.getLongitudeE6(); // 得到geo经度，单位微度 (度 * 1E6)
+				double y1 = ((double) y) / 1000000;
+				return mGeocoder.getFromRawGpsLocation(x1, y1, 3);
+				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -184,7 +197,13 @@ public class LocationActivity extends Activity {
 			reader.parse(source);
 			if(location!=null){
 				weatherStr.delete(0, weatherStr.length());
-				weatherStr.append("当前位置： 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
+				weatherStr.append("当前位置:");
+				/*List<Address> address = getAddressbyGeoPoint(location);
+				for (int i = 0; i < address.size(); ++i) {
+					Address adsLocation = address.get(i);
+					weatherStr.append(adsLocation.getFeatureName().toString());
+				}*/
+				weatherStr.append(" 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
 			}
 			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
 			for(CurrentWeather currentWeather : currentWeatherList){
