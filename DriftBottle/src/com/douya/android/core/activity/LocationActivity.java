@@ -25,8 +25,6 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.widget.Toast;
 
-import com.autonavi.mapapi.GeoPoint;
-import com.autonavi.mapapi.Geocoder;
 import com.autonavi.mapapi.MapActivity;
 import com.douya.android.bottle.XmlHandler;
 import com.douya.android.bottle.model.Bottle;
@@ -79,7 +77,6 @@ public class LocationActivity extends MapActivity {
 
 		if (locationManager.isProviderEnabled(android.location.LocationManager.GPS_PROVIDER)
 		|| locationManager.isProviderEnabled(android.location.LocationManager.NETWORK_PROVIDER)) {
-			//Toast.makeText(this, " 位置源已设置！ ", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		Toast.makeText(this, " 位置源未设置！ ", Toast.LENGTH_SHORT).show();
