@@ -93,6 +93,7 @@ public class HomeActivity extends TabActivity {
 				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
             }
 			cursor.close();
+			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(weatherCurrent);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
