@@ -18,7 +18,6 @@ import com.autonavi.mapapi.Geocoder;
 import com.autonavi.mapapi.MapController;
 import com.autonavi.mapapi.MapView;
 import com.autonavi.mapapi.Overlay;
-import com.autonavi.mapapi.OverlayItem;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.core.activity.LocationActivity;
@@ -77,18 +76,7 @@ public class NearbyActivity extends LocationActivity{
 					positionOverlay = new MyOverlay(location,marker);  
 					List<Overlay> overlays = mMapView.getOverlays();  
 					overlays.add(positionOverlay);
-					
-					//Drawable marker = getResources().getDrawable(R.drawable.map_bottle);  //得到需要标在地图上的资源 
-				    /*marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker 
-				        .getIntrinsicHeight()); */
-				    
-				    /*List<Overlay> overlays = mMapView.getOverlays();  
-				    
-				    MyItemizedOverlay markrs = new MyItemizedOverlay(marker);   
-				    overlays.add(markrs); */
-
-
-					
+							
 					Geocoder mGeocoder = new Geocoder(NearbyActivity.this);
 					int x = geo.getLatitudeE6(); // 得到geo纬度，单位微度 (度 * 1E6)
 					double x1 = ((double) x) / 1000000;
