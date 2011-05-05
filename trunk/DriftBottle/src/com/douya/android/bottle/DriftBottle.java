@@ -48,8 +48,6 @@ public class DriftBottle extends LocationActivity {
         setContentView(R.layout.login);
         EnhancedAgent.init(this);//市场服务
         initLocation();//初始化位置服务
-        
-
 		
         titleTextView = (TextView)findViewById(R.id.loginmain_title);
         titleTextView.setText(R.string.loginmain_title);
