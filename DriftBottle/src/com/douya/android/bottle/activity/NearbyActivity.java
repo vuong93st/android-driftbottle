@@ -4,6 +4,7 @@ import java.util.List;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
@@ -16,6 +17,8 @@ import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.Geocoder;
 import com.autonavi.mapapi.MapController;
 import com.autonavi.mapapi.MapView;
+import com.autonavi.mapapi.Overlay;
+import com.autonavi.mapapi.OverlayItem;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.core.activity.LocationActivity;
@@ -31,6 +34,8 @@ public class NearbyActivity extends LocationActivity{
 	private String TAG = "HIPPO_GEO_DEBUG";
 	private MapView mMapView;
 	MapController mMapController;
+	
+	MyOverlay positionOverlay;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -60,19 +65,30 @@ public class NearbyActivity extends LocationActivity{
 			GeoPoint geo = new GeoPoint((int)(mLat * 1E6),(int)(mLon * 1E6));
 			try {
 				if (geo.toString() != "") {
-					//设置地图中心点
-					mMapController.setCenter(geo);
-					mMapController.setZoom(16);//地图缩放级别
+					// 更新我的位置标记
+					//positionOverlay.setLocation(location);  
 					
-					/*Drawable marker = getResources().getDrawable(R.drawable.map_bottle);  //得到需要标在地图上的资源 
-				    marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker 
-				        .getIntrinsicHeight());   //为maker定义位置和边界 
-				    PoiItem overlayItem = new PoiItem("aaa",geo, "P1", "point1");
-				    List<PoiItem> poiList = new ArrayList<PoiItem>();
-				    poiList.add(overlayItem);
-				    PoiOverlay poiOverlay = new PoiOverlay(null,poiList,"");
-				    mMapView.getOverlays().add(poiOverlay);  // 添加ItemizedOverlay实例到mMapView
-*/				    
+					//设置地图中心点
+					mMapController.animateTo(geo);
+					mMapController.setZoom(16);//地图缩放级别
+					Drawable marker = getResources().getDrawable(R.drawable.map_bottle);
+					marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker.getIntrinsicHeight());
+					// 添加 MyPositionOverlay  
+					positionOverlay = new MyOverlay(location,marker);  
+					List<Overlay> overlays = mMapView.getOverlays();  
+					overlays.add(positionOverlay);
+					
+					//Drawable marker = getResources().getDrawable(R.drawable.map_bottle);  //得到需要标在地图上的资源 
+				    /*marker.setBounds(0, 0, marker.getIntrinsicWidth(), marker 
+				        .getIntrinsicHeight()); */
+				    
+				    /*List<Overlay> overlays = mMapView.getOverlays();  
+				    
+				    MyItemizedOverlay markrs = new MyItemizedOverlay(marker);   
+				    overlays.add(markrs); */
+
+
+					
 					Geocoder mGeocoder = new Geocoder(NearbyActivity.this);
 					int x = geo.getLatitudeE6(); // 得到geo纬度，单位微度 (度 * 1E6)
 					double x1 = ((double) x) / 1000000;
