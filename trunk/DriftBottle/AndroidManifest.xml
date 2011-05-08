@@ -19,7 +19,8 @@
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
 		<activity android:name=".bottle.activity.MainActivity"
-			android:label="@string/app_name" android:theme="@android:style/Theme.NoTitleBar">
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<!-- 四个功能模块Tab页Activity -->
 		<activity android:name=".bottle.activity.HomeActivity"
