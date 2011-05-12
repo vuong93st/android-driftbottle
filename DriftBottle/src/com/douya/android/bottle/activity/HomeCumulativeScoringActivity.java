@@ -1,5 +1,7 @@
 package com.douya.android.bottle.activity;
 
+import com.douya.android.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -9,6 +11,7 @@ public class HomeCumulativeScoringActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.cumulative_scoring);
 	}
 
 }
