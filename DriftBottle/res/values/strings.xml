@@ -27,6 +27,9 @@
     <string name="home_bottle_content">欢迎来到漂流瓶世界！\n这里有新奇有趣，功能各异的瓶子，\n每个瓶子都有自己的故事，\n放下一个瓶子经历一段全新的旅行。</string>
     <string name="home_bottle_bottom">马上点击 『发起瓶子』开始旅行</string>
     
+    <string name="home_friend_content">您还没有好友\n点击『寻找好友』开始你与蜜友的第一次邂逅！</string>
+    <string name="home_scoring_day_tip">今日总积分：</string>
+    
     <string name="moreitem1">我赞的瓶子</string>
     <string name="moreitem2">我的评论</string>
     <string name="moreitem3">我的设置</string>
