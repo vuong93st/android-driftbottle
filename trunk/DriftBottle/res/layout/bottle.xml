@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="vertical" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:layout_gravity="center_horizontal"
+		 android:background="#f0f0f0"
 		>
 	<RelativeLayout android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:background="@drawable/home_title">
@@ -22,8 +23,8 @@
 		android:layout_height="fill_parent" android:background="#f0f0f0"
 		android:padding="5dp">
 		<TextView android:id="@+id/home_bottle_content_tv"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:textSize="12sp" android:textColor="#6e6e6e"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:textSize="14sp" android:textColor="#6e6e6e"
 			android:layout_centerHorizontal="true"
 			android:text="@string/home_bottle_content"/>
 		<ImageButton android:id="@+id/start_new_bottle_btn"
@@ -34,8 +35,8 @@
 		android:layout_below="@id/home_bottle_content_tv"
 		/>
 		<TextView android:id="@+id/home_bottle_bottom_tv"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:textSize="12sp" android:textColor="#6e6e6e"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:textSize="14sp" android:textColor="#6e6e6e"
 			android:layout_below="@id/start_new_bottle_btn"
 			android:layout_centerHorizontal="true"
 			android:text="@string/home_bottle_bottom"/>
