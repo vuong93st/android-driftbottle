@@ -181,11 +181,12 @@ public class RegsiterActivity extends Activity{
 	
 	/**
 	 * 弹出提示消息
+	 * @param context
 	 * @param str
 	 */
-	public void displayToast(String str)   
+	public void displayToast(Context context,String str)   
 	{   
-        Toast toast = Toast.makeText(this, str, Toast.LENGTH_LONG);   
+        Toast toast = Toast.makeText(context, str, Toast.LENGTH_LONG);   
         toast.setGravity(Gravity.TOP, 0, 220);   
         toast.show();   
     }   
