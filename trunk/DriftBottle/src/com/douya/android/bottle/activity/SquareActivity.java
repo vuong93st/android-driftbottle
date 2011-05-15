@@ -92,7 +92,7 @@ public class SquareActivity extends TabActivity{
 		TextView iv = new TextView(this);
 		//iv.setBackgroundResource(i);
 		iv.setText(s);
-		iv.setTextColor(Color.GRAY);
+		iv.setTextColor(Color.BLACK);
 		iv.setGravity(Gravity.CENTER);
 		layout.addView(iv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, 30));
 
