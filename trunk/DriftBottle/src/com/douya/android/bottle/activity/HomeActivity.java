@@ -58,15 +58,14 @@ public class HomeActivity extends TabActivity {
 		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
 
 			public void onTabChanged(String tabId) {
+				if(tabHost.getCurrentTab()==0)tabHost.setCurrentTab(1);
 				// 当点击tab选项卡的时候，更改当前的背景
 				for (int i = 0; i < tabWidget.getChildCount(); i++) {
 					View v = tabWidget.getChildAt(i);
-					if (tabHost.getCurrentTab() != 0){
-						if (tabHost.getCurrentTab() == i) {
-							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
-						} else {
-							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
-						}
+					if (tabHost.getCurrentTab() == i) {
+						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
+					} else {
+						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
 					}
 				}
 				handler.post(updateUIThread);
