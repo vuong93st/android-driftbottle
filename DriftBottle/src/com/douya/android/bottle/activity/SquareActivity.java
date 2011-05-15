@@ -1,17 +1,27 @@
 package com.douya.android.bottle.activity;
 
-import android.app.Activity;
+import android.app.TabActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.SingleLineTransformationMethod;
+import android.view.Gravity;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TabWidget;
+import android.widget.TextView;
+import android.widget.TabHost.OnTabChangeListener;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.core.dao.DatabaseHelper;
 
-public class SquareActivity extends Activity{
+public class SquareActivity extends TabActivity{
 	private AlwaysMarqueeTextView weatherTextView = null;
 	String weatherCurrent = "";
 	DatabaseHelper dbHelper; 
@@ -21,11 +31,92 @@ public class SquareActivity extends Activity{
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.square); 
-		
+		final TabHost tabHost = this.getTabHost();
+		final TabWidget tabWidget = tabHost.getTabWidget();
+		Intent squareWonderfulIntent = new Intent();
+		createTabs(
+				tabHost,
+				squareWonderfulIntent,
+				SquareWonderfulActivity.class,
+				"wonderful",
+				composeLayout("精彩",
+						R.drawable.face_bg));
+		Intent squareLatestIntent = new Intent();
+		createTabs(
+				tabHost,
+				squareLatestIntent,
+				SquareLatestActivity.class,
+				"latest",
+				composeLayout("最新",
+						R.drawable.face_bg));	
+//		tabHost.setCurrentTab(1);
+//        for(int i = 0; i < tabWidget.getChildCount(); i++)   
+//        {   
+//             /**   
+//             * 下面是设置Tab的背景，可以是颜色，背景图片等   
+//             */   
+//            View v = tabWidget.getChildAt(i);   
+//            if (tabHost.getCurrentTab() == i) {
+//                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));   
+//            } else {     
+//                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));  
+//            }   
+//        }
+     // 设置Tab变换时的监听事件
+//		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
+//
+//			public void onTabChanged(String tabId) {
+//				// 当点击tab选项卡的时候，更改当前的背景
+//				for (int i = 0; i < tabWidget.getChildCount(); i++) {
+//					View v = tabWidget.getChildAt(i);
+//					if (tabHost.getCurrentTab() != 0){
+//						if (tabHost.getCurrentTab() == i) {
+//							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
+//						} else {
+//							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
+//						}
+//					}
+//				}
+//				handler.post(updateUIThread);
+//			}
+//		});
 		handler.post(updateUIThread);
 	}
+	
+	/**   
+     * 这个设置Tab标签本身的布局，需要TextView和ImageView不能重合   
+     * s:是文本显示的内容   
+     * i:是ImageView的图片位置   
+     * 将它设置到setIndicator(composeLayout("首页", R.drawable.coke))中   
+     */   
+    public View composeLayout(String s, int i){  
+    	LinearLayout layout = new LinearLayout(this);
+		layout.setOrientation(LinearLayout.VERTICAL);
+//		layout.setBackgroundResource(i);
+		TextView iv = new TextView(this);
+		iv.setBackgroundResource(i);
+		iv.setText(s);
+		iv.setTextColor(Color.WHITE);
+		iv.setGravity(Gravity.CENTER);
+		layout.addView(iv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, 30));
 
- 
+		return layout;
+    }
+	 /**
+     * 创建Tab页
+     * @param tabHost
+     * @param intent
+     * @param cls
+     * @param name
+     * @param view
+     */
+    public void createTabs(TabHost tabHost,Intent intent,Class<?> cls,String name,View view){
+    	intent.setClass(this, cls);
+		TabHost.TabSpec spec = tabHost.newTabSpec(name);
+		spec.setIndicator(view);
+		spec.setContent(intent);
+		tabHost.addTab(spec);
+    }
 	Handler handler = new Handler();
 	/**
 	 * 更新天气界面UI

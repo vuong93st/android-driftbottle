@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import android.app.ListActivity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
@@ -77,6 +78,9 @@ public class MoreActivity extends ListActivity{
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
+		Intent intent = new Intent();
+		intent.setClass(MoreActivity.this, SquareLatestActivity.class);
+		startActivity(intent);
 	}
 	Handler handler = new Handler();
 	/**
