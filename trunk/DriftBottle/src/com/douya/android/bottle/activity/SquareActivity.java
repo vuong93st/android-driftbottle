@@ -40,7 +40,7 @@ public class SquareActivity extends TabActivity{
 				SquareWonderfulActivity.class,
 				"wonderful",
 				composeLayout("精彩",
-						R.drawable.face_bg));
+						R.drawable.square_top_bg1));
 		Intent squareLatestIntent = new Intent();
 		createTabs(
 				tabHost,
@@ -48,38 +48,34 @@ public class SquareActivity extends TabActivity{
 				SquareLatestActivity.class,
 				"latest",
 				composeLayout("最新",
-						R.drawable.face_bg));	
-//		tabHost.setCurrentTab(1);
-//        for(int i = 0; i < tabWidget.getChildCount(); i++)   
-//        {   
-//             /**   
-//             * 下面是设置Tab的背景，可以是颜色，背景图片等   
-//             */   
-//            View v = tabWidget.getChildAt(i);   
-//            if (tabHost.getCurrentTab() == i) {
-//                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));   
-//            } else {     
-//                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));  
-//            }   
-//        }
+						R.drawable.square_top_bg2));	
+		tabHost.setCurrentTab(0);//设置初始激活的Activity
+        for(int i = 0; i < tabWidget.getChildCount(); i++)   
+        { 
+            View v = tabWidget.getChildAt(i);   
+    		System.out.println(tabHost.getCurrentTab());
+            if (tabHost.getCurrentTab() == i) {
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.square_top_bg1));   
+            } else {     
+                v.setBackgroundDrawable(getResources().getDrawable(R.drawable.square_top_bg2));  
+            }   
+        }
      // 设置Tab变换时的监听事件
-//		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
-//
-//			public void onTabChanged(String tabId) {
-//				// 当点击tab选项卡的时候，更改当前的背景
-//				for (int i = 0; i < tabWidget.getChildCount(); i++) {
-//					View v = tabWidget.getChildAt(i);
-//					if (tabHost.getCurrentTab() != 0){
-//						if (tabHost.getCurrentTab() == i) {
-//							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_bg));
-//						} else {
-//							v.setBackgroundDrawable(getResources().getDrawable(R.drawable.home_tab_null_bg));
-//						}
-//					}
-//				}
-//				handler.post(updateUIThread);
-//			}
-//		});
+		tabHost.setOnTabChangedListener(new OnTabChangeListener() {
+
+			public void onTabChanged(String tabId) {
+				// 当点击tab选项卡的时候，更改当前的背景
+				for (int i = 0; i < tabWidget.getChildCount(); i++) {
+					View v = tabWidget.getChildAt(i);
+					if (tabHost.getCurrentTab() == i) {
+						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.square_top_bg1));
+					} else {
+						v.setBackgroundDrawable(getResources().getDrawable(R.drawable.square_top_bg2));
+					}
+				}
+				handler.post(updateUIThread);
+			}
+		});
 		handler.post(updateUIThread);
 	}
 	
@@ -94,9 +90,9 @@ public class SquareActivity extends TabActivity{
 		layout.setOrientation(LinearLayout.VERTICAL);
 //		layout.setBackgroundResource(i);
 		TextView iv = new TextView(this);
-		iv.setBackgroundResource(i);
+		//iv.setBackgroundResource(i);
 		iv.setText(s);
-		iv.setTextColor(Color.WHITE);
+		iv.setTextColor(Color.GRAY);
 		iv.setGravity(Gravity.CENTER);
 		layout.addView(iv, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.FILL_PARENT, 30));
 
