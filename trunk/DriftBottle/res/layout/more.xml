@@ -24,7 +24,6 @@
 		android:layout_height="wrap_content"
 		android:background="@drawable/regsiter_bg" android:layout_gravity="center_horizontal">
 	<ListView android:id="@+id/android:list"
-	android:layout_height="wrap_content" android:layout_width="fill_parent"
-	android:paddingTop="50dp"></ListView>
+	android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
 	</LinearLayout>
 </LinearLayout>

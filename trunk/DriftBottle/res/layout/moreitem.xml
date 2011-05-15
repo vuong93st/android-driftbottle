@@ -4,12 +4,12 @@
   android:orientation="horizontal"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:padding="10dip">
+  android:padding="8dip">
     <ImageView android:id="@+id/moreLogo" android:layout_width="wrap_content" 
 	android:layout_height="30dip" 
 	android:gravity="center_vertical"/>
 	<TextView android:id="@+id/moreTitle"
-		android:textSize="16sp"
+		android:textSize="16sp" android:textColor="#ffffff"
 		android:gravity="center_vertical" android:layout_width="240dip" android:layout_height="30dip" ></TextView>
 	<ImageView android:id="@+id/moreMore" android:layout_width="wrap_content" 
 	android:layout_height="30dip" 
