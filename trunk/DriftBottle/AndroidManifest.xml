@@ -36,6 +36,14 @@
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
+		<activity android:name=".bottle.activity.SquareLatestActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.SquareWonderfulActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
 		<activity android:name=".bottle.activity.MoreActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
