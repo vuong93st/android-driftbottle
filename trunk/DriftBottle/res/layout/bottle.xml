@@ -26,6 +26,8 @@
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="14sp" android:textColor="#6e6e6e"
 			android:layout_centerHorizontal="true"
+			android:gravity="center"
+			android:lineSpacingMultiplier="1.5"
 			android:text="@string/home_bottle_content"/>
 		<ImageButton android:id="@+id/start_new_bottle_btn"
 		android:src="@drawable/new_bottle"
@@ -39,6 +41,7 @@
 			android:textSize="14sp" android:textColor="#6e6e6e"
 			android:layout_below="@id/start_new_bottle_btn"
 			android:layout_centerHorizontal="true"
+			android:lineSpacingMultiplier="1.5"
 			android:text="@string/home_bottle_bottom"/>
 	</RelativeLayout>
 </LinearLayout>
