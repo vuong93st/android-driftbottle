@@ -3,11 +3,30 @@
 	android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:background="#f0f0f0"
 	android:padding="5dp">
-	<TextView android:id="@+id/home_friend_content_tv"
+	<TextView android:id="@+id/home_no_friend_tv"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:textSize="14sp" android:textColor="#6e6e6e"
-		android:layout_centerInParent="true"
 		android:gravity="center"
 		android:lineSpacingMultiplier="1.5"
-		android:text="@string/home_friend_content"/>
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:text="@string/home_no_friend"/>
+	<TextView android:id="@+id/home_find_friend_tv"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:textSize="14sp" android:textColor="#6e6e6e"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:gravity="center"
+		android:lineSpacingMultiplier="1.5"
+		android:layout_below="@id/home_no_friend_tv"
+		android:text="@string/home_find_friend"/>
+	<TextView android:id="@+id/home_friend_bottom_tv"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:textSize="14sp" android:textColor="#6e6e6e"
+		android:layout_centerHorizontal="true"
+		android:layout_centerVertical="true"
+		android:gravity="center"
+		android:lineSpacingMultiplier="1.5"
+		android:layout_below="@id/home_find_friend_tv"
+		android:text="@string/home_friend_bottom"/>
 </RelativeLayout>
