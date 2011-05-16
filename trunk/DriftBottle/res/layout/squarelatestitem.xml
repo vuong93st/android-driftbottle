@@ -9,6 +9,6 @@
 	android:layout_height="30dip" 
 	android:gravity="center_vertical"/>
    <TextView android:id="@+id/squareLatestTitle"
-		android:textSize="16sp" android:textColor="#ffffff"
+		android:textSize="16sp" android:textColor="#000000"
 		android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="30dip" ></TextView>
 </LinearLayout>
