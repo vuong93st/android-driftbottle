@@ -32,7 +32,7 @@ public class LoadingActivity extends Activity{
 		
 		public void run() {
 			try{
-				Thread.sleep(5000);
+				Thread.sleep(2000);
 				Intent intent = new Intent();
 				intent.setClass(LoadingActivity.this, DriftBottle.class);
 				startActivity(intent);
