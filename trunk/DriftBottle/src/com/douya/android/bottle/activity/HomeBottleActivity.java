@@ -1,20 +1,20 @@
 package com.douya.android.bottle.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
-import android.text.style.BackgroundColorSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StyleSpan;
-import android.text.style.URLSpan;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.douya.android.R;
+import com.douya.android.bottle.DriftBottle;
 
 public class HomeBottleActivity extends Activity{
 
@@ -24,6 +24,7 @@ public class HomeBottleActivity extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.bottle);
 		TextView tv = (TextView)findViewById(R.id.home_bottle_bottom_tv);
+		ImageButton bottleNewBtn = (ImageButton)findViewById(R.id.start_new_bottle_btn);
 		
 		 //创建一个 SpannableString对象   
         SpannableString sp = new SpannableString(getResources().getString(R.string.home_bottle_bottom));  
@@ -40,7 +41,15 @@ public class HomeBottleActivity extends Activity{
         //设置TextView可点击   
         tv.setMovementMethod(LinkMovementMethod.getInstance());    
 
-
+        bottleNewBtn.setOnClickListener(new NewBottle());
 	}
 
+	class NewBottle implements OnClickListener{
+
+		public void onClick(View v) {
+			Intent intent =new Intent();
+			intent.setClass(HomeBottleActivity.this, HomeBottleNewActivity.class);
+			HomeBottleActivity.this.startActivity(intent);
+		}
+	}
 }
