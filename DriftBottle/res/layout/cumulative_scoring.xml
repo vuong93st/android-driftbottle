@@ -15,7 +15,7 @@
 			android:text="@string/home_scoring_day_tip"/>
 		<TextView android:id="@+id/home_scoring_day_tip_content_tv"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:textSize="16sp" android:textColor="#ff7200"
+			android:textSize="12sp" android:textColor="#ff7200"
 			android:paddingLeft="5px"
 			android:layout_alignBottom="@id/home_scoring_day_tip_tv"
 			android:layout_toRightOf="@id/home_scoring_day_tip_tv"
