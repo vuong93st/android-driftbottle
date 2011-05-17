@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/relativeLayout1" android:layout_width="fill_parent" 
+             android:background="@drawable/regsiter_bg"
+             android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:layout_height="90dip" android:id="@+id/balTextView" 
+    android:layout_alignParentLeft="true" android:layout_width="wrap_content" 
+    android:text="很给力有没有？赞一个!" android:textColor="#000000"></TextView>
+    <Button android:layout_height="45dip" android:id="@+id/button2"
+     android:text="发表" android:textColor="#000000" android:layout_width="wrap_content" 
+     android:layout_alignParentRight="true"></Button>
+    <Button android:layout_height="45dip" android:id="@+id/button1" 
+    android:text="赞"  android:textColor="#000000" android:layout_width="wrap_content" android:layout_toLeftOf="@id/button2">
+    </Button>
+    <TextView android:layout_height="30dip" android:id="@+id/balTextViewHref" 
+    android:layout_alignParentLeft="true" android:layout_width="wrap_content" 
+    android:layout_below="@id/balTextView"
+    android:text="12个朋友喜欢这个瓶子" android:textColor="#000000"></TextView>
+    <ListView android:id="@+id/android:list"
+	android:layout_height="wrap_content" android:layout_width="fill_parent"
+	android:layout_below="@id/balTextViewHref"></ListView>
+</RelativeLayout>
