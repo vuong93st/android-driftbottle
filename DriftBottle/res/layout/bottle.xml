@@ -19,29 +19,50 @@
 			android:layout_toRightOf="@id/home_bottle_tip_tv"
 			android:text="@string/home_bottle_tip_content"/>
 	</RelativeLayout>
-	<RelativeLayout android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:background="#f0f0f0"
-		android:padding="5dp">
-		<TextView android:id="@+id/home_bottle_content_tv"
+	<ScrollView
+		android:layout_weight="6"
+		android:id="@+id/ScrollView1"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:scrollbars="vertical"
+		android:background="#f0f0f0">
+		<LinearLayout
+		android:orientation="vertical" android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		>
+		<RelativeLayout android:id="@+id/no_bottle_layout" android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="5dp">
+			<TextView android:id="@+id/home_bottle_content_tv"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:textSize="14sp" android:textColor="#6e6e6e"
+				android:layout_centerHorizontal="true"
+				android:gravity="center"
+				android:lineSpacingMultiplier="1.5"
+				android:text="@string/home_bottle_content"/>
+			<ImageButton android:id="@+id/start_new_bottle_btn"
+			android:src="@drawable/new_bottle"
+			android:background="@drawable/new_bottle_bg"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:textSize="14sp" android:textColor="#6e6e6e"
 			android:layout_centerHorizontal="true"
-			android:gravity="center"
-			android:lineSpacingMultiplier="1.5"
-			android:text="@string/home_bottle_content"/>
-		<ImageButton android:id="@+id/start_new_bottle_btn"
-		android:src="@drawable/new_bottle"
-		android:background="@drawable/new_bottle_bg"
-		android:layout_width="wrap_content" android:layout_height="wrap_content"
-		android:layout_centerHorizontal="true"
-		android:layout_below="@id/home_bottle_content_tv"
-		/>
-		<TextView android:id="@+id/home_bottle_bottom_tv"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:textSize="14sp" android:textColor="#6e6e6e"
-			android:layout_below="@id/start_new_bottle_btn"
-			android:layout_centerHorizontal="true"
-			android:lineSpacingMultiplier="1.5"
-			android:text="@string/home_bottle_bottom"/>
-	</RelativeLayout>
+			android:layout_below="@id/home_bottle_content_tv"
+			/>
+			<TextView android:id="@+id/home_bottle_bottom_tv"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:textSize="14sp" android:textColor="#6e6e6e"
+				android:layout_below="@id/start_new_bottle_btn"
+				android:layout_centerHorizontal="true"
+				android:lineSpacingMultiplier="1.5"
+				android:text="@string/home_bottle_bottom"/>
+		</RelativeLayout>
+		
+		
+		<RelativeLayout android:id="@+id/have_bottle_layout" android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:padding="5dp">
+			<ListView android:id="@+id/lvItems"
+	android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
+		</RelativeLayout>
+		</LinearLayout>
+	</ScrollView>
 </LinearLayout>
