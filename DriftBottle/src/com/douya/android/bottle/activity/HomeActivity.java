@@ -23,13 +23,14 @@ import com.douya.android.bottle.activity.home.HomeBottleActivity;
 import com.douya.android.bottle.activity.home.HomeCumulativeScoringActivity;
 import com.douya.android.bottle.activity.home.HomeFriendActivity;
 import com.douya.android.bottle.activity.home.HomeUserInfoActivity;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class HomeActivity extends TabActivity {
 	private AlwaysMarqueeTextView weatherTextView = null;
-	String weatherCurrent = "";
-	DatabaseHelper dbHelper; 
-	SQLiteDatabase sqliteDatabase;
+	//String weatherCurrent = "";
+	//DatabaseHelper dbHelper; 
+	//SQLiteDatabase sqliteDatabase;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -85,18 +86,18 @@ public class HomeActivity extends TabActivity {
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			weatherCurrent="";
+			//weatherCurrent=Weather.Current;
 			// 获取天气预报
-			dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
-			sqliteDatabase = dbHelper.getReadableDatabase(); 
-			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
-			if (cursor.moveToNext()) {
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
-            }
-			cursor.close();
-			sqliteDatabase.close();
+//			dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
+//			sqliteDatabase = dbHelper.getReadableDatabase(); 
+//			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
+//			if (cursor.moveToNext()) {
+//				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
+//            }
+//			cursor.close();
+//			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
-			weatherTextView.setText(weatherCurrent);
+			weatherTextView.setText(Weather.Current);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
 			handler.postDelayed(updateUIThread, 1000*60*5);
