@@ -21,15 +21,16 @@ import com.autonavi.mapapi.Overlay;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.bottle.activity.nearby.MyOverlay;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.activity.LocationActivity;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class NearbyActivity extends LocationActivity{
 	private AlwaysMarqueeTextView weatherTextView = null;
-	String weatherCurrent = "";
 	String address = "";
-	DatabaseHelper dbHelper; 
-	SQLiteDatabase sqliteDatabase;
+//	String weatherCurrent = "";
+//	DatabaseHelper dbHelper; 
+//	SQLiteDatabase sqliteDatabase;
 	
 	private String TAG = "HIPPO_GEO_DEBUG";
 	private MapView mMapView;
@@ -119,18 +120,18 @@ public class NearbyActivity extends LocationActivity{
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			weatherCurrent="当前位置：";//+address+" ";
-			// 获取天气预报
-			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
-			sqliteDatabase = dbHelper.getReadableDatabase(); 
-			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
-			if (cursor.moveToNext()) {
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
-            }
-			cursor.close();
-			sqliteDatabase.close();
+//			weatherCurrent="当前位置：";//+address+" ";
+//			// 获取天气预报
+//			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
+//			sqliteDatabase = dbHelper.getReadableDatabase(); 
+//			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
+//			if (cursor.moveToNext()) {
+//				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
+//            }
+//			cursor.close();
+//			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
-			weatherTextView.setText(weatherCurrent);
+			weatherTextView.setText(Weather.Current);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
 			handler.postDelayed(updateUIThread, 1000*60*5);

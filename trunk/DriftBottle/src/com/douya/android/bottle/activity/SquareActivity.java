@@ -19,13 +19,14 @@ import android.widget.TabHost.OnTabChangeListener;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class SquareActivity extends TabActivity{
 	private AlwaysMarqueeTextView weatherTextView = null;
-	String weatherCurrent = "";
-	DatabaseHelper dbHelper; 
-	SQLiteDatabase sqliteDatabase;
+//	String weatherCurrent = "";
+//	DatabaseHelper dbHelper; 
+//	SQLiteDatabase sqliteDatabase;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -120,18 +121,18 @@ public class SquareActivity extends TabActivity{
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			weatherCurrent="";
-			// 获取天气预报
-			dbHelper = new DatabaseHelper(SquareActivity.this, "bottle_db"); 
-			sqliteDatabase = dbHelper.getReadableDatabase();
-			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
-			if (cursor.moveToNext()) {
-				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
-            }
-			cursor.close();
-			sqliteDatabase.close();
+//			weatherCurrent="";
+//			// 获取天气预报
+//			dbHelper = new DatabaseHelper(SquareActivity.this, "bottle_db"); 
+//			sqliteDatabase = dbHelper.getReadableDatabase();
+//			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
+//			if (cursor.moveToNext()) {
+//				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
+//            }
+//			cursor.close();
+//			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
-			weatherTextView.setText(weatherCurrent);
+			weatherTextView.setText(Weather.Current);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
 			handler.postDelayed(updateUIThread, 1000*60*5);

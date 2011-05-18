@@ -29,6 +29,7 @@ import com.autonavi.mapapi.MapActivity;
 import com.douya.android.bottle.XmlHandler;
 import com.douya.android.bottle.model.CurrentWeather;
 import com.douya.android.bottle.model.ForecastWeather;
+import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class LocationActivity extends MapActivity {
@@ -184,6 +185,7 @@ public class LocationActivity extends MapActivity {
 			System.out.println(weatherStr+e.getMessage());
 		}
 		try{
+			Weather.Current = weatherStr.toString();
 			dbHelper = new DatabaseHelper(LocationActivity.this, "bottle_db"); 
 			sqliteDatabase = dbHelper.getWritableDatabase(); 
 			ContentValues values = new ContentValues(); 
