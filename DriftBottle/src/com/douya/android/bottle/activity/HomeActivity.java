@@ -19,6 +19,10 @@ import android.widget.TextView;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
+import com.douya.android.bottle.activity.home.HomeBottleActivity;
+import com.douya.android.bottle.activity.home.HomeCumulativeScoringActivity;
+import com.douya.android.bottle.activity.home.HomeFriendActivity;
+import com.douya.android.bottle.activity.home.HomeUserInfoActivity;
 import com.douya.android.core.dao.DatabaseHelper;
 
 public class HomeActivity extends TabActivity {
@@ -32,7 +36,6 @@ public class HomeActivity extends TabActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.home);
-		
 		final TabHost tabHost = this.getTabHost();
 		final TabWidget tabWidget = tabHost.getTabWidget();
 		Intent intent = new Intent();
@@ -71,7 +74,6 @@ public class HomeActivity extends TabActivity {
 				handler.post(updateUIThread);
 			}
 		});
-
 		handler.post(updateUIThread);
 	}
 
