@@ -3,6 +3,7 @@ package com.douya.android.bottle.activity.home;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -51,16 +52,22 @@ public class HomeBottleActivity extends Activity{
 		RelativeLayout no_bottle_layout = (RelativeLayout)findViewById(R.id.no_bottle_layout);
 		RelativeLayout have_bottle_layout = (RelativeLayout)findViewById(R.id.have_bottle_layout);
 		
-		no_bottle_layout.setVisibility(View.VISIBLE);//无数据时显示
-		have_bottle_layout.setVisibility(View.VISIBLE);//无数据时不显示，有数据时显示
-		ListView lvItems = (ListView)findViewById(R.id.lvItems);
-		BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", R.drawable.pic1);
-		List<BottleItem> list = new ArrayList<BottleItem>();
-		list.add(myItem);
+		int bottleCount = 0;//瓶子数
 		
-		HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
-		lvItems.setAdapter(myAdapter);
-
+		if(bottleCount == 0){
+			no_bottle_layout.setVisibility(View.VISIBLE);//无数据时显示
+			have_bottle_layout.setVisibility(View.GONE);
+		}else{
+			no_bottle_layout.setVisibility(View.GONE);
+			have_bottle_layout.setVisibility(View.VISIBLE);//无数据时不显示，有数据时显示
+			ListView lvItems = (ListView)findViewById(R.id.lvItems);
+			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", R.drawable.pic1);
+			List<BottleItem> list = new ArrayList<BottleItem>();
+			list.add(myItem);
+			
+			HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
+			lvItems.setAdapter(myAdapter);
+		}
 	}
 
 	class NewBottle implements OnClickListener{
