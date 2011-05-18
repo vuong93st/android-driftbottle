@@ -20,6 +20,7 @@ import com.autonavi.mapapi.MapView;
 import com.autonavi.mapapi.Overlay;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
+import com.douya.android.bottle.activity.nearby.MyOverlay;
 import com.douya.android.core.activity.LocationActivity;
 import com.douya.android.core.dao.DatabaseHelper;
 

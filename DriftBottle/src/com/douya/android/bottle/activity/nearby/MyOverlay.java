@@ -1,4 +1,4 @@
-package com.douya.android.bottle.activity;
+package com.douya.android.bottle.activity.nearby;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -57,7 +57,7 @@ public class MyOverlay extends Overlay {
 	    //canvas.drawOval(oval, paint);  
 	    canvas.drawRoundRect(backRect, 5, 5, backPaint);  
 	    canvas.drawBitmap(((BitmapDrawable)marker).getBitmap(), point.x, point.y + 2*mRadius, backPaint);
-	    canvas.drawText("普通瓶", point.x, point.y, paint);  
+	    canvas.drawText("普通瓶", point.x+5, point.y, paint);  
 	  }  
 	  super.draw(canvas, mapView, shadow);  
 	} 
