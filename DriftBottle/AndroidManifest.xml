@@ -53,20 +53,20 @@
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<!-- 首页模块Tab页 -->
-		<activity android:name=".bottle.activity.HomeUserInfoActivity"
+		<activity android:name=".bottle.activity.home.HomeUserInfoActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".bottle.activity.HomeBottleActivity"
+		<activity android:name=".bottle.activity.home.HomeBottleActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".bottle.activity.HomeFriendActivity"
+		<activity android:name=".bottle.activity.home.HomeFriendActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
-		<activity android:name=".bottle.activity.HomeCumulativeScoringActivity"
+		<activity android:name=".bottle.activity.home.HomeCumulativeScoringActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait">
 		</activity>
 		
-		<activity android:name=".bottle.activity.HomeBottleNewActivity"
+		<activity android:name=".bottle.activity.home.HomeBottleNewActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
