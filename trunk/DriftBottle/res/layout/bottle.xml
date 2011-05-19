@@ -23,7 +23,7 @@
 		android:layout_weight="6"
 		android:id="@+id/ScrollView1"
 		android:layout_width="fill_parent" 
-		android:layout_height="wrap_content"
+		android:layout_height="fill_parent"
 		android:scrollbars="vertical"
 		android:background="#f0f0f0">
 		<LinearLayout
@@ -31,7 +31,7 @@
 		android:layout_height="fill_parent"
 		>
 		<RelativeLayout android:id="@+id/no_bottle_layout" android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
 			android:padding="5dp">
 			<TextView android:id="@+id/home_bottle_content_tv"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -58,10 +58,10 @@
 		
 		
 		<RelativeLayout android:id="@+id/have_bottle_layout" android:layout_width="fill_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="fill_parent"
 			android:padding="5dp">
 			<ListView android:id="@+id/lvItems"
-	android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
+			android:layout_height="fill_parent" android:layout_width="fill_parent"></ListView>
 		</RelativeLayout>
 		</LinearLayout>
 	</ScrollView>
