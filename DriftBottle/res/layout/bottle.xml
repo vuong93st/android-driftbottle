@@ -19,9 +19,26 @@
 			android:layout_toRightOf="@id/home_bottle_tip_tv"
 			android:text="@string/home_bottle_tip_content"/>
 	</RelativeLayout>
+	
+		<ScrollView
+		android:id="@+id/ScrollView1"
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:scrollbars="vertical"
+		android:background="#f0f0f0">
+			<!-- 有瓶子时显示以下layout -->
+			<RelativeLayout android:id="@+id/have_bottle_layout" android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:padding="5dp">
+				<ListView android:id="@+id/lvItems"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" >
+				</ListView>
+			</RelativeLayout>
+		</ScrollView>
 		<!-- 没有瓶子时显示以下layout -->
 		<RelativeLayout android:id="@+id/no_bottle_layout" android:layout_width="fill_parent"
-			android:layout_height="fill_parent"
+			android:layout_height="wrap_content"
 			android:padding="5dp">
 			<TextView android:id="@+id/home_bottle_content_tv"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -45,20 +62,4 @@
 				android:lineSpacingMultiplier="1.5"
 				android:text="@string/home_bottle_bottom"/>
 		</RelativeLayout>
-		<ScrollView
-		android:id="@+id/ScrollView1"
-		android:layout_width="fill_parent" 
-		android:layout_height="fill_parent"
-		android:scrollbars="vertical"
-		android:background="#f0f0f0">
-			<!-- 有瓶子时显示以下layout -->
-			<RelativeLayout android:id="@+id/have_bottle_layout" android:layout_width="fill_parent"
-				android:layout_height="fill_parent"
-				android:padding="5dp">
-				<ListView android:id="@+id/lvItems"
-				android:layout_width="fill_parent"
-				android:layout_height="500dip" >
-				</ListView>
-			</RelativeLayout>
-		</ScrollView>
 </LinearLayout>

@@ -3,7 +3,6 @@ package com.douya.android.bottle.activity.home;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.R.bool;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,7 +16,6 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
-import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
 import com.douya.android.R;
@@ -81,6 +79,10 @@ public class HomeBottleActivity extends Activity{
 			list.add(myItem);
 			HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
 			lvItems.setAdapter(myAdapter);
+			
+			RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)lvItems.getLayoutParams();
+			layoutParams.height=50*4;
+			lvItems.setLayoutParams(layoutParams);
 		}
 	}
 
