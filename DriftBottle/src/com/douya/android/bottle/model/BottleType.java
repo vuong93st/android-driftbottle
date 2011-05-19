@@ -1,6 +1,5 @@
 package com.douya.android.bottle.model;
 
-import com.douya.android.R;
 
 public class BottleType {
 
