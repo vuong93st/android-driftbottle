@@ -20,7 +20,9 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.douya.android.R;
+import com.douya.android.bottle.model.BottleIcon;
 import com.douya.android.bottle.model.BottleItem;
+import com.douya.android.bottle.model.BottleType;
 
 public class HomeBottleActivity extends Activity{
 
@@ -52,7 +54,7 @@ public class HomeBottleActivity extends Activity{
 		RelativeLayout no_bottle_layout = (RelativeLayout)findViewById(R.id.no_bottle_layout);
 		RelativeLayout have_bottle_layout = (RelativeLayout)findViewById(R.id.have_bottle_layout);
 		
-		int bottleCount = 0;//瓶子数
+		int bottleCount = 1;//瓶子数
 		
 		if(bottleCount == 0){
 			no_bottle_layout.setVisibility(View.VISIBLE);//无数据时显示
@@ -61,10 +63,14 @@ public class HomeBottleActivity extends Activity{
 			no_bottle_layout.setVisibility(View.GONE);
 			have_bottle_layout.setVisibility(View.VISIBLE);//无数据时不显示，有数据时显示
 			ListView lvItems = (ListView)findViewById(R.id.lvItems);
-			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", R.drawable.pic1);
 			List<BottleItem> list = new ArrayList<BottleItem>();
-			list.add(myItem);
 			
+			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", BottleIcon.TAG_BOTTLE_ICON,BottleType.TAG_BOTTLE);
+			list.add(myItem);
+			myItem = new BottleItem(1, "王者归来的祝愿瓶","装有6个愿望", BottleIcon.WISH_BOTTLE_ICON,BottleType.WISH_BOTTLE);
+			list.add(myItem);
+			myItem = new BottleItem(2, "王者归来的祝愿瓶","装有6个愿望", BottleIcon.QUESTIONS_BOTTLE_ICON,BottleType.QUESTIONS_BOTTLE);
+			list.add(myItem);
 			HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
 			lvItems.setAdapter(myAdapter);
 		}
