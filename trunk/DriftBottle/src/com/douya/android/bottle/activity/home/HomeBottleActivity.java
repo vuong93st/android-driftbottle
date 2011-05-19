@@ -17,6 +17,7 @@ import android.view.View.OnClickListener;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.TableRow.LayoutParams;
 import android.widget.TextView;
 
 import com.douya.android.R;
@@ -65,11 +66,15 @@ public class HomeBottleActivity extends Activity{
 			ListView lvItems = (ListView)findViewById(R.id.lvItems);
 			List<BottleItem> list = new ArrayList<BottleItem>();
 			
-			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", BottleIcon.TAG_BOTTLE_ICON,BottleType.TAG_BOTTLE);
+			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", BottleIcon.TAG_BOTTLE_ICON,BottleType.TAG_BOTTLE,
+					"今天");
 			list.add(myItem);
-			myItem = new BottleItem(1, "王者归来的祝愿瓶","装有6个愿望", BottleIcon.WISH_BOTTLE_ICON,BottleType.WISH_BOTTLE);
+			myItem = new BottleItem(1, "Fiyo的祝愿瓶","愿天所有下父母健康长寿", 
+					BottleIcon.WISH_BOTTLE_ICON,BottleType.WISH_BOTTLE,
+					"昨天");
 			list.add(myItem);
-			myItem = new BottleItem(2, "王者归来的祝愿瓶","装有6个愿望", BottleIcon.QUESTIONS_BOTTLE_ICON,BottleType.QUESTIONS_BOTTLE);
+			myItem = new BottleItem(2, "Fiyo的传递瓶","春妮你在哪里？", BottleIcon.TRANSFER_BOTTLE_ICON,BottleType.TRANSFER_BOTTLE,
+					"前天");
 			list.add(myItem);
 			HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
 			lvItems.setAdapter(myAdapter);
