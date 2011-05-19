@@ -40,7 +40,7 @@ public class HomeActivity extends TabActivity {
 		final TabHost tabHost = this.getTabHost();
 		final TabWidget tabWidget = tabHost.getTabWidget();
 		Intent intent = new Intent();
-		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLinearLayout("eyas", R.drawable.face2));
+		createTabs(tabHost, intent, HomeUserInfoActivity.class, "user_info", composeLinearLayout("Fiyo", R.drawable.face2));
 		intent = new Intent();
 		createTabs(tabHost, intent, HomeBottleActivity.class, "bottle_number", composeLayout(getResources().getString(R.string.bottle_number), R.drawable.face_bg));
 		intent = new Intent();
@@ -86,16 +86,6 @@ public class HomeActivity extends TabActivity {
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-			//weatherCurrent=Weather.Current;
-			// 获取天气预报
-//			dbHelper = new DatabaseHelper(HomeActivity.this, "bottle_db"); 
-//			sqliteDatabase = dbHelper.getReadableDatabase(); 
-//			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
-//			if (cursor.moveToNext()) {
-//				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
-//            }
-//			cursor.close();
-//			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(Weather.Current);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
