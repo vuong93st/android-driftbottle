@@ -69,7 +69,7 @@ public class HomeBottleActivity extends Activity{
 			BottleItem myItem = new BottleItem(0, "Fiyo的标签瓶","装有3个标签", BottleIcon.TAG_BOTTLE_ICON,BottleType.TAG_BOTTLE,
 					"今天");
 			list.add(myItem);
-			myItem = new BottleItem(1, "Fiyo的祝愿瓶","愿天所有下父母健康长寿", 
+			myItem = new BottleItem(1, "Fiyo的祝愿瓶","愿天下所有父母健康长寿", 
 					BottleIcon.WISH_BOTTLE_ICON,BottleType.WISH_BOTTLE,
 					"昨天");
 			list.add(myItem);
