@@ -76,6 +76,9 @@ public class HomeBottleActivity extends Activity{
 			myItem = new BottleItem(2, "Fiyo的传递瓶","春妮你在哪里？", BottleIcon.TRANSFER_BOTTLE_ICON,BottleType.TRANSFER_BOTTLE,
 					"前天");
 			list.add(myItem);
+			myItem = new BottleItem(3, "Fiyo的同城瓶","谁在我附近，一起去K歌去？", BottleIcon.SAME_CITY_BOTTLE_ICON,BottleType.SAME_CITY_BOTTLE,
+			"3天以前");
+			list.add(myItem);
 			HomeBottleListItemAdapter myAdapter = new HomeBottleListItemAdapter(getLayoutInflater(), list);
 			lvItems.setAdapter(myAdapter);
 		}
