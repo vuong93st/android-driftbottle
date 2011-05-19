@@ -5,16 +5,18 @@ public class BottleItem {
 	private int id;
 	private String caption;
 	private String content;
+	private String contentDateTime;
 	private String type;
 	private int icon;
 	
 
-	public BottleItem(int id, String caption,String content, int icon,String type) {
+	public BottleItem(int id, String caption,String content, int icon,String type,String contentDateTime) {
 		this.setCaption(caption);
 		this.setContent(content);
 		this.setIcon(icon);
 		this.setId(id);
 		this.setType(type);
+		this.setContentDateTime(contentDateTime);
 	}
 
 	public void setCaption(String caption) {
@@ -55,6 +57,14 @@ public class BottleItem {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getContentDateTime() {
+		return contentDateTime;
+	}
+
+	public void setContentDateTime(String contentDateTime) {
+		this.contentDateTime = contentDateTime;
 	}
 	
 }

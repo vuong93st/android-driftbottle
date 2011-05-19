@@ -55,21 +55,27 @@ public class HomeBottleListItemAdapter extends BaseAdapter {
 		ItemViewHolder holder = (ItemViewHolder) view.getTag();
 		if (holder == null) {
 			holder = new ItemViewHolder();
-			holder.myImageView = (ImageView) view.findViewById(R.id.ivIcon);
-			holder.myTextView = (TextView) view.findViewById(R.id.tvCaption);
+			holder.ivIcon = (ImageView) view.findViewById(R.id.ivIcon);
+			holder.tvcaption = (TextView) view.findViewById(R.id.tvCaption);
+			holder.tvContentTextView = (TextView) view.findViewById(R.id.tvContent);
+			holder.tvContentDateTime = (TextView) view.findViewById(R.id.tvContentDateTime);
 			view.setTag(holder);
 		}
 
 		if (item != null) {
-			holder.myImageView.setImageResource(item.getIcon());
-			holder.myTextView.setText(item.getCaption());
+			holder.ivIcon.setImageResource(item.getIcon());
+			holder.tvcaption.setText(item.getCaption());
+			holder.tvContentTextView.setText(item.getContent());
+			holder.tvContentDateTime.setText(item.getContentDateTime());
 		}
 		return view;
 	}
 
 	protected class ItemViewHolder {
-		public ImageView myImageView;
-		public TextView myTextView;
+		public ImageView ivIcon;
+		public TextView tvcaption;
+		public TextView tvContentTextView;
+		public TextView tvContentDateTime;
 	}
 
 }
