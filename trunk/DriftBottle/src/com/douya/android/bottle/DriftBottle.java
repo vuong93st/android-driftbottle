@@ -40,6 +40,11 @@ public class DriftBottle extends LocationActivity {
 	 */
 	private EditText emailEditText = null;
 	/**
+	 * 密码框
+	 */
+	private EditText passwordEditText = null;
+	
+	/**
 	 * 保存密码CheckBox
 	 */
 	private CheckBox saveuserinfoCheckbox = null;
@@ -81,7 +86,8 @@ public class DriftBottle extends LocationActivity {
         regsiterButton = (ImageButton)findViewById(R.id.loginmain_registerButton);
         
         emailEditText = (EditText)findViewById(R.id.loginmain_email_edittext);
-
+        passwordEditText = (EditText)findViewById(R.id.loginmain_passowrd_edittext);
+        
         regsiterButton.setOnClickListener(new OnClickListener() {
 			
 			public void onClick(View v) {
@@ -91,6 +97,14 @@ public class DriftBottle extends LocationActivity {
 				Intent intent =new Intent();
 				intent.setClass(DriftBottle.this, RegsiterActivity.class);
 				DriftBottle.this.startActivity(intent);
+			}
+		});
+        
+        loginButton.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				//Login(emailEditText.getText().toString(),passwordEditText.getText().toString());
+
 			}
 		});
     }
@@ -109,7 +123,6 @@ public class DriftBottle extends LocationActivity {
 		EnhancedAgent.onResume(this);
 	}
 
-	
 	public void getJsonData() {
 		JsonDataGetApi api = new JsonDataGetApi();
 		JSONArray jArr;
