@@ -22,11 +22,11 @@ public class SquareWonderfulActivity extends ListActivity{
 		map1.put("squareWonderfulLogo", R.drawable.new_bottle);
 		map1.put("squareWonderfulTitle", "王者归来的瓶子");
 		map1.put("squareWonderfulCounts", "共被9人赞过");
-		map1.put("squareWonderfulContent", "我很怀念小时候，那一年李刚还没...");
+		map1.put("squareWonderfulContent", "我很怀念小时候，那一年李刚还没有生孩子.");
 		map2.put("squareWonderfulLogo", R.drawable.new_bottle);
 		map2.put("squareWonderfulTitle", "飞扬的瓶子");
 		map2.put("squareWonderfulCounts", "共被8人赞过");
-		map2.put("squareWonderfulContent", "每个人心里都有一段情，也许放不...");
+		map2.put("squareWonderfulContent", "每个人心里都有一段情，也许放不下,也许错过.");
 		list.add(map1);
 		list.add(map2);
 		SimpleAdapter sap = new SimpleAdapter(this, list, R.layout.squarewonderfulitem,
