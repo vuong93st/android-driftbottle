@@ -19,7 +19,7 @@
 			android:layout_toRightOf="@id/home_bottle_tip_tv"
 			android:text="@string/home_bottle_tip_content"/>
 	</RelativeLayout>
-	
+
 		<ScrollView
 		android:id="@+id/ScrollView1"
 		android:layout_width="fill_parent" 
