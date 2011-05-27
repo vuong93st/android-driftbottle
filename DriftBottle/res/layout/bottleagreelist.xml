@@ -2,20 +2,32 @@
 <RelativeLayout android:id="@+id/relativeLayout1" android:layout_width="fill_parent" 
              android:background="@drawable/regsiter_bg"
              android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:layout_height="90dip" android:id="@+id/balTextView" 
-    android:layout_alignParentLeft="true" android:layout_width="wrap_content" 
+    <TextView android:layout_height="50dip" android:id="@+id/balTextView" 
+    android:layout_alignParentLeft="true" android:layout_width="wrap_content" android:padding="5px"
     android:text="很给力有没有？赞一个!" android:textColor="#000000"></TextView>
-    <Button android:layout_height="45dip" android:id="@+id/button2"
-     android:text="发表" android:textColor="#000000" android:layout_width="wrap_content" 
-     android:layout_alignParentRight="true"></Button>
-    <Button android:layout_height="45dip" android:id="@+id/button1" 
-    android:text="赞"  android:textColor="#000000" android:layout_width="wrap_content" android:layout_toLeftOf="@id/button2">
-    </Button>
+    <ImageButton android:layout_height="24px" android:id="@+id/imageButton2" 
+    android:layout_width="53px" android:src="@drawable/grey" android:padding="5px"
+    android:layout_alignParentRight="true"></ImageButton>
+    <ImageButton android:layout_height="24px" android:id="@+id/imageButton1" 
+    android:layout_width="41px" android:src="@drawable/zan" android:padding="5px"
+    android:layout_toLeftOf="@id/imageButton2"></ImageButton>
     <TextView android:layout_height="30dip" android:id="@+id/balTextViewHref" 
     android:layout_alignParentLeft="true" android:layout_width="wrap_content" 
-    android:layout_below="@id/balTextView"
+    android:layout_below="@id/balTextView" android:padding="5px" android:autoLink="all" 
     android:text="12个朋友喜欢这个瓶子" android:textColor="#000000"></TextView>
+    <RelativeLayout android:layout_below="@id/balTextViewHref" 
+    android:id="@+id/relativeLayout2" android:background="@drawable/square_bottle_start"
+    android:layout_width="fill_parent" android:layout_height="60dip">
+    <ImageView android:id="@+id/startImage" android:layout_width="wrap_content" 
+	android:layout_height="fill_parent"  android:src="@drawable/bottle_start"
+	android:gravity="center_vertical"/>
+    <TextView android:layout_height="wrap_content" android:id="@+id/titleTextView" 
+    android:layout_toRightOf="@id/startImage"
+    android:layout_alignParentRight="true" android:layout_width="wrap_content" android:padding="5px"
+    android:textColor="#000000"></TextView>
+    </RelativeLayout>
     <ListView android:id="@+id/android:list"
 	android:layout_height="wrap_content" android:layout_width="fill_parent"
 	android:layout_below="@id/balTextViewHref"></ListView>
+    
 </RelativeLayout>
