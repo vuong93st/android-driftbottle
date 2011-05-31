@@ -36,18 +36,6 @@
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
-		<activity android:name=".bottle.activity.SquareLatestActivity"
-			android:label="@string/app_name" android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar">
-		</activity>
-		<activity android:name=".bottle.activity.SquareWonderfulActivity"
-			android:label="@string/app_name" android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar">
-		</activity>
-		<activity android:name=".bottle.activity.BottleAgreeListActivity"
-			android:label="@string/app_name" android:screenOrientation="portrait"
-			android:theme="@android:style/Theme.NoTitleBar">
-		</activity>
 		<activity android:name=".bottle.activity.MoreActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
@@ -67,6 +55,19 @@
 		</activity>
 		
 		<activity android:name=".bottle.activity.home.HomeBottleNewActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<!--广场模块Tab页 -->
+		<activity android:name="bottle.activity.square.SquareLatestActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name="bottle.activity.square.SquareWonderfulActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name="bottle.activity.square.SquareBottleAgreeListActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
