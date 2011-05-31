@@ -19,6 +19,8 @@ import android.widget.TabHost.OnTabChangeListener;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
+import com.douya.android.bottle.activity.square.SquareLatestActivity;
+import com.douya.android.bottle.activity.square.SquareWonderfulActivity;
 import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
 
