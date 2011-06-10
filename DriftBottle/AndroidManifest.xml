@@ -59,15 +59,64 @@
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 		<!--广场模块Tab页 -->
-		<activity android:name="bottle.activity.square.SquareLatestActivity"
+		<activity android:name=".bottle.activity.square.SquareLatestActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
-		<activity android:name="bottle.activity.square.SquareWonderfulActivity"
+		<activity android:name=".bottle.activity.square.SquareWonderfulActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
-		<activity android:name="bottle.activity.square.SquareBottleAgreeListActivity"
+		<activity android:name=".bottle.activity.square.SquareBottleAgreeListActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<!--更多模块Tab页 -->
+		<activity android:name=".bottle.activity.more.WzdpzActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.XzhyActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.WdplActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.WdszActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.YqljActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HyzyActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HyzyUserInfoActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HyzyLabelActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HyzyBottleActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HyzyFriendActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.WdscActivity"
+			android:label="@string/app_name" android:screenOrientation="portrait"
+			android:theme="@android:style/Theme.NoTitleBar">
+		</activity>
+		<activity android:name=".bottle.activity.more.HelpActivity"
 			android:label="@string/app_name" android:screenOrientation="portrait"
 			android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
