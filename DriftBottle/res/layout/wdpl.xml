@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#E8E8E8">
+  <TextView android:background="#B8B8B8" android:id="@+id/wdplTitle" 
+    android:layout_width="fill_parent" android:layout_height="40dip"
+    android:textColor="#ffffff" android:textSize="18sp" android:gravity="center"></TextView>
+    <TextView android:id="@+id/wdpl2Title1" android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"  android:layout_centerHorizontal="true"
+    android:text="@string/wdpl_2_title1"
+    android:textSize="14sp" android:textColor="#6e6e6e" 
+    android:layout_below="@id/wdplTitle" android:layout_marginTop="4dip">
+    </TextView>
+    <TextView android:id="@+id/wdpl2Title2" android:layout_width="wrap_content" 
+    android:layout_height="wrap_content"  android:layout_centerHorizontal="true"
+    android:text="@string/wdpl_2_title2"
+    android:textSize="14sp" android:textColor="#6e6e6e" 
+    android:layout_below="@id/wdpl2Title1">
+    </TextView>
+    <ListView android:layout_height="wrap_content" android:layout_width="fill_parent" 
+     android:id="@+id/android:list"></ListView>
+</RelativeLayout>

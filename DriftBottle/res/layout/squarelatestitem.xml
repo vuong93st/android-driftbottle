@@ -4,9 +4,9 @@
   android:orientation="horizontal"
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
-  android:padding="8dip">
+  android:padding="2dip">
     <ImageView android:id="@+id/squareLatestLogo" android:layout_width="wrap_content" 
-	android:layout_height="30dip" 
+	android:layout_height="30dip" android:background="#B8B8B8"
 	android:gravity="center_vertical"/>
    <TextView android:id="@+id/squareLatestTitle"
 		android:textSize="16sp" android:textColor="#000000"
