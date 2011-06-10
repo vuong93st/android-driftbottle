@@ -16,6 +16,13 @@ import android.widget.SimpleAdapter;
 
 import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
+import com.douya.android.bottle.activity.more.HelpActivity;
+import com.douya.android.bottle.activity.more.WdplActivity;
+import com.douya.android.bottle.activity.more.WdscActivity;
+import com.douya.android.bottle.activity.more.WdszActivity;
+import com.douya.android.bottle.activity.more.WzdpzActivity;
+import com.douya.android.bottle.activity.more.XzhyActivity;
+import com.douya.android.bottle.activity.more.YqljActivity;
 import com.douya.android.bottle.activity.square.SquareLatestActivity;
 import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
@@ -80,9 +87,50 @@ public class MoreActivity extends ListActivity{
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		// TODO Auto-generated method stub
 		super.onListItemClick(l, v, position, id);
-		Intent intent = new Intent();
-		intent.setClass(MoreActivity.this, SquareLatestActivity.class);
-		startActivity(intent);
+		switch (position) {
+		case 0: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, WzdpzActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 1: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, WdplActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 2: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, WdszActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 3: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, WdscActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 4: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, XzhyActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 5: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, HelpActivity.class);
+			startActivity(intent);
+			break;
+		}
+		case 6: {
+			Intent intent = new Intent();
+			intent.setClass(MoreActivity.this, YqljActivity.class);
+			startActivity(intent);
+			break;
+		}
+		}
 	}
 	Handler handler = new Handler();
 	/**
