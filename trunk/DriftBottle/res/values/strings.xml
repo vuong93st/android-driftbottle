@@ -18,10 +18,13 @@
     <string name="square">广场</string>
     <string name="more">更多</string>
     <string name="user_info">头像</string>
-    <string name="bottle_number">4\n瓶子</string>
-    <string name="friend_number">0\n蜜友</string>
+    <string name="label_number">15\n标签</string>
+    <string name="bottle_number">11\n瓶子</string>
+    <string name="friend_number">49\n蜜友</string>
     <string name="cumulative_scoring">10\n积分</string>
-    
+    <string name="pinglun">评论</string>
+    <string name="huifu">回复</string>
+    <string name="pl_content_textview">风中做倒立:国企?!腐败分子的温床!(北京市14小时前)</string>
     <string name="home_bottle_tip">提示</string>
     <string name="home_bottle_tip_content">留言、评论别人的瓶子可以获得积分</string>
     <string name="home_bottle_content">欢迎来到漂流瓶世界！\n这里有新奇有趣，功能各异的瓶子，\n每个瓶子都有自己的故事，\n放下一个瓶子经历一段全新的旅行。</string>
@@ -37,9 +40,26 @@
     
     <string name="moreitem1">我赞的瓶子</string>
     <string name="moreitem2">我的评论</string>
+    <string name="wdpl_2_title1">所有对您留言的评论都会显示在这里。</string>
+    <string name="wdpl_2_title2">去『附近』寻找漂流瓶吧。</string>
     <string name="moreitem3">我的设置</string>
+    <string-array name="qgzt">
+        <item value="0">单身</item>
+        <item value="1">已婚</item>
+    </string-array>
+    <string name="wdsz_ggtx">更改头像</string>
+    <string name="wdsz_name">飞扬归来</string>
+    <string name="wdsz_dqcs">当前城市:</string>
+    <string name="wdsz_sr">你的生日:</string>
+    <string name="wdsz_qgzt">情感状态:</string>
+    <string name="wdsz_grqm">个人签名:</string>
+    <string name="wdsz_zs">在此输入自述</string>
+    <string name="wdsz_bcxg">保存修改</string>
     <string name="moreitem4">我的收藏</string>
     <string name="moreitem5">寻找好友</string>
+    <string name="xzhy_2_title">输入对方的昵称</string>
+    <string name="xzhy_edittext">请输入对方的昵称</string>
+    <string name="xzhy_btntext">搜索</string>
     <string name="moreitem6">帮助</string>
     <string name="moreitem7">友情链接</string>
 </resources>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<!-- 年份 -->
+	<string-array name="year">
+		<item value="1980">1980</item>
+		<item value="1981">1981</item>
+		<item value="1982">1982</item>
+		<item value="1983">1983</item>
+	</string-array>
+	<!-- 月份 -->
+	<string-array name="month">
+		<item value="01">01</item>
+		<item value="02">02</item>
+		<item value="03">03</item>
+		<item value="04">04</item>
+		<item value="05">05</item>
+		<item value="06">06</item>
+		<item value="07">07</item>
+		<item value="08">08</item>
+		<item value="09">09</item>
+		<item value="10">10</item>
+		<item value="11">11</item>
+		<item value="12">12</item>
+	</string-array>
+	<!-- 天数 -->
+	<string-array name="day">
+		<item value="01">01</item>
+		<item value="02">02</item>
+		<item value="03">03</item>
+		<item value="04">04</item>
+		<item value="05">05</item>
+		<item value="06">06</item>
+		<item value="07">07</item>
+		<item value="08">08</item>
+		<item value="09">09</item>
+		<item value="10">10</item>
+		<item value="11">11</item>
+		<item value="12">12</item>
+		<item value="13">13</item>
+		<item value="14">14</item>
+		<item value="15">15</item>
+		<item value="16">16</item>
+		<item value="17">17</item>
+		<item value="18">18</item>
+		<item value="19">19</item>
+		<item value="20">20</item>
+		<item value="21">21</item>
+		<item value="22">22</item>
+		<item value="23">23</item>
+		<item value="24">24</item>
+		<item value="25">25</item>
+		<item value="26">26</item>
+		<item value="27">27</item>
+		<item value="28">28</item>
+		<item value="29">29</item>
+		<item value="30">30</item>
+		<item value="31">31</item>
+	</string-array>
+</resources>
