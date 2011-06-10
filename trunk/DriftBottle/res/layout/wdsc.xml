@@ -8,4 +8,26 @@
     android:layout_width="fill_parent" android:layout_height="40dip"
     android:text="@string/moreitem4"
     android:textColor="#ffffff" android:textSize="18sp" android:gravity="center"></TextView>
+  <RelativeLayout android:layout_width="wrap_content" 
+  android:background="#1E90FF" android:layout_height="wrap_content" 
+  android:layout_marginLeft="5dip" android:layout_marginTop="5dip"
+  android:id="@+id/relativeLayout1" android:layout_below="@id/wdscTitle">
+  <ImageView android:layout_width="60dip" 
+  android:src="@drawable/face" android:padding="5dip"
+  android:layout_height="wrap_content" android:id="@+id/imageView1" 
+  android:layout_alignParentLeft="true" android:layout_margin="4dip"></ImageView>
+  <TextView android:layout_width="wrap_content" 
+  android:layout_below="@id/imageView1" android:layout_alignLeft="@id/imageView1"
+  android:text="aaadsd" android:id="@+id/textView1" android:textColor="#000000"
+  android:layout_margin="4dip"
+  android:layout_height="wrap_content"></TextView>
+  <TextView android:layout_width="60dip" android:singleLine="false"
+  android:layout_below="@id/textView1" android:layout_margin="4dip"
+  android:text="5月19日诞生漂流20天" android:id="@+id/textView2" 
+  android:textColor="#ffffff"
+  android:layout_height="wrap_content"></TextView>
+  </RelativeLayout>
+  <TextView android:layout_width="fill_parent" android:background="#FF4500" 
+    android:layout_height="10dip" android:id="@+id/wdscBottom" 
+    android:layout_alignParentBottom="true" ></TextView>  
 </RelativeLayout>

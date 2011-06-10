@@ -21,4 +21,7 @@
     </TextView>
     <ListView android:layout_height="wrap_content" android:layout_width="fill_parent" 
      android:id="@+id/android:list"></ListView>
+    <TextView android:layout_width="fill_parent" android:background="#FF4500" 
+    android:layout_height="10dip" android:id="@+id/wdplBottom" 
+    android:layout_alignParentBottom="true" ></TextView>
 </RelativeLayout>
