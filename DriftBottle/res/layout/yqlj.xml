@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
   android:orientation="vertical"
@@ -10,5 +10,9 @@
     android:text="@string/moreitem7"
     android:textColor="#ffffff" android:textSize="18sp" android:gravity="center"></TextView>
   <ListView android:layout_height="wrap_content" android:layout_width="fill_parent" 
+     android:layout_below="@id/yqljTitle"
      android:id="@+id/android:list"></ListView>
-</LinearLayout>
+ <TextView android:layout_width="fill_parent" android:background="#FF4500" 
+    android:layout_height="10dip" android:id="@+id/yqljBottom" 
+    android:layout_alignParentBottom="true" ></TextView>
+</RelativeLayout>
