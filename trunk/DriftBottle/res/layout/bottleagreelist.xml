@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@+id/relativeLayout1" android:layout_width="fill_parent" 
-             android:background="@drawable/regsiter_bg"
-             android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+<RelativeLayout android:id="@+id/relativeLayout1" 
+    android:layout_width="fill_parent" 
+    android:background="@drawable/regsiter_bg" android:layout_height="fill_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:layout_height="30dip" android:id="@+id/balTextView" 
     android:layout_alignParentLeft="true" android:layout_width="wrap_content" android:padding="5dip"
     android:text="很给力有没有？赞一个!" android:textColor="#000000"></TextView>
@@ -30,27 +31,40 @@
     </RelativeLayout>
     <RelativeLayout android:layout_below="@id/relativeLayout2" 
     android:id="@+id/relativeLayout3" android:background="#FFD700"
-    android:layout_width="fill_parent" android:layout_height="120dip">
+    android:layout_width="fill_parent" android:layout_height="wrap_content">
     <ImageView android:id="@+id/headImage" android:layout_width="wrap_content" 
 	android:layout_height="wrap_content"  android:src="@drawable/head_01" android:layout_alignParentTop="true"/>
-	<RelativeLayout android:layout_toRightOf="@id/headImage"
+	<RelativeLayout android:layout_toRightOf="@id/headImage" android:layout_alignTop="@id/headImage"
     android:id="@+id/relativeLayout4" android:background="#FFFFFF" android:layout_centerVertical="true"
-    android:layout_marginRight="5dip"
+    android:layout_marginRight="2dip" android:layout_marginBottom="5dip" android:layout_marginTop="5dip"
     android:layout_width="fill_parent" android:layout_height="110dip">
     <TextView android:layout_height="wrap_content" android:id="@+id/contentTextView" 
     android:text="那一年，冠希还没有相机。 那一年，李刚还没有儿子。 那一年，师太不会和和尚抢老道， 那一年，人们也不会蛋疼。 那一年，2B我只知道是...
-    "
-    android:layout_alignParentRight="true" android:layout_width="wrap_content" 
-    android:textColor="#000000"></TextView>
-    <TextView android:layout_height="30dip" android:id="@+id/askTextView"  android:textSize="12sp"
+    " android:layout_alignParentRight="true" android:layout_alignParentTop="true"
+    android:layout_width="wrap_content" android:textColor="#000000"></TextView>
+    <Button android:layout_height="30dip" android:id="@+id/askBtn"  android:textSize="12sp"
     android:layout_alignParentBottom="true" android:text="评论(4)" android:background="#979797"
-    android:layout_alignParentRight="true" android:layout_width="50dip"  android:layout_marginRight="3dip"
+    android:layout_alignParentRight="true" android:layout_width="80dip"  android:layout_marginRight="3dip"
     android:layout_marginBottom="3dip" android:padding="3dip"
-    android:textColor="#FFFFFF"></TextView>
+    android:textColor="#FFFFFF"></Button>
+    </RelativeLayout>
+    <RelativeLayout android:layout_below="@id/relativeLayout4" android:visibility="gone"
+    android:layout_marginRight="2dip" android:layout_marginLeft="2dip"
+    android:id="@+id/relativeLayout5" android:background="#F0E68C"
+    android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <EditText  android:padding="2dip" android:layout_height="30dip" android:layout_marginLeft="2dip" 
+    android:layout_width="270dip" android:layout_alignParentLeft="true" android:id="@+id/plEditText"></EditText>
+    <Button android:layout_height="wrap_content" android:layout_alignParentRight="true" 
+    android:layout_marginRight="2dip" android:layout_toRightOf="@id/plEditText" 
+    android:layout_alignTop="@id/plEditText"
+    android:background="#228B22" android:textColor="#000000" android:layout_width="wrap_content"
+    android:text="@string/pinglun" android:textSize="16sp"   android:id="@+id/plBtn"></Button>
+    <ListView android:layout_width="fill_parent" android:layout_height="wrap_content" 
+    android:layout_below="@id/plEditText" android:layout_alignLeft="@id/plEditText"
+    android:id="@+id/listView1"></ListView>
     </RelativeLayout>
     </RelativeLayout>
-    <ListView android:id="@+id/android:list"
+    <ListView android:id="@+id/listView2"
 	android:layout_height="wrap_content" android:layout_width="fill_parent"
-	android:layout_below="@id/relativeLayout3"></ListView>
-    
+	android:layout_below="@id/relativeLayout3"></ListView>    
 </RelativeLayout>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#E8E8E8">
+  <TextView android:background="#B8B8B8" android:id="@+id/wdszTitle" 
+    android:layout_width="fill_parent" android:layout_height="40dip" android:text="@string/moreitem3"
+    android:textColor="#ffffff" android:textSize="18sp" android:gravity="center"></TextView>
+  <ImageView android:layout_height="wrap_content" android:layout_width="wrap_content" 
+  android:layout_marginLeft="5dip" android:layout_marginTop="10dip"
+  android:id="@+id/wdszLogo"  android:layout_alignParentLeft="true"  android:src="@drawable/face4"
+  android:layout_below="@id/wdszTitle"></ImageView>
+  <TextView android:layout_height="wrap_content" android:text="@string/wdsz_name" android:layout_marginLeft="10dip"
+  android:layout_marginTop="15dip" android:textColor="#000000"
+  android:id="@+id/wdszName" android:layout_toRightOf="@id/wdszLogo" android:layout_below="@id/wdszTitle"
+  android:layout_width="wrap_content"></TextView>
+  <TextView android:layout_height="wrap_content"  
+  android:layout_marginTop="10dip" android:layout_alignLeft="@id/wdszName" 
+  android:textColor="#ffffff" android:text="@string/wdsz_ggtx" android:background="#B8B8B8"
+  android:id="@+id/wdszGgtx" android:layout_below="@id/wdszName"  
+  android:layout_width="wrap_content"></TextView>
+  <TextView  android:id="@+id/wdszDqcs" android:layout_height="35px" android:paddingTop="5px"
+   android:layout_alignLeft="@id/wdszLogo" android:layout_marginTop="15dip" android:textColor="#000000"
+   android:layout_below="@id/wdszLogo" android:layout_width="wrap_content" android:text="@string/wdsz_dqcs"
+  ></TextView>
+    <Spinner android:id="@+id/wdszCity" 
+     	android:layout_width="wrap_content" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+       	android:layout_marginLeft="5dip"
+      	android:drawSelectorOnTop="true"
+      	android:layout_alignBottom="@id/wdszDqcs"
+		android:layout_toRightOf="@id/wdszDqcs"
+     />
+  <TextView android:id="@+id/wdszSr" android:layout_marginTop="15dip" 
+  android:layout_height="35px" android:paddingTop="5px" android:textColor="#000000"
+  android:layout_below="@id/wdszDqcs" android:layout_alignRight="@id/wdszDqcs" android:layout_width="wrap_content" android:text="@string/wdsz_sr"
+ ></TextView>
+     <Spinner android:id="@+id/wdszSryear" 
+     	android:layout_width="wrap_content" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+       	android:layout_marginLeft="5dip"
+      	android:drawSelectorOnTop="true"
+      	android:layout_alignBottom="@id/wdszSr"
+		android:layout_toRightOf="@id/wdszSr"
+     />
+     <Spinner android:id="@+id/wdszSrmonth" 
+     	android:layout_width="77px" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+      	android:drawSelectorOnTop="true"
+      	android:layout_alignBottom="@id/wdszSryear"
+		android:layout_toRightOf="@id/wdszSryear"
+     />
+     <Spinner android:id="@+id/wdszSrday" 
+     	android:layout_width="77px" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+      	android:drawSelectorOnTop="true"
+      	android:layout_alignBottom="@id/wdszSrmonth"
+		android:layout_toRightOf="@id/wdszSrmonth"
+     />
+  <TextView android:layout_height="35px" android:paddingTop="5px" android:id="@+id/wdszQgzt" 
+  android:layout_marginTop="15dip"  android:textColor="#000000"
+  android:layout_below="@id/wdszSr" android:layout_alignRight="@id/wdszSr"
+  android:layout_width="wrap_content" android:text="@string/wdsz_qgzt"
+  ></TextView>
+  <Spinner android:id="@+id/wdszQgztSpinner" 
+     	android:layout_width="wrap_content" 
+       	android:layout_height="40px" 
+       	android:textSize="10sp"
+       	android:layout_marginLeft="5dip"
+      	android:drawSelectorOnTop="true"
+      	android:layout_alignBottom="@id/wdszQgzt"
+		android:layout_toRightOf="@id/wdszQgzt"
+     />
+  <TextView android:layout_height="wrap_content" android:id="@+id/wdszGrqm" android:layout_marginTop="15dip"
+  android:layout_below="@id/wdszQgzt" android:layout_alignRight="@id/wdszQgzt"
+  android:layout_width="wrap_content" android:text="@string/wdsz_grqm" android:textColor="#000000"
+  ></TextView>
+  <EditText android:text="@string/wdsz_zs" android:singleLine="false" android:padding="2dip"
+  android:layout_alignTop="@id/wdszGrqm" android:layout_toRightOf="@id/wdszGrqm"
+  android:layout_height="100dip" android:layout_marginLeft="5dip" android:layout_width="wrap_content"
+  android:layout_marginRight="5dip" android:layout_alignParentRight="true"
+  android:id="@+id/wdszGrqmEditText"></EditText>
+  <Button android:layout_height="wrap_content" android:layout_centerHorizontal="true" 
+  android:layout_marginTop="15dip" android:layout_below="@id/wdszGrqmEditText" 
+  android:background="#FF8C00" android:textColor="#000000"
+   android:textSize="18sp"  android:text="@string/wdsz_bcxg" android:layout_width="80dip" 
+   android:id="@+id/wdszBtn"></Button>
+</RelativeLayout>

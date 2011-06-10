@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="#E8E8E8">
+  <TextView android:background="#B8B8B8" android:id="@+id/xzhyTitle" 
+    android:layout_width="fill_parent" android:layout_height="40dip"
+    android:textColor="#ffffff" android:textSize="18sp" android:gravity="center"></TextView>
+  <TextView android:layout_height="40dip" android:layout_below="@id/xzhyTitle"
+  android:textColor="#000000" android:textSize="16sp" android:layout_marginLeft="4dip"
+  android:layout_marginRight="4dip" android:padding="5dip"
+  android:layout_alignParentLeft="true" android:id="@+id/xzhy2Titile" android:layout_width="fill_parent"></TextView>
+  <EditText  android:layout_height="wrap_content" android:id="@+id/xzhyEditText" android:textColor="#000000"
+  android:textSize="16sp" android:layout_below="@id/xzhy2Titile" android:layout_marginLeft="4dip"
+  android:layout_marginRight="4dip"
+  android:layout_width="fill_parent"></EditText>
+  <Button android:id="@+id/xzhyBtn" android:layout_width="60dip" android:background="#FF8C00"
+  android:layout_below="@id/xzhyEditText" android:textSize="18sp" android:textColor="#000000" 
+  android:layout_height="40dip" android:layout_alignParentRight="true" android:layout_marginRight="4dip"></Button>
+  <ListView android:id="@+id/android:list" android:layout_height="wrap_content" android:layout_width="fill_parent"></ListView>
+</RelativeLayout>

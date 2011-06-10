@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+   <TextView android:layout_height="fill_parent" android:id="@+id/plContentTextView" 
+    android:layout_alignParentLeft="true" android:layout_width="wrap_content" 
+    android:textColor="#000000"></TextView>
+    <Button android:layout_width="50dip"  android:textSize="12sp"
+    android:layout_below="@id/plContentTextView" android:layout_height="wrap_content"  
+    android:background="#979797" android:layout_alignParentRight="true" android:layout_marginRight="3dip"
+    android:layout_marginBottom="3dip" android:padding="3dip" android:textColor="#FFFFFF"
+    android:layout_alignParentBottom="true" android:id="@+id/plHfBtn"></Button>
+</RelativeLayout>
