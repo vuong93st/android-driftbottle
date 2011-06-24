@@ -14,7 +14,11 @@
 			android:textColor="#ffcccc"
 			android:layout_toRightOf="@id/aclock"
 		/> -->
-
+		<LinearLayout
+		android:id="@+id/adLayout"
+		android:layout_width="fill_parent"
+		android:layout_height="10dip"
+		/>
 		<TextView android:id="@+id/loginmain_title"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:textSize="20sp" android:textColor="#ffffff"

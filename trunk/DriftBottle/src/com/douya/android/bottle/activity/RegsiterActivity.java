@@ -78,10 +78,12 @@ public class RegsiterActivity extends Activity{
         cityTextView.setText(R.string.city);
         
         provinceSpinner = (Spinner) findViewById(R.id.province);
-        ArrayAdapter adapter = ArrayAdapter.createFromResource(
-                this, R.array.city, android.R.layout.simple_spinner_item);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item);
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(
+                this, R.array.city, R.layout.myspinner);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item);
         provinceSpinner.setAdapter(adapter);
 
         provinceSpinner.setOnItemSelectedListener(new provinceSelectedListener());
@@ -96,6 +98,8 @@ public class RegsiterActivity extends Activity{
 			}
 		});
 	}
+	
+	
 	//选择省、直辖市，列出地级市
 	class provinceSelectedListener implements OnItemSelectedListener{
 
@@ -105,7 +109,7 @@ public class RegsiterActivity extends Activity{
 			prefecturalLevelCitySpinner = (Spinner) findViewById(R.id.city);
 			if(variable!=0){
 		        ArrayAdapter adapter2 = ArrayAdapter.createFromResource(
-		        		RegsiterActivity.this, variable, android.R.layout.simple_spinner_item);
+		        		RegsiterActivity.this, variable, R.layout.myspinner);
 
 		        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		        prefecturalLevelCitySpinner.setAdapter(adapter2);
@@ -132,7 +136,7 @@ public class RegsiterActivity extends Activity{
     		countyCitySpinner = (Spinner) findViewById(R.id.city_sub);
 			if(variable_sub!=0){
 		        ArrayAdapter adapter3 = ArrayAdapter.createFromResource(
-		        		RegsiterActivity.this, variable_sub, android.R.layout.simple_spinner_item);
+		        		RegsiterActivity.this, variable_sub, R.layout.myspinner);
 
 		        adapter3.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		        countyCitySpinner.setAdapter(adapter3);
