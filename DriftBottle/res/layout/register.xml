@@ -103,7 +103,8 @@
       	android:drawSelectorOnTop="true"
       	android:layout_below="@id/city"
 		android:layout_toRightOf="@id/city_textview"
-     />
+     >
+     </Spinner>
      <ImageButton android:id="@+id/registerButton"
 		android:layout_width="200px" android:layout_height="30px"
 		android:layout_marginTop="5px"

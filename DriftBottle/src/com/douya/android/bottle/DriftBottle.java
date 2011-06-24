@@ -10,15 +10,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.adview.AdViewLayout;
+import com.adview.AdViewManager;
+import com.adview.AdViewTargeting;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.RegsiterActivity;
 import com.douya.android.bottle.model.Account;
@@ -26,6 +31,9 @@ import com.douya.android.bottle.service.DateDeserializer;
 import com.douya.android.bottle.service.JsonDataGetApi;
 import com.douya.android.core.activity.LocationActivity;
 import com.eoemobile.api.EnhancedAgent;
+import com.google.ads.AdRequest;
+import com.google.ads.AdSize;
+import com.google.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -107,6 +115,25 @@ public class DriftBottle extends LocationActivity {
 
 			}
 		});
+        
+        //广告
+        LinearLayout layout = (LinearLayout)findViewById(R.id.adLayout);
+        /* 下面两行仅仅用于调试，发布前注释掉*/
+        //AdViewTargeting.setTestMode(true);
+        //AdViewManager.setConfigExpireTimeout(-1);
+
+        AdViewLayout adViewLayout = new AdViewLayout(this, "SDK20111224150629118q8ighe3eyste");
+        RelativeLayout.LayoutParams adViewLayoutParams = new 
+        RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        layout.addView(adViewLayout, adViewLayoutParams);
+        layout.invalidate();
+        
+        
+     // Create the adView
+//        AdView adView = new AdView(this, AdSize.BANNER, "SDK20111224150629118q8ighe3eyste");
+//        LinearLayout lay = (LinearLayout)findViewById(R.id.adLayout); 
+//        lay.addView(adView); 
+//        adView.loadAd(new AdRequest()); 
     }
     
     @Override

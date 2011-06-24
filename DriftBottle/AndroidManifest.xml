@@ -133,7 +133,12 @@
 			<meta-data android:name="android.appwidget.provider"
 				android:resource="@xml/appwidget_info" />
 		</receiver>
-		
+		<!-- 广告 -->
+		<!-- AdView SDK for AdMob -->
+		<activity android:name="com.google.ads.AdActivity" 
+		android:configChanges="orientation|keyboard|keyboardHidden"/>
+		<!-- AdView SDK for Wooboo -->
+		<meta-data android:value="1" android:name="Market_ID"/>
 		<!-- eoe市场开始 -->
 		<receiver android:name="com.eoemobile.api.stat.EoeReceiver">
 			<intent-filter>

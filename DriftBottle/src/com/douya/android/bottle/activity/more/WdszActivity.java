@@ -72,7 +72,6 @@ public class WdszActivity extends Activity {
         bzxgBtn = (Button)findViewById(R.id.wdszBtn);
         bzxgBtn.setOnClickListener(new View.OnClickListener() {
 			
-			@Override
 			public void onClick(View arg0) {
 				// TODO Auto-generated method stub
 				
