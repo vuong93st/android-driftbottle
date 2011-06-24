@@ -7,14 +7,14 @@
 	<classpathentry kind="lib" path="libs/eoe_sdk_0.9.9.jar"/>
 	<classpathentry kind="lib" path="libs/MapApi.jar"/>
 	<classpathentry kind="lib" path="libs/gson-1.7.1.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/AdViewSDK_Android.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/adchina_android_sdk.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/adlib_android.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/casee-ad-sdk-2.3.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/GoogleAdMobAdsSdk-4.1.0.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/MMAdView.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/smartmad-sdk-android.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/WiAd.jar"/>
-	<classpathentry kind="lib" path="E:/android广告SDK/AdViewSDK_Android_1.3.5/libs/youmibannerad-android.jar"/>
+	<classpathentry kind="lib" path="libs/adchina_android_sdk.jar"/>
+	<classpathentry kind="lib" path="libs/adlib_android.jar"/>
+	<classpathentry kind="lib" path="libs/AdViewSDK_Android.jar"/>
+	<classpathentry kind="lib" path="libs/casee-ad-sdk-2.3.jar"/>
+	<classpathentry kind="lib" path="libs/GoogleAdMobAdsSdk-4.1.0.jar"/>
+	<classpathentry kind="lib" path="libs/MMAdView.jar"/>
+	<classpathentry kind="lib" path="libs/smartmad-sdk-android.jar"/>
+	<classpathentry kind="lib" path="libs/WiAd.jar"/>
+	<classpathentry kind="lib" path="libs/youmibannerad-android.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
