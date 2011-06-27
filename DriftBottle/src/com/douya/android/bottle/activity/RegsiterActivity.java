@@ -9,15 +9,19 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.adview.AdViewLayout;
 import com.douya.android.R;
 
 public class RegsiterActivity extends Activity{
@@ -97,6 +101,13 @@ public class RegsiterActivity extends Activity{
 				RegsiterActivity.this.startActivity(intent);
 			}
 		});
+      //广告
+        LinearLayout layout = (LinearLayout)findViewById(R.id.adLayout);
+        AdViewLayout adViewLayout = new AdViewLayout(this, "SDK20111224150629118q8ighe3eyste");
+        RelativeLayout.LayoutParams adViewLayoutParams = new 
+        RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        layout.addView(adViewLayout, adViewLayoutParams);
+        layout.invalidate();
 	}
 	
 	
