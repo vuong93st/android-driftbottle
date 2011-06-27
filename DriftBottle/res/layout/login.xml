@@ -4,20 +4,10 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:background="@drawable/loginmain_bg"
 	android:layout_centerHorizontal="true">
-
-	<!-- <AnalogClock android:id="@+id/aclock"
-			android:layout_width="wrap_content" android:layout_height="60px"
-		/>
-		<DigitalClock android:id="@+id/dclock"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:paddingTop="15px"
-			android:textColor="#ffcccc"
-			android:layout_toRightOf="@id/aclock"
-		/> -->
 		<LinearLayout
 		android:id="@+id/adLayout"
 		android:layout_width="fill_parent"
-		android:layout_height="10dip"
+		android:layout_height="wrap_content"
 		/>
 		<TextView android:id="@+id/loginmain_title"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
