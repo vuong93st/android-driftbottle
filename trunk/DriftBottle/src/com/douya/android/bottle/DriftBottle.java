@@ -36,6 +36,9 @@ import com.google.ads.AdSize;
 import com.google.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.waps.*;
+import com.waps.ads.AdGroupLayout;
+import com.waps.ads.AdGroupTargeting;
 
 public class DriftBottle extends LocationActivity {
 	private TextView titleTextView = null;
@@ -124,16 +127,24 @@ public class DriftBottle extends LocationActivity {
 
         AdViewLayout adViewLayout = new AdViewLayout(this, "SDK20111224150629118q8ighe3eyste");
         RelativeLayout.LayoutParams adViewLayoutParams = new 
-        RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, 50);
         layout.addView(adViewLayout, adViewLayoutParams);
         layout.invalidate();
+     // 连接服务器. 应用启动时调用.
+        AppConnect.getInstance(this);
         
-        
-     // Create the adView
-//        AdView adView = new AdView(this, AdSize.BANNER, "SDK20111224150629118q8ighe3eyste");
-//        LinearLayout lay = (LinearLayout)findViewById(R.id.adLayout); 
-//        lay.addView(adView); 
-//        adView.loadAd(new AdRequest()); 
+      //AdGroupTargeting.setTestMode(true);// 该行仅用于调试，发布前去掉
+    	LinearLayout container = (LinearLayout)findViewById(R.id.AdLinearLayout);
+    	container.addView(new AdGroupLayout (this));//调用代码仅这行和互动广告不同
+
+      //显示多家平台广告 (兼容AdMob等广告平台)
+       /*LinearLayout container =(LinearLayout)findViewById(R.id.AdLinearLayout);
+       container.addView(new AdGroupLayout(this));*/
+
+
+        //获取用户IP所在地区
+        String area=AppConnect.getInstance(this).getArea();
+        Toast.makeText(this, "您所在地区:" + area, Toast.LENGTH_SHORT).show();
     }
     
     @Override
@@ -148,6 +159,12 @@ public class DriftBottle extends LocationActivity {
 		// TODO Auto-generated method stub
 		super.onResume();
 		EnhancedAgent.onResume(this);
+	}
+
+	@Override
+	public void finish() {
+		AppConnect.getInstance(this).finalize();
+		super.finish();
 	}
 
 	public void getJsonData() {
