@@ -16,5 +16,6 @@
 	<classpathentry kind="lib" path="libs/smartmad-sdk-android.jar"/>
 	<classpathentry kind="lib" path="libs/WiAd.jar"/>
 	<classpathentry kind="lib" path="libs/youmibannerad-android.jar"/>
+	<classpathentry kind="lib" path="E:/myandroid/DriftBottle/libs/AppOffer_1.4.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
