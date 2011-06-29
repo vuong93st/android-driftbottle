@@ -23,6 +23,8 @@ import android.widget.Toast;
 
 import com.adview.AdViewLayout;
 import com.douya.android.R;
+import com.waps.AppConnect;
+import com.waps.ads.AdGroupLayout;
 
 public class RegsiterActivity extends Activity{
 
@@ -108,6 +110,11 @@ public class RegsiterActivity extends Activity{
         RelativeLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
         layout.addView(adViewLayout, adViewLayoutParams);
         layout.invalidate();
+        
+     // 连接服务器. 应用启动时调用.
+        AppConnect.getInstance(this);
+    	LinearLayout container = (LinearLayout)findViewById(R.id.AdLinearLayout);
+    	container.addView(new AdGroupLayout (this));//调用代码仅这行和互动广告不同
 	}
 	
 	
