@@ -134,11 +134,22 @@
 				android:resource="@xml/appwidget_info" />
 		</receiver>
 		<!-- 广告 -->
-		<!-- AdView SDK for AdMob -->
-		<activity android:name="com.google.ads.AdActivity" 
-		android:configChanges="orientation|keyboard|keyboardHidden"/>
+		<!-- for Waps SDK -->
+        <activity android:name="com.waps.OffersWebView"  android:configChanges="keyboardHidden|orientation"/>
+        <meta-data android:name="CLIENT_PACKAGE" android:value="com.douya.android" />
+        <meta-data android:name="WAPS_ID" android:value="a08d32561c2a539def1e7f3a3efa9784" />
+        <meta-data android:name="WAPS_PID" android:value="WAPS" />
+        
+		<!--以下两行配置仅用于广告优化功能-->
+        <!-- for AdMob SDK -->
+        <activity android:name="com.google.ads.AdActivity" android:configChanges="orientation|keyboard|keyboardHidden"/>
+        <!-- for Youmi SDK -->
+        <activity android:name="net.youmi.android.AdActivity" android:configChanges="keyboard|keyboardHidden|orientation"/>
 		<!-- AdView SDK for Wooboo -->
 		<meta-data android:value="1" android:name="Market_ID"/>
+		<!-- 多盟 -->
+		<!-- <meta-data android:value="56OJyd5IuMXrGMxJ3V" android:name="DOMOB_PID" /> -->
+    
 		<!-- eoe市场开始 -->
 		<receiver android:name="com.eoemobile.api.stat.EoeReceiver">
 			<intent-filter>
@@ -172,5 +183,6 @@
 	<uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
-	
+	<!--以下权限仅互动广告使用--> 
+	<uses-permission android:name="android.permission.GET_TASKS" />
 </manifest>
