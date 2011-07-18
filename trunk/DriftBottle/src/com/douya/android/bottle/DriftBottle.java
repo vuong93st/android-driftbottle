@@ -131,11 +131,11 @@ public class DriftBottle extends LocationActivity {
         layout.addView(adViewLayout, adViewLayoutParams);
         layout.invalidate();
      // 连接服务器. 应用启动时调用.
-        AppConnect.getInstance(this);
+        //AppConnect.getInstance(this);
         
       //AdGroupTargeting.setTestMode(true);// 该行仅用于调试，发布前去掉
-    	LinearLayout container = (LinearLayout)findViewById(R.id.AdLinearLayout);
-    	container.addView(new AdGroupLayout (this));//调用代码仅这行和互动广告不同
+    	//LinearLayout container = (LinearLayout)findViewById(R.id.AdLinearLayout);
+    	//container.addView(new AdGroupLayout (this));//调用代码仅这行和互动广告不同
 
       //显示多家平台广告 (兼容AdMob等广告平台)
        /*LinearLayout container =(LinearLayout)findViewById(R.id.AdLinearLayout);
@@ -143,8 +143,8 @@ public class DriftBottle extends LocationActivity {
 
 
         //获取用户IP所在地区
-        String area=AppConnect.getInstance(this).getArea();
-        Toast.makeText(this, "您所在地区:" + area, Toast.LENGTH_SHORT).show();
+//        String area=AppConnect.getInstance(this).getArea();
+//        Toast.makeText(this, "您所在地区:" + area, Toast.LENGTH_SHORT).show();
     }
     
     @Override
