@@ -42,7 +42,7 @@
 		<RelativeLayout 
 		android:id="@+id/login_layout_email"
 		android:orientation="vertical" android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_height="fill_parent"
 		android:layout_below="@id/loginmain_registerButton"
 		android:layout_centerHorizontal="true">
 		<TextView android:id="@+id/loginmain_email_textview"
