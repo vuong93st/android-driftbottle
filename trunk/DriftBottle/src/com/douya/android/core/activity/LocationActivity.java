@@ -90,8 +90,8 @@ public class LocationActivity extends MapActivity {
 	private void getProvider() {
 		// 构建位置查询条件
 		Criteria criteria = new Criteria();
-		// 查询精度：高
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);
+		// 查询精度：粗
+		criteria.setAccuracy(Criteria.ACCURACY_COARSE);
 		// 是否查询海拨：否
 		criteria.setAltitudeRequired(false);
 		// 是否查询方位角 : 否
