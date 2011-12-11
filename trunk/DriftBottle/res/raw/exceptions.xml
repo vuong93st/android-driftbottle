@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<exceptoins>
+    <exception>
+        <code>0001</code>
+        <value>连接超时</value>
+    </exception>
+    <exception>
+        <code>0002</code>
+        <value>服务器异常</value>
+    </exception>
+    <exception>
+        <code>0003</code>
+        <value>未知错误</value>
+    </exception>
+</exceptoins>
