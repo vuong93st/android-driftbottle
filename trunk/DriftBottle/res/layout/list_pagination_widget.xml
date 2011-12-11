@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/page_header"
+        layout="@layout/header" />
+
+    <include
+        android:id="@+id/pagination"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/page_header"
+        layout="@layout/pagination_widget" />
+    <!-- 页面底部切换按钮 -->
+
+    <LinearLayout
+        android:id="@+id/bottomModule"
+        android:layout_width="fill_parent"
+        android:layout_height="80dip"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/tab_bg"
+        android:orientation="horizontal" >
+    </LinearLayout>
+
+</RelativeLayout>
