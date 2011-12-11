@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/pagination_widget_root"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <RelativeLayout
+        android:id="@+id/pagination_widget_ctrl"
+        android:layout_width="fill_parent"
+        android:layout_height="45dip"
+        android:layout_alignParentBottom="true"
+        android:background="#ADD8E6" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <Button
+                android:id="@+id/btn_firstPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/button_pagination"
+                android:text="@string/firstPage" />
+
+            <Button
+                android:id="@+id/btn_prevPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dip"
+                android:layout_toRightOf="@id/btn_firstPage"
+                android:background="@drawable/button_pagination"
+                android:text="@string/prevPage" />
+
+            <RelativeLayout
+                android:id="@+id/pageRecordMainLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/btn_prevPage"
+                android:layout_alignTop="@id/btn_prevPage"
+                android:layout_toRightOf="@id/btn_prevPage" >
+
+                <LinearLayout
+                    android:id="@+id/pageRecourdLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/order"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/txt_currentPage"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="/"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/txt_pageCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="1"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/page"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pageSizeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pageRecourdLayout"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dip"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/all"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/txt_page_allCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/entries"
+                        android:textColor="@color/black" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_nextPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dip"
+                android:layout_toRightOf="@id/pageRecordMainLayout"
+                android:background="@drawable/button_pagination"
+                android:text="@string/nextPage" />
+
+            <Button
+                android:id="@+id/btn_lastPage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dip"
+                android:layout_toRightOf="@id/btn_nextPage"
+                android:background="@drawable/button_pagination"
+                android:text="@string/lastPage" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/hsv_pagination_widget_data"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/pagination_widget_ctrl"
+        android:background="@color/white"
+        android:fillViewport="true"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical" >
+
+            <ListView
+                android:id="@+id/lv_pagination_widget_data_title"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:cacheColorHint="@color/transparent_background"
+                android:divider="@color/black"
+                android:dividerHeight="1dip"
+                android:scrollbars="none" />
+
+            <ListView
+                android:id="@+id/lv_pagination_widget_data_body"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1dip"
+                android:background="@drawable/listview_corner"
+                android:cacheColorHint="@color/transparent_background"
+                android:divider="@color/black"
+                android:dividerHeight="1dip"
+                android:scrollbars="none" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>

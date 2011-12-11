@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
+    <color name="blue_2">#315f08</color>
+    <color name="black">#000000</color>
+    <color name="gray">#808080</color>
+    <color name="yellow">#ffff00</color>
+    <color name="sortkeycolor">#f5f2df</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#1000</color>
+    <color name="transparent_background">#00000000</color>
+    <color name="firstColor">#E4DECE</color>
+    <color name="nextColor">#D4C8AE</color>
+    <color name="bgColor">#0000</color>
+    <!-- android:cacheColorHint="#0000" -->
+
+    <color name="background">#FF000000</color>
+    <color name="control_back">#AA00003D</color>
+    <color name="dialog_back">#330000FF</color>
+
+    <!-- ################日历################ -->
+    <color name="calendar_background">#cb9e41</color>
+    <color name="selection">#b1dce2ff</color>
+    <color name="calendar_today">#faedda</color>
+    <!-- 今天背景色 -->
+    <color name="todayBgColor">#ff6bd697</color>
+    <!-- 日历中非当前月的日期背景色 -->
+    <color name="nonCurrentMonthDateBgColor">#c0c0c0</color>
+    <!-- 周六标题栏颜色的颜色 -->
+    <color name="sat_title_color_6">#FF529bd0</color>
+    <color name="sun_title_color_7">#FFbc4445</color>
+    <!-- 星期六背景色 -->
+    <color name="satBgColor">#FFf3feff</color>
+    <!-- 星期天背景色 -->
+    <color name="sunBgColor">#FFfff1f2</color>
+    <color name="tempColor">#e3e3e3</color>
+    <color name="frame">#ffcc3266</color>
+    <color name="forecast_point">#fff66898</color>
+    <color name="br0">#ffffc5dd</color>
+    <!-- 日历中当前月的日期背景色 -->
+    <color name="currentMonthDateBgColor">#603b07</color>
+    <!-- 今天日期下方显示的文字颜色 -->
+    <color name="todayHintColor">#ffc2a53d</color>
+    <color name="Noteback">#FFCC99</color>
+
+    <drawable name="black">#000000</drawable>
+    <drawable name="white">#FFFFFFFF</drawable>
+
+</resources>

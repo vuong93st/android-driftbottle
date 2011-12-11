@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">漂流瓶</string>
+    <string name="ip_option">设置IP</string>
+    <string name="default_server_url">192.168.1.131</string>
+    <string name="default_server_port">8080</string>
+    <string name="default_server_project">bottle</string>
+    
     <string name="loginmain_title">偌大的城市，竟不知联系谁</string>
     <string name="loginmain_content">有个陌生人，愿倾听你的心事</string>
     <string name="loginmain_content_sub">新的内容，新的玩法，等待你来探索</string>
@@ -62,4 +67,24 @@
     <string name="xzhy_btntext">搜索</string>
     <string name="moreitem6">帮助</string>
     <string name="moreitem7">友情链接</string>
+    
+    <!-- ##################默认主菜单################## -->
+    <string name="out">确认退出该程序吗?</string>
+    <string name="title">提示</string>
+    <string name="commit">确定</string>
+    <string name="not">取消</string>
+
+    <!-- ##################分页控件################## -->
+    <string name="firstPage">首页</string>
+    <string name="prevPage">上一页</string>
+    <string name="nextPage">下一页</string>
+    <string name="lastPage">末页</string>
+    <string name="entries">条</string>
+    <string name="all">共</string>
+    <string name="page">页</string>
+    <string name="order">第</string>
+    <string name="dataLoadingTitle">数据加载</string>
+    <string name="dataLoadingMsg">数据加载中,请稍候...</string>
+    <string name="isFirstPage">已经是第一页</string>
+    <string name="isLastPage">已经是最后一页</string>
 </resources>

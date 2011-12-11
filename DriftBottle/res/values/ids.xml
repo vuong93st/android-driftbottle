@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 界面加载完毕 -->
+    <item name="completed" type="id"/>
+    <item name="start_loading" type="id"/>
+    <!-- 异常 -->
+    <item name="exception" type="id"/>
+</resources>
