@@ -27,11 +27,11 @@ import android.widget.Toast;
 
 import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.MapActivity;
-import com.douya.android.bottle.XmlHandler;
-import com.douya.android.bottle.model.CurrentWeather;
-import com.douya.android.bottle.model.ForecastWeather;
-import com.douya.android.bottle.model.Weather;
 import com.douya.android.core.dao.DatabaseHelper;
+import com.douya.bottle.XmlHandler;
+import com.douya.bottle.model.CurrentWeather;
+import com.douya.bottle.model.ForecastWeather;
+import com.douya.bottle.model.Weather;
 
 public class LocationActivity extends MapActivity {
 	private static final String TAG = "LocationActivity";
