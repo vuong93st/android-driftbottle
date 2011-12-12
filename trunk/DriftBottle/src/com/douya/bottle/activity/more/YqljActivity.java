@@ -10,7 +10,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class YqljActivity extends ListActivity {
 

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class BaseWebViewClient extends WebViewClient {
 	private static String TAG = "RNWebViewClient";

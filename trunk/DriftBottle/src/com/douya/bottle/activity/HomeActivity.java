@@ -15,7 +15,7 @@ import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabWidget;
 import android.widget.TextView;
 
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.bottle.activity.home.HomeBottleActivity;
 import com.douya.bottle.activity.home.HomeCumulativeScoringActivity;

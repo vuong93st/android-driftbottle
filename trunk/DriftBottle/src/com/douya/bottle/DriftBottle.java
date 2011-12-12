@@ -22,13 +22,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adview.AdViewLayout;
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.base.map.LocationActivity;
 import com.douya.bottle.activity.RegsiterActivity;
 import com.douya.bottle.model.Account;
 import com.douya.bottle.service.DateDeserializer;
 import com.douya.bottle.service.JsonDataGetApi;
-import com.eoemobile.api.EnhancedAgent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.waps.AppConnect;
@@ -65,7 +64,7 @@ public class DriftBottle extends LocationActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
-        EnhancedAgent.init(this);//市场服务
+        //EnhancedAgent.init(this);//市场服务
         initLocation();//初始化位置服务
 		
         titleTextView = (TextView)findViewById(R.id.loginmain_title);
@@ -144,14 +143,14 @@ public class DriftBottle extends LocationActivity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		EnhancedAgent.onPause(this);
+		//EnhancedAgent.onPause(this);
 	}
 
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
-		EnhancedAgent.onResume(this);
+		//EnhancedAgent.onResume(this);
 	}
 
 	@Override

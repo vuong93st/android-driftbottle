@@ -1,12 +1,12 @@
 package com.douya.bottle.activity.more;
 
-import com.douya.android.R;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.douya.R;
 
 public class XzhyActivity extends ListActivity {
 

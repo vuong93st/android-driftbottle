@@ -2,12 +2,14 @@ package com.douya.bottle.activity.square;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import com.douya.android.R;
+
+import com.douya.R;
 
 public class SquareLatestActivity extends ListActivity{
 	@Override

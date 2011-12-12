@@ -1,6 +1,6 @@
 package com.douya.bottle.model;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class BottleIcon {
 	/**

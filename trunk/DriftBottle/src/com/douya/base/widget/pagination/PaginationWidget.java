@@ -1,13 +1,3 @@
-/*
- * @version 1.0
- * @Date 2011-11-29
- * @author Anders.Zhang
- * Copyright Shandong douya Sci&Trading Co.,Ltd.
- */
-
-// ~ Package Information
-// ============================================================================
-
 package com.douya.base.widget.pagination;
 
 import java.util.ArrayList;
@@ -34,10 +24,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.douya.android.R;
-import com.douya.base.app.BaseApp;
+import com.douya.R;
 import com.douya.base.biz.pagination.PaginationBiz;
-import com.douya.base.entity.exception.ExceptionEntity;
 import com.douya.base.entity.pagination.PageBean;
 import com.douya.base.widget.pagination.PaginationTableAdapter.TableRow;
 

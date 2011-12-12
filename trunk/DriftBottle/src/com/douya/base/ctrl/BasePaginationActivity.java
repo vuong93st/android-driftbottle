@@ -11,7 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.base.biz.pagination.PaginationBiz;
 import com.douya.base.util.IpOptionUtils;
 import com.douya.base.util.StringUtils;

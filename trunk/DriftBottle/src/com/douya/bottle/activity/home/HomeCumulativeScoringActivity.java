@@ -1,9 +1,9 @@
 package com.douya.bottle.activity.home;
 
-import com.douya.android.R;
-
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.douya.R;
 
 public class HomeCumulativeScoringActivity extends Activity{
 

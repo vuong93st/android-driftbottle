@@ -21,7 +21,7 @@ import android.widget.RadioButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.douya.android.R;
+import com.douya.R;
 
 /**
  * @Title: 分页动态表格数据适配器.
