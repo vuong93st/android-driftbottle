@@ -22,23 +22,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adview.AdViewLayout;
-import com.adview.AdViewManager;
-import com.adview.AdViewTargeting;
 import com.douya.android.R;
 import com.douya.android.bottle.activity.RegsiterActivity;
 import com.douya.android.bottle.model.Account;
 import com.douya.android.bottle.service.DateDeserializer;
 import com.douya.android.bottle.service.JsonDataGetApi;
-import com.douya.android.core.activity.LocationActivity;
+import com.douya.base.map.LocationActivity;
 import com.eoemobile.api.EnhancedAgent;
-import com.google.ads.AdRequest;
-import com.google.ads.AdSize;
-import com.google.ads.AdView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.waps.*;
-import com.waps.ads.AdGroupLayout;
-import com.waps.ads.AdGroupTargeting;
+import com.waps.AppConnect;
 
 public class DriftBottle extends LocationActivity {
 	private TextView titleTextView = null;
