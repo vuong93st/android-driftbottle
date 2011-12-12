@@ -2,16 +2,13 @@ package com.douya.android.core.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.douya.android.R;
-import com.douya.android.bottle.DriftBottle;
+import com.douya.bottle.DriftBottle;
 
 public class LoadingActivity extends Activity{
 	
