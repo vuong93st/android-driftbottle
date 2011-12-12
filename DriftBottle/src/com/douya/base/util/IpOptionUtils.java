@@ -9,7 +9,7 @@ import android.content.SharedPreferences.Editor;
 import android.preference.PreferenceManager;
 import android.util.Log;
 
-import com.douya.android.R;
+import com.douya.R;
 
 /**
  * @author ZhangDq

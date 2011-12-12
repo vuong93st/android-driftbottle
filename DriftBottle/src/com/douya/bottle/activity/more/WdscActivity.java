@@ -1,8 +1,9 @@
 package com.douya.bottle.activity.more;
 
-import com.douya.android.R;
 import android.app.Activity;
 import android.os.Bundle;
+
+import com.douya.R;
 
 public class WdscActivity extends Activity {
 

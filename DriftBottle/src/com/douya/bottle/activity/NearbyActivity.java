@@ -16,7 +16,7 @@ import com.autonavi.mapapi.Geocoder;
 import com.autonavi.mapapi.MapController;
 import com.autonavi.mapapi.MapView;
 import com.autonavi.mapapi.Overlay;
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.base.map.LocationActivity;
 import com.douya.base.map.MyOverlay;
 import com.douya.bottle.activity.component.AlwaysMarqueeTextView;

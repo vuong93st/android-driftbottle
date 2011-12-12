@@ -16,8 +16,8 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.douya.android.R;
+
+import com.douya.R;
 
 public class SquareBottleAgreeListActivity extends Activity{
 	RelativeLayout relativeLayout5 = null;

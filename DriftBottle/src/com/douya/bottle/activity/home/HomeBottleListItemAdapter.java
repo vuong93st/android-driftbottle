@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.bottle.model.BottleItem;
 
 public class HomeBottleListItemAdapter extends BaseAdapter {

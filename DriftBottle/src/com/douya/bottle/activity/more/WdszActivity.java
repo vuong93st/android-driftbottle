@@ -1,12 +1,13 @@
 package com.douya.bottle.activity.more;
 
-import com.douya.android.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+
+import com.douya.R;
 
 public class WdszActivity extends Activity {
 	/**

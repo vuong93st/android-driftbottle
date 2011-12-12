@@ -8,7 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class BottleAppWidgetProvider extends AppWidgetProvider{
 	private static final String UPDATE_ACTION = "com.douya.android.bottle.UPDATE_APP_WIDGET";

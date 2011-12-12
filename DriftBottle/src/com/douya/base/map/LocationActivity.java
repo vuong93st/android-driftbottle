@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.MapActivity;
-import com.douya.android.core.dao.DatabaseHelper;
+import com.douya.base.dao.DatabaseHelper;
 import com.douya.bottle.XmlHandler;
 import com.douya.bottle.model.CurrentWeather;
 import com.douya.bottle.model.ForecastWeather;
@@ -145,7 +145,7 @@ public class LocationActivity extends MapActivity {
 	}
 	// Gps 监听器调用，处理位置信息
 	public void updateWithNewLocation(Location location) {
-		searchWeather(location);//调用天气预报
+		//searchWeather(location);//调用天气预报
 	}
 
 	//////////////Google天气预报////////////////////

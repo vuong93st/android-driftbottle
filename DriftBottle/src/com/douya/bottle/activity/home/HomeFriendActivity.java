@@ -3,14 +3,13 @@ package com.douya.bottle.activity.home;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class HomeFriendActivity extends Activity{
 

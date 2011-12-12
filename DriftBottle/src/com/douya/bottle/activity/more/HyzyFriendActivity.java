@@ -1,6 +1,5 @@
 package com.douya.bottle.activity.more;
 
-import com.douya.android.R;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -9,6 +8,8 @@ import android.text.SpannableString;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.widget.TextView;
+
+import com.douya.R;
 
 public class HyzyFriendActivity extends Activity {
 

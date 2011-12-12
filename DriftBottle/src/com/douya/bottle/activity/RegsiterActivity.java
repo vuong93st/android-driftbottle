@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.adview.AdViewLayout;
-import com.douya.android.R;
+import com.douya.R;
 import com.waps.AppConnect;
 import com.waps.ads.AdGroupLayout;
 

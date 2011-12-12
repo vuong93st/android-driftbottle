@@ -13,7 +13,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 	private static final String TAG = "DatabaseHelper";

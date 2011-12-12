@@ -18,7 +18,7 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.bottle.model.BottleIcon;
 import com.douya.bottle.model.BottleItem;
 import com.douya.bottle.model.BottleType;

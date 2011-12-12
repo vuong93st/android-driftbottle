@@ -12,7 +12,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
-import com.douya.android.R;
+import com.douya.R;
 import com.douya.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.bottle.activity.more.HelpActivity;
 import com.douya.bottle.activity.more.WdplActivity;

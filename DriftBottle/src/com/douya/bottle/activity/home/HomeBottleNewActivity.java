@@ -2,9 +2,8 @@ package com.douya.bottle.activity.home;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.widget.ImageButton;
 
-import com.douya.android.R;
+import com.douya.R;
 
 public class HomeBottleNewActivity extends Activity{
 

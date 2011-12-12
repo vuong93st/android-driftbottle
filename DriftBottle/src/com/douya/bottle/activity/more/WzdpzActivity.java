@@ -3,12 +3,12 @@ package com.douya.bottle.activity.more;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.douya.android.R;
-
 import android.app.ListActivity;
 import android.os.Bundle;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+
+import com.douya.R;
 
 public class WzdpzActivity extends ListActivity {
 

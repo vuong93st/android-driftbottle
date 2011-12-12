@@ -15,7 +15,7 @@ import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.MapView;
 import com.autonavi.mapapi.MyLocationOverlay;
 import com.autonavi.mapapi.Projection;
-import com.douya.android.R;
+import com.douya.R;
 
 /**
  * 
