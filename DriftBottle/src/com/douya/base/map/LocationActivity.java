@@ -1,7 +1,21 @@
 package com.douya.base.map;
 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URL;
+import java.util.List;
+
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
+
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
+
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Address;
 import android.location.Criteria;
 import android.location.Location;
@@ -13,10 +27,19 @@ import android.widget.Toast;
 
 import com.autonavi.mapapi.GeoPoint;
 import com.autonavi.mapapi.MapActivity;
+import com.douya.android.bottle.XmlHandler;
+import com.douya.android.bottle.model.CurrentWeather;
+import com.douya.android.bottle.model.ForecastWeather;
+import com.douya.android.bottle.model.Weather;
+import com.douya.android.core.dao.DatabaseHelper;
 
 public class LocationActivity extends MapActivity {
 	private static final String TAG = "LocationActivity";
 
+	private DatabaseHelper dbHelper; 
+	private SQLiteDatabase sqliteDatabase;
+	private StringBuffer weatherStr = new StringBuffer();   //滚动天气内容
+	
 	private LocationManager locationManager;
 	private String provider;
 	private Location location;
@@ -120,7 +143,82 @@ public class LocationActivity extends MapActivity {
 	public void updateWithNewLocation(GeoPoint[] points, String[] markerTip){
 		
 	}
-	
+	// Gps 监听器调用，处理位置信息
+	public void updateWithNewLocation(Location location) {
+		searchWeather(location);//调用天气预报
+	}
+
+	//////////////Google天气预报////////////////////
+	public void searchWeather(Location location) {
+		int lat = 0;
+		int lng = 0;
+		if (location == null) return;
+		lat = (int)(location.getLatitude()*1000000);
+		lng = (int)(location.getLongitude()*1000000);
+
+		SAXParserFactory spf = SAXParserFactory.newInstance();
+		try {
+			SAXParser sp = spf.newSAXParser();
+			XMLReader reader = sp.getXMLReader();
+
+			XmlHandler handler = new XmlHandler();
+			reader.setContentHandler(handler);
+			URL url = new URL("http://www.google.com/ig/api?hl=zh-cn&weather=,,,"
+					+ lat+","+lng);
+			InputStream is = url.openStream();
+			InputStreamReader isr = new InputStreamReader(is, "GBK");
+			InputSource source = new InputSource(isr);
+			
+			reader.parse(source);
+			if(location!=null){
+				weatherStr.delete(0, weatherStr.length());
+				//weatherStr.append(" 纬度=" + (double)((int)(location.getLatitude()*1000000))/1000000 + " 经度=" + (double)((int)(location.getLongitude()*1000000))/1000000+"；");
+			}
+			List<CurrentWeather> currentWeatherList = handler.getCurrentWeatherList();
+			for(CurrentWeather currentWeather : currentWeatherList){
+				if(currentWeather.getCondition()!=null)weatherStr.append("天气实况："+currentWeather.getCondition());
+				if(currentWeather.getTemp_f()!=null)weatherStr.append(" 温度：华氏 "+currentWeather.getTemp_f());
+				if(currentWeather.getTemp_c()!=null)weatherStr.append(" 摄氏："+currentWeather.getTemp_c());
+				if(currentWeather.getHumidity()!=null)weatherStr.append(" 温度："+currentWeather.getHumidity());
+				if(currentWeather.getWind_condition()!=null)weatherStr.append(" 风力："+currentWeather.getWind_condition()+"；");
+			}
+			List<ForecastWeather> weatherList = handler.getForecastWeatherList();
+
+			for (ForecastWeather weather : weatherList) {
+				if(weather.getDay()!=null)weatherStr.append(weather.getDay());
+				if(weather.getCondition()!=null)weatherStr.append("天气："+weather.getCondition()+"； ");
+				if(weather.getLowTemp()!=null)weatherStr.append(" 最低气温："+weather.getLowTemp() + "℃ ");
+				if(weather.getHighTemp()!=null)weatherStr.append(" 最高气温："+weather.getHighTemp() + "℃");
+			}
+			System.out.println(weatherStr);
+            if(weatherStr==null||"".equalsIgnoreCase(weatherStr.toString())){
+            	weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
+            }
+		} catch (Exception e) {
+			weatherStr.append("无法连接到天气预报服务器，暂时无法提供天气信息。");
+
+			System.out.println(weatherStr+e.getMessage());
+		}
+		try{
+			Weather.Current = weatherStr.toString();
+			dbHelper = new DatabaseHelper(LocationActivity.this, "bottle_db"); 
+			sqliteDatabase = dbHelper.getWritableDatabase(); 
+			ContentValues values = new ContentValues(); 
+	        values.put("CURRENT", weatherStr.toString());
+	        
+	        Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null); 
+	        if(cursor.moveToNext()){
+	        	sqliteDatabase.update("weather", values, null, null);
+	        }else{
+	        	sqliteDatabase.insert("weather", null, values);   
+	        }
+	        cursor.close();
+	        sqliteDatabase.close();
+        }catch(Exception e){
+        	e.printStackTrace();
+        	System.out.println(e.getMessage());
+        }
+	}
 	@Override
 	public void finish() {
 		// TODO Auto-generated method stub
