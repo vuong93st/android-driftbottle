@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">漂流瓶</string>
+    <string name="app_name">偶遇</string>
     <string name="ip_option">设置IP</string>
     <string name="default_server_url">192.168.1.131</string>
     <string name="default_server_port">8080</string>
