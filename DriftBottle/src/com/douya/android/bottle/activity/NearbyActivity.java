@@ -2,8 +2,6 @@ package com.douya.android.bottle.activity;
 
 import java.util.List;
 
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.location.Address;
 import android.location.Location;
@@ -22,8 +20,7 @@ import com.douya.android.R;
 import com.douya.android.bottle.activity.component.AlwaysMarqueeTextView;
 import com.douya.android.bottle.activity.nearby.MyOverlay;
 import com.douya.android.bottle.model.Weather;
-import com.douya.android.core.activity.LocationActivity;
-import com.douya.android.core.dao.DatabaseHelper;
+import com.douya.base.map.LocationActivity;
 
 public class NearbyActivity extends LocationActivity{
 	private AlwaysMarqueeTextView weatherTextView = null;
@@ -120,16 +117,6 @@ public class NearbyActivity extends LocationActivity{
 	Runnable updateUIThread = new Runnable() {
 
 		public void run() {
-//			weatherCurrent="当前位置：";//+address+" ";
-//			// 获取天气预报
-//			dbHelper = new DatabaseHelper(NearbyActivity.this, "bottle_db"); 
-//			sqliteDatabase = dbHelper.getReadableDatabase(); 
-//			Cursor cursor = sqliteDatabase.query("weather", null, null, null, null, null, null);
-//			if (cursor.moveToNext()) {
-//				weatherCurrent += cursor.getString(cursor.getColumnIndex("current"));
-//            }
-//			cursor.close();
-//			sqliteDatabase.close();
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
 			weatherTextView.setText(Weather.Current);
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
