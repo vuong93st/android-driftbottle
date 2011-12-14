@@ -81,7 +81,8 @@ public class HomeActivity extends TabActivity {
 
 		public void run() {
 			weatherTextView = (AlwaysMarqueeTextView) findViewById(R.id.app_weather_content);
-			weatherTextView.setText(Weather.Current);
+			//weatherTextView.setText(Weather.Current);
+			weatherTextView.setText("偌大的城市，竟不知联系谁？有个陌生人，愿倾听你的心事。新的内容，新的玩法，等待你来探索！偶遇，上线了！");
 			weatherTextView.setTransformationMethod(SingleLineTransformationMethod.getInstance());
 			weatherTextView.setFocusable(true);
 			handler.postDelayed(updateUIThread, 1000*60*5);
