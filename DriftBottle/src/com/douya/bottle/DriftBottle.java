@@ -1,13 +1,7 @@
 package com.douya.bottle;
 
-import java.util.Date;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -15,21 +9,15 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.adview.AdViewLayout;
 import com.douya.R;
 import com.douya.base.map.LocationActivity;
 import com.douya.bottle.activity.RegsiterActivity;
-import com.douya.bottle.model.Account;
-import com.douya.bottle.service.DateDeserializer;
-import com.douya.bottle.service.JsonDataGetApi;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.waps.AppConnect;
 
 public class DriftBottle extends LocationActivity {
@@ -54,11 +42,11 @@ public class DriftBottle extends LocationActivity {
 	/**
 	 * 立即注册按钮
 	 */
-	private ImageButton regsiterButton = null;
+	private ImageView regsiterButton = null;
 	/**
 	 * 登录按钮
 	 */
-	private ImageButton loginButton = null;
+	private ImageView loginButton = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -77,16 +65,16 @@ public class DriftBottle extends LocationActivity {
         contentSubTextView.setText(R.string.loginmain_content_sub);
         
         emailTextview = (TextView)findViewById(R.id.loginmain_email_textview);
-        emailTextview.setText(R.string.loginmain_email);
+        emailTextview.setText(R.string.login_name_title);
         
         passwordTextview = (TextView)findViewById(R.id.loginmain_password_textview);
-        passwordTextview.setText(R.string.loginmain_password);
+        passwordTextview.setText(R.string.login_pwd_title);
         
         saveuserinfoCheckbox = (CheckBox)findViewById(R.id.loginmain_saveuserinfo_checkbox);
-        saveuserinfoCheckbox.setText(R.string.loginmain_save_password);
+        saveuserinfoCheckbox.setText(R.string.opt_remember_account);
         
-        loginButton = (ImageButton)findViewById(R.id.loginmain_loginButton);
-        regsiterButton = (ImageButton)findViewById(R.id.loginmain_registerButton);
+        loginButton = (ImageView)findViewById(R.id.loginmain_loginButton);
+        regsiterButton = (ImageView)findViewById(R.id.loginmain_registerButton);
         
         emailEditText = (EditText)findViewById(R.id.loginmain_email_edittext);
         passwordEditText = (EditText)findViewById(R.id.loginmain_passowrd_edittext);
