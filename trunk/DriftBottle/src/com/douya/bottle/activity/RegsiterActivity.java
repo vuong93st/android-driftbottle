@@ -64,10 +64,10 @@ public class RegsiterActivity extends Activity{
 		setContentView(R.layout.register);
 		context = this;
 		emailTextview = (TextView)findViewById(R.id.loginmain_email_textview);
-        emailTextview.setText(R.string.loginmain_email);
+        emailTextview.setText(R.string.login_name_title);
         
         passwordTextview = (TextView)findViewById(R.id.loginmain_password_textview);
-        passwordTextview.setText(R.string.loginmain_password);
+        passwordTextview.setText(R.string.login_pwd_title);
 
         confirmPasswordTextview = (TextView)findViewById(R.id.confirm_password_textview);
         confirmPasswordTextview.setText(R.string.confirm_password);
